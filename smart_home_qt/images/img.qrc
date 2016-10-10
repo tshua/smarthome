@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>AirConImage.png</file>
+        <file>lampImage.png</file>
+        <file>lampoffbtn.png</file>
+        <file>lamponbtn.png</file>
+        <file>leftArrow.png</file>
+        <file>light_off.png</file>
+        <file>light_on.png</file>
+        <file>rightArrow.png</file>
+        <file>switch_off.png</file>
+        <file>switch_on.png</file>
+    </qresource>
+</RCC>

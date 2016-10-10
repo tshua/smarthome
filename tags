@@ -1,0 +1,403 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CMDTYPE_CONTROLDEVICE	header/protocol.h	14;"	d
+CMDTYPE_LINKOPRATION	header/protocol.h	13;"	d
+CONTRL_DEV_CMD	header/protocol.h	19;"	d
+CRC_16	header/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/计算CRC，并填充到package中$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+CRC_16	source/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/计算CRC，并填充到package中$/;"	f	class:Protocol	signature:(unsigned char* buf)
+CRC_SEED	header/protocol.h	10;"	d
+CRC_high	header/protocol.h	/^    unsigned char CRC_high;         \/\/CRC高位$/;"	m	class:Protocol	access:public
+CRC_low	header/protocol.h	/^    unsigned char CRC_low;          \/\/CRC低位$/;"	m	class:Protocol	access:public
+DELETE_DEV_CMD	header/protocol.h	20;"	d
+DEV_LOGIN	header/protocol.h	27;"	d
+DEV_REGIST	server/server.cpp	14;"	d	file:
+DOCRC16	header/protocol.h	34;"	d
+ENCRYPT	header/protocol.h	36;"	d
+FAN	devices/fan.cpp	11;"	d	file:
+GET_DEVLIST_CMD	header/protocol.h	21;"	d
+GET_DEV_SENCEINFO_CMD	header/protocol.h	25;"	d
+HEARTBEAT_CMD	header/protocol.h	22;"	d
+H_COMMON_H	header/common.h	2;"	d
+H_SOCKET_ROUTE_H	header/socket_route.h	2;"	d
+H_SOCK_CLIENT_H	header/sock_client.h	2;"	d
+H_SOCK_H	header/sock_server.h	2;"	d
+LAMP1	devices/lamp1.cpp	10;"	d	file:
+LAMP1	devices/lamp2.cpp	10;"	d	file:
+LIGHT	header/protocol.h	28;"	d
+LOGIN_CMD	header/protocol.h	17;"	d
+MAX_CLIENT_NUM	header/sock_server.h	5;"	d
+MAX_PACKAGE_SIZE	header/protocol.h	8;"	d
+MSG_FILE	header/common.h	9;"	d
+MSG_SIZE	header/common.h	11;"	d
+MSG_TYPE	header/common.h	10;"	d
+MT_REGIST	server/server.cpp	13;"	d	file:
+NOCRC16	header/protocol.h	35;"	d
+NOENCRYPT	header/protocol.h	37;"	d
+NSEMS	server/server.cpp	17;"	d	file:
+OFFLINE_CMD	header/protocol.h	24;"	d
+PACKAGE_LEN_EXCEPT_DATA	header/protocol.h	9;"	d
+PHONE1	phone/client.cpp	17;"	d	file:
+POLY16	header/protocol.h	11;"	d
+PROTOCOL_H	header/protocol.h	2;"	d
+Protocol	header/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol	header/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol	header/protocol.h	/^class Protocol$/;"	c
+Protocol	source/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol	source/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol::CRC_16	header/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/计算CRC，并填充到package中$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::CRC_16	source/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/计算CRC，并填充到package中$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::CRC_high	header/protocol.h	/^    unsigned char CRC_high;         \/\/CRC高位$/;"	m	class:Protocol	access:public
+Protocol::CRC_low	header/protocol.h	/^    unsigned char CRC_low;          \/\/CRC低位$/;"	m	class:Protocol	access:public
+Protocol::Protocol	header/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::Protocol	header/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol::Protocol	source/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol::Protocol	source/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol::clean_data	header/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::clean_data	source/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+Protocol::cmd	header/protocol.h	/^    unsigned char cmd;              \/\/命令字$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_high	header/protocol.h	/^    unsigned char cmd_order_high;   \/\/命令序号高位$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_low	header/protocol.h	/^    unsigned char cmd_order_low;    \/\/命令序号低位$/;"	m	class:Protocol	access:public
+Protocol::cmd_type	header/protocol.h	/^    unsigned char cmd_type;         \/\/命令类别$/;"	m	class:Protocol	access:public
+Protocol::data	header/protocol.h	/^    unsigned char *data;            \/\/数据区$/;"	m	class:Protocol	access:public
+Protocol::device_id	header/protocol.h	/^    unsigned char device_id[8];     \/\/设备ID$/;"	m	class:Protocol	access:public
+Protocol::extend_info	header/protocol.h	/^    unsigned char extend_info[2];   \/\/扩展信息$/;"	m	class:Protocol	access:public
+Protocol::fill_buf	header/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/填充buf,返回长度$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::fill_buf	source/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/填充buf,返回长度$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::have_CRC16	header/protocol.h	/^    unsigned char have_CRC16;       \/\/是否有CRC$/;"	m	class:Protocol	access:public
+Protocol::have_extend	header/protocol.h	/^    unsigned char have_extend;      \/\/是否有扩展位$/;"	m	class:Protocol	access:public
+Protocol::len_high	header/protocol.h	/^    unsigned char len_high;         \/\/长度高位$/;"	m	class:Protocol	access:public
+Protocol::len_low	header/protocol.h	/^    unsigned char len_low;          \/\/长度低位$/;"	m	class:Protocol	access:public
+Protocol::package_header	header/protocol.h	/^    unsigned char package_header;   \/\/包头$/;"	m	class:Protocol	access:public
+Protocol::package_tail	header/protocol.h	/^    unsigned char package_tail;     \/\/包尾$/;"	m	class:Protocol	access:public
+Protocol::parse_buf	header/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/解析buf，将buf中数据转换成数据包的形式$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::parse_buf	source/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/解析buf，将buf中数据转换成数据包的形式$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::status	header/protocol.h	/^    unsigned char status;           \/\/状态$/;"	m	class:Protocol	access:public
+Protocol::torken	header/protocol.h	/^    unsigned char *torken;          \/\/通信令牌$/;"	m	class:Protocol	access:public
+Protocol::torken_len	header/protocol.h	/^    unsigned char torken_len;       \/\/令牌长度$/;"	m	class:Protocol	access:public
+Protocol::transferDecode	header/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/去除转义字符$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+Protocol::transferDecode	source/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/去除转义字符$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+Protocol::transferEncode	header/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/添加转义字符$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::transferEncode	source/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/添加转义字符$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::~Protocol	header/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::~Protocol	source/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+REGIST_CMD	header/protocol.h	18;"	d
+REGIST_DEV_CMD	header/protocol.h	23;"	d
+RES	header/protocol.h	26;"	d
+RecvData	header/socket_route.h	/^int RecvData(int hSocket, unsigned char *lpData, unsigned int  dwSize);$/;"	p	signature:(int hSocket, unsigned char *lpData, unsigned int dwSize)
+RecvData	source/socket_route.cpp	/^int RecvData(int hSocket,unsigned char *lpData,unsigned int dwSize)$/;"	f	signature:(int hSocket,unsigned char *lpData,unsigned int dwSize)
+RecvPacket	header/socket_route.h	/^bool RecvPacket(int hSocket, unsigned char *lpBuffer);$/;"	p	signature:(int hSocket, unsigned char *lpBuffer)
+RecvPacket	source/socket_route.cpp	/^bool RecvPacket(int hSocket,unsigned char *lpBuffer)$/;"	f	signature:(int hSocket,unsigned char *lpBuffer)
+SEM_FILE	header/common.h	16;"	d
+SEM_FILE1	server/server.cpp	18;"	d	file:
+SEM_FILE2	server/server.cpp	19;"	d	file:
+SEM_FILE3	server/server.cpp	20;"	d	file:
+SEM_FILE4	server/server.cpp	21;"	d	file:
+SERADDR	header/protocol.h	6;"	d
+SERPORT	header/protocol.h	5;"	d
+SER_INFO	devices/fan.cpp	10;"	d	file:
+SER_INFO	devices/lamp1.cpp	9;"	d	file:
+SER_INFO	devices/lamp2.cpp	9;"	d	file:
+SER_INFO	devices/switch.cpp	10;"	d	file:
+SER_INFO	phone/client.cpp	16;"	d	file:
+SHM_FILE	header/common.h	13;"	d
+SHM_SIZE	header/common.h	14;"	d
+STATUS_LIGHT	header/protocol.h	29;"	d
+SWITCH1	devices/switch.cpp	11;"	d	file:
+SockClient	header/sock_client.h	/^	SockClient();$/;"	p	class:SockClient	access:public	signature:()
+SockClient	header/sock_client.h	/^	SockClient(int remote_port, string remote_ip);$/;"	p	class:SockClient	access:public	signature:(int remote_port, string remote_ip)
+SockClient	header/sock_client.h	/^class SockClient$/;"	c
+SockClient	source/sock_client.cpp	/^SockClient::SockClient()$/;"	f	class:SockClient	signature:()
+SockClient	source/sock_client.cpp	/^SockClient::SockClient(int remote_port, string remote_ip)$/;"	f	class:SockClient	signature:(int remote_port, string remote_ip)
+SockClient::SockClient	header/sock_client.h	/^	SockClient();$/;"	p	class:SockClient	access:public	signature:()
+SockClient::SockClient	header/sock_client.h	/^	SockClient(int remote_port, string remote_ip);$/;"	p	class:SockClient	access:public	signature:(int remote_port, string remote_ip)
+SockClient::SockClient	source/sock_client.cpp	/^SockClient::SockClient()$/;"	f	class:SockClient	signature:()
+SockClient::SockClient	source/sock_client.cpp	/^SockClient::SockClient(int remote_port, string remote_ip)$/;"	f	class:SockClient	signature:(int remote_port, string remote_ip)
+SockClient::_connect	header/sock_client.h	/^	int _connect();$/;"	p	class:SockClient	access:public	signature:()
+SockClient::_connect	source/sock_client.cpp	/^int SockClient::_connect()$/;"	f	class:SockClient	signature:()
+SockClient::_send	header/sock_client.h	/^	int _send(unsigned char *buf);$/;"	p	class:SockClient	access:public	signature:(unsigned char *buf)
+SockClient::_send	source/sock_client.cpp	/^int SockClient::_send(unsigned char *buf)$/;"	f	class:SockClient	signature:(unsigned char *buf)
+SockClient::get_remoteaddr	header/sock_client.h	/^	sockaddr_in& get_remoteaddr();$/;"	p	class:SockClient	access:public	signature:()
+SockClient::get_remoteaddr	source/sock_client.cpp	/^sockaddr_in& SockClient::get_remoteaddr()$/;"	f	class:SockClient	signature:()
+SockClient::remoteaddr	header/sock_client.h	/^	sockaddr_in remoteaddr;$/;"	m	class:SockClient	access:private
+SockClient::set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(int remote_port, string remote_ip);$/;"	p	class:SockClient	access:public	signature:(int remote_port, string remote_ip)
+SockClient::set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(sockaddr_in remoteaddr);$/;"	p	class:SockClient	access:public	signature:(sockaddr_in remoteaddr)
+SockClient::set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(int remote_port, string remote_ip)$/;"	f	class:SockClient	signature:(int remote_port, string remote_ip)
+SockClient::set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(sockaddr_in remoteaddr)$/;"	f	class:SockClient	signature:(sockaddr_in remoteaddr)
+SockClient::sockfd	header/sock_client.h	/^	int sockfd;$/;"	m	class:SockClient	access:public
+SockServer	header/sock_server.h	/^	SockServer();$/;"	p	class:SockServer	access:public	signature:()
+SockServer	header/sock_server.h	/^	SockServer(int local_port);$/;"	p	class:SockServer	access:public	signature:(int local_port)
+SockServer	header/sock_server.h	/^class SockServer$/;"	c
+SockServer	source/sock_server.cpp	/^SockServer::SockServer()$/;"	f	class:SockServer	signature:()
+SockServer	source/sock_server.cpp	/^SockServer::SockServer(int local_port)$/;"	f	class:SockServer	signature:(int local_port)
+SockServer::SockServer	header/sock_server.h	/^	SockServer();$/;"	p	class:SockServer	access:public	signature:()
+SockServer::SockServer	header/sock_server.h	/^	SockServer(int local_port);$/;"	p	class:SockServer	access:public	signature:(int local_port)
+SockServer::SockServer	source/sock_server.cpp	/^SockServer::SockServer()$/;"	f	class:SockServer	signature:()
+SockServer::SockServer	source/sock_server.cpp	/^SockServer::SockServer(int local_port)$/;"	f	class:SockServer	signature:(int local_port)
+SockServer::_accept	header/sock_server.h	/^	int _accept();$/;"	p	class:SockServer	access:public	signature:()
+SockServer::_accept	source/sock_server.cpp	/^int SockServer::_accept()$/;"	f	class:SockServer	signature:()
+SockServer::_bind	header/sock_server.h	/^	int _bind();$/;"	p	class:SockServer	access:public	signature:()
+SockServer::_bind	source/sock_server.cpp	/^int SockServer::_bind()$/;"	f	class:SockServer	signature:()
+SockServer::_listen	header/sock_server.h	/^	int _listen();$/;"	p	class:SockServer	access:public	signature:()
+SockServer::_listen	source/sock_server.cpp	/^int SockServer::_listen()$/;"	f	class:SockServer	signature:()
+SockServer::get_localaddr	header/sock_server.h	/^	sockaddr_in& get_localaddr();$/;"	p	class:SockServer	access:public	signature:()
+SockServer::get_localaddr	source/sock_server.cpp	/^sockaddr_in& SockServer::get_localaddr()$/;"	f	class:SockServer	signature:()
+SockServer::get_remoteaddr	header/sock_server.h	/^	sockaddr_in& get_remoteaddr();$/;"	p	class:SockServer	access:public	signature:()
+SockServer::get_remoteaddr	source/sock_server.cpp	/^sockaddr_in& SockServer::get_remoteaddr()$/;"	f	class:SockServer	signature:()
+SockServer::localaddr	header/sock_server.h	/^	sockaddr_in localaddr;$/;"	m	class:SockServer	access:private
+SockServer::remoteaddr	header/sock_server.h	/^	sockaddr_in remoteaddr;$/;"	m	class:SockServer	access:private
+SockServer::set_localaddr	header/sock_server.h	/^	void set_localaddr(int local_port);$/;"	p	class:SockServer	access:public	signature:(int local_port)
+SockServer::set_localaddr	source/sock_server.cpp	/^void SockServer::set_localaddr(int local_port)$/;"	f	class:SockServer	signature:(int local_port)
+SockServer::sockfd	header/sock_server.h	/^	int sockfd;$/;"	m	class:SockServer	access:public
+TEMPRATURE	header/protocol.h	30;"	d
+WaitData	header/socket_route.h	/^int WaitData(int hSocket, unsigned int dwTime);$/;"	p	signature:(int hSocket, unsigned int dwTime)
+WaitData	source/socket_route.cpp	/^int WaitData(int hSocket,unsigned int dwTime)$/;"	f	signature:(int hSocket,unsigned int dwTime)
+__buf	header/common.h	/^	struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+_accept	header/sock_server.h	/^	int _accept();$/;"	p	class:SockServer	access:public	signature:()
+_accept	source/sock_server.cpp	/^int SockServer::_accept()$/;"	f	class:SockServer	signature:()
+_bind	header/sock_server.h	/^	int _bind();$/;"	p	class:SockServer	access:public	signature:()
+_bind	source/sock_server.cpp	/^int SockServer::_bind()$/;"	f	class:SockServer	signature:()
+_connect	header/sock_client.h	/^	int _connect();$/;"	p	class:SockClient	access:public	signature:()
+_connect	source/sock_client.cpp	/^int SockClient::_connect()$/;"	f	class:SockClient	signature:()
+_listen	header/sock_server.h	/^	int _listen();$/;"	p	class:SockServer	access:public	signature:()
+_listen	source/sock_server.cpp	/^int SockServer::_listen()$/;"	f	class:SockServer	signature:()
+_send	header/sock_client.h	/^	int _send(unsigned char *buf);$/;"	p	class:SockClient	access:public	signature:(unsigned char *buf)
+_send	source/sock_client.cpp	/^int SockClient::_send(unsigned char *buf)$/;"	f	class:SockClient	signature:(unsigned char *buf)
+addr	header/common.h	/^	void *addr;$/;"	m	struct:pthread_arg	access:public
+array	header/common.h	/^	unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+buf	header/common.h	/^	struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+clean_data	header/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+clean_data	source/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+client	devices/fan.cpp	/^SockClient client;$/;"	v
+client	devices/lamp1.cpp	/^SockClient client;$/;"	v
+client	devices/lamp2.cpp	/^SockClient client;$/;"	v
+client	devices/switch.cpp	/^SockClient client;$/;"	v
+client	phone/client.cpp	/^SockClient client;$/;"	v
+client	tags	/^client	devices\/switch.cpp	\/^SockClient client;$\/;"	v$/;"	v
+cmd	header/protocol.h	/^    unsigned char cmd;              \/\/命令字$/;"	m	class:Protocol	access:public
+cmd_order_high	header/protocol.h	/^    unsigned char cmd_order_high;   \/\/命令序号高位$/;"	m	class:Protocol	access:public
+cmd_order_low	header/protocol.h	/^    unsigned char cmd_order_low;    \/\/命令序号低位$/;"	m	class:Protocol	access:public
+cmd_type	header/protocol.h	/^    unsigned char cmd_type;         \/\/命令类别$/;"	m	class:Protocol	access:public
+count_devfile	server/server.cpp	/^int count_devfile = 0;$/;"	v
+count_devonline	server/server.cpp	/^int count_devonline = 0;$/;"	v
+count_mtfile	server/server.cpp	/^int count_mtfile = 0;$/;"	v
+count_phoneonline	server/server.cpp	/^int count_phoneonline = 0;$/;"	v
+cpp	tags	/^SER_INFO	devices\/switch.cpp	10;"	d	file:$/;"	v
+d	header/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+data	header/protocol.h	/^    unsigned char *data;            \/\/数据区$/;"	m	class:Protocol	access:public
+deal_recv_message	devices/fan.cpp	/^void deal_recv_message()$/;"	f	signature:()
+deal_recv_message	devices/lamp1.cpp	/^void deal_recv_message()$/;"	f	signature:()
+deal_recv_message	devices/lamp2.cpp	/^void deal_recv_message()$/;"	f	signature:()
+deal_recv_message	devices/switch.cpp	/^void deal_recv_message()$/;"	f	signature:()
+del_sem	header/common.h	/^int del_sem(const int semid, int nsems);$/;"	p	signature:(const int semid, int nsems)
+del_sem	source/common.cpp	/^int del_sem(const int semid, int nsems)$/;"	f	signature:(const int semid, int nsems)
+dev	devices/fan.cpp	/^dev_info dev;$/;"	v
+dev	devices/lamp1.cpp	/^dev_info dev;$/;"	v
+dev	devices/lamp2.cpp	/^dev_info dev;$/;"	v
+dev	devices/switch.cpp	/^dev_info dev;$/;"	v
+dev_info	header/protocol.h	/^struct dev_info$/;"	s
+dev_info::mac	header/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+dev_info::name	header/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+dev_info::type	header/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+dev_info_e	header/protocol.h	/^struct dev_info_e$/;"	s
+dev_info_e::d	header/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::lamp_auto	header/protocol.h	/^	int lamp_auto; \/\/只和灯有关 0 手动 1自动$/;"	m	struct:dev_info_e	access:public
+dev_info_e::sockfd	header/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::status	header/protocol.h	/^	int status; \/\/0 关  1 开$/;"	m	struct:dev_info_e	access:public
+dev_info_e::torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+dev_login	devices/fan.cpp	/^void dev_login()$/;"	f	signature:()
+dev_login	devices/lamp1.cpp	/^void dev_login()$/;"	f	signature:()
+dev_login	devices/lamp2.cpp	/^void dev_login()$/;"	f	signature:()
+dev_login	devices/switch.cpp	/^void dev_login()$/;"	f	signature:()
+dev_online	phone/client.cpp	/^list<dev_info_e> dev_online;$/;"	v
+dev_online	server/server.cpp	/^list<dev_info_e> dev_online;$/;"	v
+device_id	header/protocol.h	/^    unsigned char device_id[8];     \/\/设备ID$/;"	m	class:Protocol	access:public
+err_fun	source/common.cpp	/^static void err_fun(const char *file_name, const int line, const char* fun_name, int err_no)$/;"	f	file:	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+extend_info	header/protocol.h	/^    unsigned char extend_info[2];   \/\/扩展信息$/;"	m	class:Protocol	access:public
+fan_status	devices/fan.cpp	/^int fan_status = 0; \/\/0 关 1开$/;"	v
+fill_buf	header/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/填充buf,返回长度$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+fill_buf	source/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/填充buf,返回长度$/;"	f	class:Protocol	signature:(unsigned char* buf)
+format	tags	/^!_TAG_FILE_FORMAT	2	\/extended format; --format=1 will not append ;" to lines\/$/;"	v
+get_localaddr	header/sock_server.h	/^	sockaddr_in& get_localaddr();$/;"	p	class:SockServer	access:public	signature:()
+get_localaddr	source/sock_server.cpp	/^sockaddr_in& SockServer::get_localaddr()$/;"	f	class:SockServer	signature:()
+get_remoteaddr	header/sock_client.h	/^	sockaddr_in& get_remoteaddr();$/;"	p	class:SockClient	access:public	signature:()
+get_remoteaddr	header/sock_server.h	/^	sockaddr_in& get_remoteaddr();$/;"	p	class:SockServer	access:public	signature:()
+get_remoteaddr	source/sock_client.cpp	/^sockaddr_in& SockClient::get_remoteaddr()$/;"	f	class:SockClient	signature:()
+get_remoteaddr	source/sock_server.cpp	/^sockaddr_in& SockServer::get_remoteaddr()$/;"	f	class:SockServer	signature:()
+get_sem	header/common.h	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode);$/;"	p	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+get_sem	source/common.cpp	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)$/;"	f	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+have_CRC16	header/protocol.h	/^    unsigned char have_CRC16;       \/\/是否有CRC$/;"	m	class:Protocol	access:public
+have_extend	header/protocol.h	/^    unsigned char have_extend;      \/\/是否有扩展位$/;"	m	class:Protocol	access:public
+init_sem	header/common.h	/^int init_sem(const int semid, int sennum, int value);$/;"	p	signature:(const int semid, int sennum, int value)
+init_sem	server/server.cpp	/^int init_sem()$/;"	f	signature:()
+init_sem	source/common.cpp	/^int init_sem(const int semid, int semnum, int value)\/\/信号量的fd，信号量的编号，信号量的值$/;"	f	signature:(const int semid, int semnum, int value)
+insert_online_dev	server/server.cpp	/^void insert_online_dev(dev_info_e dev_e)$/;"	f	signature:(dev_info_e dev_e)
+insert_online_mt	server/server.cpp	/^void insert_online_mt(phone_info_e phone_e)$/;"	f	signature:(phone_info_e phone_e)
+is_regist	header/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+lamp_auto	header/protocol.h	/^	int lamp_auto; \/\/只和灯有关 0 手动 1自动$/;"	m	struct:dev_info_e	access:public
+lamp_mode	devices/lamp1.cpp	/^int lamp_mode = 0;\/\/ 0手动  1自动$/;"	v
+lamp_mode	devices/lamp2.cpp	/^int lamp_mode = 0;\/\/ 0手动  1自动$/;"	v
+lamp_status	devices/lamp1.cpp	/^int lamp_status = 0; \/\/0 灭 1亮$/;"	v
+lamp_status	devices/lamp2.cpp	/^int lamp_status = 0; \/\/0 灭 1亮$/;"	v
+len_high	header/protocol.h	/^    unsigned char len_high;         \/\/长度高位$/;"	m	class:Protocol	access:public
+len_low	header/protocol.h	/^    unsigned char len_low;          \/\/长度低位$/;"	m	class:Protocol	access:public
+light	devices/lamp1.cpp	/^int light = 0;\/\/光照强度$/;"	v
+light	phone/client.cpp	/^int light = 0;$/;"	v
+light	server/server.cpp	/^int light = 0;$/;"	v
+localaddr	header/sock_server.h	/^	sockaddr_in localaddr;$/;"	m	class:SockServer	access:private
+lock_fun	header/common.h	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)$/;"	f	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+mac	header/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+mail	header/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+main	devices/fan.cpp	/^int main()$/;"	f	signature:()
+main	devices/lamp1.cpp	/^int main()$/;"	f	signature:()
+main	devices/lamp2.cpp	/^int main()$/;"	f	signature:()
+main	devices/switch.cpp	/^int main()$/;"	f	signature:()
+main	phone/client.cpp	/^int main(void)$/;"	f	signature:(void)
+main	server/server.cpp	/^int main()$/;"	f	signature:()
+make_torken	server/server.cpp	/^void make_torken(unsigned char* torken)$/;"	f	signature:(unsigned char* torken)
+mk_get_msg	header/common.h	/^int mk_get_msg(int *msgid, mode_t creatmsg_mode, int proj_id);$/;"	p	signature:(int *msgid, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	source/common.cpp	/^int mk_get_msg(int *msgid, mode_t creatmsg_mode, int proj_id)$/;"	f	signature:(int *msgid, mode_t creatmsg_mode, int proj_id)
+mk_get_shm	header/common.h	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id);$/;"	p	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+mk_get_shm	source/common.cpp	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id)$/;"	f	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+name	header/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+output_select	phone/client.cpp	/^void output_select()$/;"	f	signature:()
+output_select	server/server.cpp	/^void output_select()$/;"	f	signature:()
+output_select_fan_swutch	phone/client.cpp	/^void output_select_fan_swutch()$/;"	f	signature:()
+output_select_fan_swutch	server/server.cpp	/^void output_select_fan_swutch()$/;"	f	signature:()
+output_select_lamp	phone/client.cpp	/^void output_select_lamp()$/;"	f	signature:()
+output_select_lamp	server/server.cpp	/^void output_select_lamp()$/;"	f	signature:()
+p	header/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+package_header	header/protocol.h	/^    unsigned char package_header;   \/\/包头$/;"	m	class:Protocol	access:public
+package_tail	header/protocol.h	/^    unsigned char package_tail;     \/\/包尾$/;"	m	class:Protocol	access:public
+parse_buf	header/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/解析buf，将buf中数据转换成数据包的形式$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+parse_buf	source/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/解析buf，将buf中数据转换成数据包的形式$/;"	f	class:Protocol	signature:(unsigned char* buf)
+password	header/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+phone1	phone/client.cpp	/^phone_info phone1;$/;"	v
+phone_info	header/protocol.h	/^struct phone_info$/;"	s
+phone_info::is_regist	header/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+phone_info::mail	header/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+phone_info::password	header/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+phone_info::phone_name	header/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_info::phone_num	header/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_info_e	header/protocol.h	/^struct phone_info_e$/;"	s
+phone_info_e::p	header/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+phone_info_e::torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+phone_login	phone/client.cpp	/^int phone_login(phone_info& phone)$/;"	f	signature:(phone_info& phone)
+phone_name	header/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_num	header/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_online	server/server.cpp	/^list<phone_info_e> phone_online;$/;"	v
+phone_read_info	phone/client.cpp	/^void phone_read_info(phone_info& phone)$/;"	f	signature:(phone_info& phone)
+phone_write_server_info	phone/client.cpp	/^void phone_write_server_info()$/;"	f	signature:()
+pth_id	header/common.h	/^	pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pth_no	header/common.h	/^	int pth_no;$/;"	m	struct:pthread_arg	access:public
+pthread_arg	header/common.h	/^struct pthread_arg$/;"	s
+pthread_arg::addr	header/common.h	/^	void *addr;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_id	header/common.h	/^	pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_no	header/common.h	/^	int pth_no;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::semid	header/common.h	/^	int semid;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::sockfd	header/common.h	/^	int sockfd;$/;"	m	struct:pthread_arg	access:public
+read_dev_info	devices/fan.cpp	/^void read_dev_info()$/;"	f	signature:()
+read_dev_info	devices/lamp1.cpp	/^void read_dev_info()$/;"	f	signature:()
+read_dev_info	devices/lamp2.cpp	/^void read_dev_info()$/;"	f	signature:()
+read_dev_info	devices/switch.cpp	/^void read_dev_info()$/;"	f	signature:()
+read_lock	header/common.h	24;"	d
+read_lockw	header/common.h	26;"	d
+read_server_info	devices/fan.cpp	/^void read_server_info()$/;"	f	signature:()
+read_server_info	devices/lamp1.cpp	/^void read_server_info()$/;"	f	signature:()
+read_server_info	devices/lamp2.cpp	/^void read_server_info()$/;"	f	signature:()
+read_server_info	devices/switch.cpp	/^void read_server_info()$/;"	f	signature:()
+read_sync_lock	server/server.cpp	/^int read_sync_lock(int semid, int& count)$/;"	f	signature:(int semid, int& count)
+read_sync_unlock	server/server.cpp	/^int read_sync_unlock(int semid, int& count)$/;"	f	signature:(int semid, int& count)
+regist_device	phone/client.cpp	/^int regist_device()$/;"	f	signature:()
+regist_phone	phone/client.cpp	/^int regist_phone(phone_info& phone)$/;"	f	signature:(phone_info& phone)
+remoteaddr	header/sock_client.h	/^	sockaddr_in remoteaddr;$/;"	m	class:SockClient	access:private
+remoteaddr	header/sock_server.h	/^	sockaddr_in remoteaddr;$/;"	m	class:SockServer	access:private
+rm_msg	header/common.h	/^int rm_msg(const int msgid);$/;"	p	signature:(const int msgid)
+rm_msg	source/common.cpp	/^int rm_msg(const int msgid)$/;"	f	signature:(const int msgid)
+rm_shm	header/common.h	/^int rm_shm(const int shmida, void *addr);$/;"	p	signature:(const int shmida, void *addr)
+rm_shm	source/common.cpp	/^int rm_shm(const int shmid, void *addr)$/;"	f	signature:(const int shmid, void *addr)
+search_dev	server/server.cpp	/^int search_dev(dev_info& d) \/\/from file$/;"	f	signature:(dev_info& d)
+search_dev_from_dev_online	server/server.cpp	/^int search_dev_from_dev_online(unsigned char *mac) \/\/返回对应的套接字描述符$/;"	f	signature:(unsigned char *mac)
+search_phone	server/server.cpp	/^int search_phone(phone_info& p)$/;"	f	signature:(phone_info& p)
+search_phone_from_phone_online	server/server.cpp	/^int search_phone_from_phone_online(phone_info_e& phone_e) $/;"	f	signature:(phone_info_e& phone_e)
+sem_p	header/common.h	/^int sem_p(const int semid, int semnum, int pn);$/;"	p	signature:(const int semid, int semnum, int pn)
+sem_p	source/common.cpp	/^int sem_p(const int semid, int semnum, int pn)$/;"	f	signature:(const int semid, int semnum, int pn)
+sem_v	header/common.h	/^int sem_v(const int semid, int semnum, int vn);$/;"	p	signature:(const int semid, int semnum, int vn)
+sem_v	source/common.cpp	/^int sem_v(const int semid, int semnum, int vn)$/;"	f	signature:(const int semid, int semnum, int vn)
+semid	header/common.h	/^	int semid;$/;"	m	struct:pthread_arg	access:public
+semid_devfile	server/server.cpp	/^int semid_devfile;$/;"	v
+semid_devonline	server/server.cpp	/^int semid_devonline;$/;"	v
+semid_mtfile	server/server.cpp	/^int semid_mtfile;$/;"	v
+semid_phoneonline	server/server.cpp	/^int semid_phoneonline;$/;"	v
+semun	header/common.h	/^union semun$/;"	u
+semun::__buf	header/common.h	/^	struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+semun::array	header/common.h	/^	unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+semun::buf	header/common.h	/^	struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+semun::val	header/common.h	/^	int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+send_light	devices/lamp1.cpp	/^void send_light()$/;"	f	signature:()
+send_light	devices/lamp2.cpp	/^void send_light()$/;"	f	signature:()
+send_status_light	devices/lamp1.cpp	/^void send_status_light()$/;"	f	signature:()
+send_status_light	devices/lamp2.cpp	/^void send_status_light()$/;"	f	signature:()
+send_temprature	devices/fan.cpp	/^void send_temprature()$/;"	f	signature:()
+ser_ip	devices/fan.cpp	/^char ser_ip[20] = {0};$/;"	v
+ser_ip	devices/lamp1.cpp	/^char ser_ip[20] = {0};$/;"	v
+ser_ip	devices/lamp2.cpp	/^char ser_ip[20] = {0};$/;"	v
+ser_ip	devices/switch.cpp	/^char ser_ip[20] = {0};$/;"	v
+ser_ip	tags	/^ser_ip	devices\/switch.cpp	\/^char ser_ip[20] = {0};$\/;"	v$/;"	v
+ser_port	devices/fan.cpp	/^short ser_port = 0;$/;"	v
+ser_port	devices/lamp1.cpp	/^short ser_port = 0;$/;"	v
+ser_port	devices/lamp2.cpp	/^short ser_port = 0;$/;"	v
+ser_port	devices/switch.cpp	/^short ser_port = 0;$/;"	v
+set_lamp_status	server/server.cpp	/^void set_lamp_status(unsigned char* mac, int status)$/;"	f	signature:(unsigned char* mac, int status)
+set_localaddr	header/sock_server.h	/^	void set_localaddr(int local_port);$/;"	p	class:SockServer	access:public	signature:(int local_port)
+set_localaddr	source/sock_server.cpp	/^void SockServer::set_localaddr(int local_port)$/;"	f	class:SockServer	signature:(int local_port)
+set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(int remote_port, string remote_ip);$/;"	p	class:SockClient	access:public	signature:(int remote_port, string remote_ip)
+set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(sockaddr_in remoteaddr);$/;"	p	class:SockClient	access:public	signature:(sockaddr_in remoteaddr)
+set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(int remote_port, string remote_ip)$/;"	f	class:SockClient	signature:(int remote_port, string remote_ip)
+set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(sockaddr_in remoteaddr)$/;"	f	class:SockClient	signature:(sockaddr_in remoteaddr)
+signal_fun	server/server.cpp	/^void signal_fun(int signo) \/\/信号捕获函数$/;"	f	signature:(int signo)
+sockfd	header/common.h	/^	int sockfd;$/;"	m	struct:pthread_arg	access:public
+sockfd	header/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+sockfd	header/sock_client.h	/^	int sockfd;$/;"	m	class:SockClient	access:public
+sockfd	header/sock_server.h	/^	int sockfd;$/;"	m	class:SockServer	access:public
+status	header/protocol.h	/^	int status; \/\/0 关  1 开$/;"	m	struct:dev_info_e	access:public
+status	header/protocol.h	/^    unsigned char status;           \/\/状态$/;"	m	class:Protocol	access:public
+switch_status	devices/switch.cpp	/^int switch_status = 0; \/\/0 关 1开$/;"	v
+switch_status	tags	/^switch_status	devices\/switch.cpp	\/^int switch_status = 0; \\\/\\\/0 关 1开$\/;"	v$/;"	v
+temprature	devices/fan.cpp	/^int temprature = 10; \/\/温度$/;"	v
+temprature	phone/client.cpp	/^int temprature = 0;$/;"	v
+temprature	server/server.cpp	/^int temprature = 0;$/;"	v
+thread_input	phone/client.cpp	/^void *thread_input(void *arg){$/;"	f	signature:(void *arg)
+thread_input	server/server.cpp	/^void *thread_input(void *arg){$/;"	f	signature:(void *arg)
+thread_light_produce	devices/lamp1.cpp	/^void* thread_light_produce(void* args)$/;"	f	signature:(void* args)
+thread_light_produce	devices/lamp2.cpp	/^void* thread_light_produce(void* args)$/;"	f	signature:(void* args)
+thread_recv	server/server.cpp	/^void* thread_recv(void *arg)$/;"	f	signature:(void *arg)
+thread_sync_dev_online	phone/client.cpp	/^void* thread_sync_dev_online(void* arg) \/\/10s同步一次$/;"	f	signature:(void* arg)
+thread_temprature_produce	devices/fan.cpp	/^void* thread_temprature_produce(void *arg)$/;"	f	signature:(void *arg)
+torken	devices/fan.cpp	/^unsigned char torken[20];$/;"	v
+torken	devices/lamp1.cpp	/^unsigned char torken[20];$/;"	v
+torken	devices/lamp2.cpp	/^unsigned char torken[20];$/;"	v
+torken	devices/switch.cpp	/^unsigned char torken[20];$/;"	v
+torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+torken	header/protocol.h	/^    unsigned char *torken;          \/\/通信令牌$/;"	m	class:Protocol	access:public
+torken	phone/client.cpp	/^char torken[20] = {0}; 	\/\/记录本次会话的torken$/;"	v
+torken_len	header/protocol.h	/^    unsigned char torken_len;       \/\/令牌长度$/;"	m	class:Protocol	access:public
+transferDecode	header/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/去除转义字符$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+transferDecode	source/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/去除转义字符$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+transferEncode	header/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/添加转义字符$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+transferEncode	source/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/添加转义字符$/;"	f	class:Protocol	signature:(unsigned char* buf)
+type	header/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+unlock	header/common.h	32;"	d
+val	header/common.h	/^	int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+wirte_sync_unlock	server/server.cpp	/^int wirte_sync_unlock(int semid)$/;"	f	signature:(int semid)
+write_dev_info_to_file	server/server.cpp	/^void write_dev_info_to_file(dev_info& dev)$/;"	f	signature:(dev_info& dev)
+write_lock	header/common.h	28;"	d
+write_lockw	header/common.h	30;"	d
+write_regist_info_to_file	server/server.cpp	/^void write_regist_info_to_file(phone_info& phone)$/;"	f	signature:(phone_info& phone)
+write_sync_lock	server/server.cpp	/^int write_sync_lock(int semid)$/;"	f	signature:(int semid)
+~Protocol	header/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+~Protocol	source/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
