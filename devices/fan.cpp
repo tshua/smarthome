@@ -30,7 +30,7 @@ int add_msg(unsigned char* buf)
 	Msgbuf msgbuf;
 	bzero(&msgbuf, sizeof(Msgbuf));
 
-	memcpy(msgbuf.mtext, "fan", 3);
+	memcpy(msgbuf.mtext, "fan1", 3);
 	memcpy(msgbuf.mtext+10, buf, 10);
 
 	msgbuf.mtype = MSG_DEVTOQT; //设置发送消息的类型           
@@ -225,7 +225,7 @@ void* thread_temprature_produce(void *arg)
 int main()
 {
 
-	mk_get_msg(&msgid, 0644, 'a');
+	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
 	read_server_info();
 

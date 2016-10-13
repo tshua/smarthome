@@ -4,109 +4,673 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-CMDTYPE_CONTROLDEVICE	header/protocol.h	14;"	d
-CMDTYPE_LINKOPRATION	header/protocol.h	13;"	d
-CONTRL_DEV_CMD	header/protocol.h	19;"	d
+A	smart_home_qt_phone/smart_home	/^/;"	v
+B1n	smart_home_qt_dev/images/lampoffbtn.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_dev/images/lamponbtn.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_dev/images/leftArrow.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_dev/images/light_off.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_dev/images/rightArrow.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_phone/images/lampoffbtn.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_phone/images/lamponbtn.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_phone/images/leftArrow.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_phone/images/light_off.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_phone/images/rightArrow.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_server/images/lampoffbtn.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_server/images/lamponbtn.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_server/images/leftArrow.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_server/images/light_off.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+B1n	smart_home_qt_server/images/rightArrow.png	/^Ì%b°Ω0„ã>ˇ3·o‡ã~ˆ¸@˛€z/;"	v
+C	smart_home_qt_dev/images/switch_on.png	/^@Ñ´Ç"‚¢¬bUc¬#_õí˚◊ˆ…ŒRÖ"!VóôÆ√Meí^v%å\\d£ﬂ%Üá·©É∏Ò]—öHµ@ç E4AØ¶–kUëáˇ]øıç:/;"	v
+C	smart_home_qt_phone/images/switch_on.png	/^@Ñ´Ç"‚¢¬bUc¬#_õí˚◊ˆ…ŒRÖ"!VóôÆ√Meí^v%å\\d£ﬂ%Üá·©É∏Ò]—öHµ@ç E4AØ¶–kUëáˇ]øıç:/;"	v
+C	smart_home_qt_server/images/switch_on.png	/^@Ñ´Ç"‚¢¬bUc¬#_õí˚◊ˆ…ŒRÖ"!VóôÆ√Meí^v%å\\d£ﬂ%Üá·©É∏Ò]—öHµ@ç E4AØ¶–kUëáˇ]øıç:/;"	v
+CMDTYPE_CONTROLDEVICE	header/protocol.h	15;"	d
+CMDTYPE_CONTROLDEVICE	smart_home_qt_dev/protocol.h	15;"	d
+CMDTYPE_CONTROLDEVICE	smart_home_qt_phone/protocol.h	15;"	d
+CMDTYPE_CONTROLDEVICE	smart_home_qt_server/protocol.h	15;"	d
+CMDTYPE_LINKOPRATION	header/protocol.h	14;"	d
+CMDTYPE_LINKOPRATION	smart_home_qt_dev/protocol.h	14;"	d
+CMDTYPE_LINKOPRATION	smart_home_qt_phone/protocol.h	14;"	d
+CMDTYPE_LINKOPRATION	smart_home_qt_server/protocol.h	14;"	d
+CONTRL_DEV_CMD	header/protocol.h	20;"	d
+CONTRL_DEV_CMD	smart_home_qt_dev/protocol.h	20;"	d
+CONTRL_DEV_CMD	smart_home_qt_phone/protocol.h	20;"	d
+CONTRL_DEV_CMD	smart_home_qt_server/protocol.h	20;"	d
 CRC_16	header/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+CRC_16	smart_home_qt_dev/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
+CRC_16	smart_home_qt_dev/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+CRC_16	smart_home_qt_phone/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
+CRC_16	smart_home_qt_phone/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+CRC_16	smart_home_qt_server/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
+CRC_16	smart_home_qt_server/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 CRC_16	source/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
-CRC_SEED	header/protocol.h	10;"	d
+CRC_SEED	header/protocol.h	11;"	d
+CRC_SEED	smart_home_qt_dev/protocol.h	11;"	d
+CRC_SEED	smart_home_qt_phone/protocol.h	11;"	d
+CRC_SEED	smart_home_qt_server/protocol.h	11;"	d
 CRC_high	header/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
+CRC_high	smart_home_qt_dev/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
+CRC_high	smart_home_qt_phone/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
+CRC_high	smart_home_qt_server/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
 CRC_low	header/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
-DELETE_DEV_CMD	header/protocol.h	20;"	d
-DEV_LOGIN	header/protocol.h	27;"	d
-DEV_REGIST	server/server.cpp	14;"	d	file:
-DOCRC16	header/protocol.h	34;"	d
-ENCRYPT	header/protocol.h	36;"	d
-FAN	devices/fan.cpp	11;"	d	file:
-GET_DEVLIST_CMD	header/protocol.h	21;"	d
-GET_DEV_SENCEINFO_CMD	header/protocol.h	25;"	d
-HEARTBEAT_CMD	header/protocol.h	22;"	d
+CRC_low	smart_home_qt_dev/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+CRC_low	smart_home_qt_phone/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+CRC_low	smart_home_qt_server/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+DELETE_DEV_CMD	header/protocol.h	21;"	d
+DELETE_DEV_CMD	smart_home_qt_dev/protocol.h	21;"	d
+DELETE_DEV_CMD	smart_home_qt_phone/protocol.h	21;"	d
+DELETE_DEV_CMD	smart_home_qt_server/protocol.h	21;"	d
+DEV_LOGIN	header/protocol.h	28;"	d
+DEV_LOGIN	smart_home_qt_dev/protocol.h	28;"	d
+DEV_LOGIN	smart_home_qt_phone/protocol.h	28;"	d
+DEV_LOGIN	smart_home_qt_server/protocol.h	28;"	d
+DEV_REGIST	server/server.cpp	15;"	d	file:
+DOCRC16	header/protocol.h	35;"	d
+DOCRC16	smart_home_qt_dev/protocol.h	35;"	d
+DOCRC16	smart_home_qt_phone/protocol.h	35;"	d
+DOCRC16	smart_home_qt_server/protocol.h	35;"	d
+ENCRYPT	header/protocol.h	37;"	d
+ENCRYPT	smart_home_qt_dev/protocol.h	37;"	d
+ENCRYPT	smart_home_qt_phone/protocol.h	37;"	d
+ENCRYPT	smart_home_qt_server/protocol.h	37;"	d
+FAN	devices/fan.cpp	14;"	d	file:
+GET_DEVLIST_CMD	header/protocol.h	22;"	d
+GET_DEVLIST_CMD	smart_home_qt_dev/protocol.h	22;"	d
+GET_DEVLIST_CMD	smart_home_qt_phone/protocol.h	22;"	d
+GET_DEVLIST_CMD	smart_home_qt_server/protocol.h	22;"	d
+GET_DEV_SENCEINFO_CMD	header/protocol.h	26;"	d
+GET_DEV_SENCEINFO_CMD	smart_home_qt_dev/protocol.h	26;"	d
+GET_DEV_SENCEINFO_CMD	smart_home_qt_phone/protocol.h	26;"	d
+GET_DEV_SENCEINFO_CMD	smart_home_qt_server/protocol.h	26;"	d
+H	smart_home_qt_dev/images/light_on.png	/^°+-ÀoB¿ü∫ã®Òﬁ™|∑,ó≤Â∫ƒ¿ÈÁ†˙b‘i≥¡’àÅ∆Ä≥É™pq—\/àGﬂMàrQbÈH;-‡®ó^? æ≥ˇÕŒ·©à˛Ék¡‚/;"	v
+H	smart_home_qt_phone/images/light_on.png	/^°+-ÀoB¿ü∫ã®Òﬁ™|∑,ó≤Â∫ƒ¿ÈÁ†˙b‘i≥¡’àÅ∆Ä≥É™pq—\/àGﬂMàrQbÈH;-‡®ó^? æ≥ˇÕŒ·©à˛Ék¡‚/;"	v
+H	smart_home_qt_server/images/light_on.png	/^°+-ÀoB¿ü∫ã®Òﬁ™|∑,ó≤Â∫ƒ¿ÈÁ†˙b‘i≥¡’àÅ∆Ä≥É™pq—\/àGﬂMàrQbÈH;-‡®ó^? æ≥ˇÕŒ·©à˛Ék¡‚/;"	v
+HEARTBEAT_CMD	header/protocol.h	23;"	d
+HEARTBEAT_CMD	smart_home_qt_dev/protocol.h	23;"	d
+HEARTBEAT_CMD	smart_home_qt_phone/protocol.h	23;"	d
+HEARTBEAT_CMD	smart_home_qt_server/protocol.h	23;"	d
 H_COMMON_H	header/common.h	2;"	d
+H_COMMON_H	smart_home_qt_dev/common.h	2;"	d
+H_COMMON_H	smart_home_qt_phone/common.h	2;"	d
+H_COMMON_H	smart_home_qt_server/common.h	2;"	d
 H_SOCKET_ROUTE_H	header/socket_route.h	2;"	d
 H_SOCK_CLIENT_H	header/sock_client.h	2;"	d
 H_SOCK_H	header/sock_server.h	2;"	d
-LAMP1	devices/lamp1.cpp	10;"	d	file:
-LAMP1	devices/lamp2.cpp	10;"	d	file:
-LIGHT	header/protocol.h	28;"	d
-LOGIN_CMD	header/protocol.h	17;"	d
+K	smart_home_qt_dev/images/switch_off.png	/^/;"	v
+K	smart_home_qt_phone/images/switch_off.png	/^/;"	v
+K	smart_home_qt_server/images/switch_off.png	/^/;"	v
+LAMP1	devices/lamp1.cpp	15;"	d	file:
+LAMP1	devices/lamp2.cpp	15;"	d	file:
+LIGHT	header/protocol.h	29;"	d
+LIGHT	smart_home_qt_dev/protocol.h	29;"	d
+LIGHT	smart_home_qt_phone/protocol.h	29;"	d
+LIGHT	smart_home_qt_server/protocol.h	29;"	d
+LOGIN_CMD	header/protocol.h	18;"	d
+LOGIN_CMD	smart_home_qt_dev/protocol.h	18;"	d
+LOGIN_CMD	smart_home_qt_phone/protocol.h	18;"	d
+LOGIN_CMD	smart_home_qt_server/protocol.h	18;"	d
+MAINWINDOW_H	smart_home_qt_dev/mainwindow.h	2;"	d
+MAINWINDOW_H	smart_home_qt_phone/mainwindow.h	2;"	d
+MAINWINDOW_H	smart_home_qt_server/mainwindow.h	2;"	d
 MAX_CLIENT_NUM	header/sock_server.h	5;"	d
+MAX_MSG_SIZE	header/protocol.h	9;"	d
+MAX_MSG_SIZE	smart_home_qt_dev/protocol.h	9;"	d
+MAX_MSG_SIZE	smart_home_qt_phone/protocol.h	9;"	d
+MAX_MSG_SIZE	smart_home_qt_server/protocol.h	9;"	d
 MAX_PACKAGE_SIZE	header/protocol.h	8;"	d
-MSG_FILE	header/common.h	9;"	d
-MSG_SIZE	header/common.h	11;"	d
-MSG_TYPE	header/common.h	10;"	d
-MT_REGIST	server/server.cpp	13;"	d	file:
-NOCRC16	header/protocol.h	35;"	d
-NOENCRYPT	header/protocol.h	37;"	d
-NSEMS	server/server.cpp	17;"	d	file:
-OFFLINE_CMD	header/protocol.h	24;"	d
-PACKAGE_LEN_EXCEPT_DATA	header/protocol.h	9;"	d
-PHONE1	phone/client.cpp	17;"	d	file:
-POLY16	header/protocol.h	11;"	d
+MAX_PACKAGE_SIZE	smart_home_qt_dev/protocol.h	8;"	d
+MAX_PACKAGE_SIZE	smart_home_qt_phone/protocol.h	8;"	d
+MAX_PACKAGE_SIZE	smart_home_qt_server/protocol.h	8;"	d
+MSG_DEVTOQT	header/protocol.h	40;"	d
+MSG_DEVTOQT	smart_home_qt_dev/protocol.h	40;"	d
+MSG_DEVTOQT	smart_home_qt_phone/protocol.h	40;"	d
+MSG_DEVTOQT	smart_home_qt_server/protocol.h	40;"	d
+MSG_FILE_DEV	header/common.h	9;"	d
+MSG_FILE_DEV	smart_home_qt_dev/common.h	9;"	d
+MSG_FILE_DEV	smart_home_qt_phone/common.h	9;"	d
+MSG_FILE_DEV	smart_home_qt_server/common.h	9;"	d
+MSG_FILE_PHONE	header/common.h	10;"	d
+MSG_FILE_PHONE	smart_home_qt_dev/common.h	10;"	d
+MSG_FILE_PHONE	smart_home_qt_phone/common.h	10;"	d
+MSG_FILE_PHONE	smart_home_qt_server/common.h	10;"	d
+MSG_FILE_SERVER	header/common.h	11;"	d
+MSG_FILE_SERVER	smart_home_qt_dev/common.h	11;"	d
+MSG_FILE_SERVER	smart_home_qt_phone/common.h	11;"	d
+MSG_FILE_SERVER	smart_home_qt_server/common.h	11;"	d
+MSG_PHONETOQT	header/protocol.h	44;"	d
+MSG_PHONETOQT	smart_home_qt_dev/protocol.h	44;"	d
+MSG_PHONETOQT	smart_home_qt_phone/protocol.h	44;"	d
+MSG_PHONETOQT	smart_home_qt_server/protocol.h	44;"	d
+MSG_QTTOPHONE	header/protocol.h	43;"	d
+MSG_QTTOPHONE	smart_home_qt_dev/protocol.h	43;"	d
+MSG_QTTOPHONE	smart_home_qt_phone/protocol.h	43;"	d
+MSG_QTTOPHONE	smart_home_qt_server/protocol.h	43;"	d
+MSG_QTTOSERVER	header/protocol.h	42;"	d
+MSG_QTTOSERVER	smart_home_qt_dev/protocol.h	42;"	d
+MSG_QTTOSERVER	smart_home_qt_phone/protocol.h	42;"	d
+MSG_QTTOSERVER	smart_home_qt_server/protocol.h	42;"	d
+MSG_SERVERTOQT	header/protocol.h	41;"	d
+MSG_SERVERTOQT	smart_home_qt_dev/protocol.h	41;"	d
+MSG_SERVERTOQT	smart_home_qt_phone/protocol.h	41;"	d
+MSG_SERVERTOQT	smart_home_qt_server/protocol.h	41;"	d
+MSG_SIZE	header/common.h	14;"	d
+MSG_SIZE	smart_home_qt_dev/common.h	14;"	d
+MSG_SIZE	smart_home_qt_phone/common.h	14;"	d
+MSG_SIZE	smart_home_qt_server/common.h	14;"	d
+MSG_TYPE	header/common.h	13;"	d
+MSG_TYPE	smart_home_qt_dev/common.h	13;"	d
+MSG_TYPE	smart_home_qt_phone/common.h	13;"	d
+MSG_TYPE	smart_home_qt_server/common.h	13;"	d
+MT_REGIST	server/server.cpp	14;"	d	file:
+MainWindow	smart_home_qt_dev/mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow	smart_home_qt_dev/mainwindow.h	/^    MainWindow(QWidget *parent = 0);$/;"	p	class:MainWindow	access:public	signature:(QWidget *parent = 0)
+MainWindow	smart_home_qt_dev/mainwindow.h	/^class MainWindow : public QMainWindow$/;"	c	inherits:QMainWindow
+MainWindow	smart_home_qt_phone/mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow	smart_home_qt_phone/mainwindow.h	/^    MainWindow(QWidget *parent = 0);$/;"	p	class:MainWindow	access:public	signature:(QWidget *parent = 0)
+MainWindow	smart_home_qt_phone/mainwindow.h	/^class MainWindow : public QMainWindow$/;"	c	inherits:QMainWindow
+MainWindow	smart_home_qt_server/mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow	smart_home_qt_server/mainwindow.h	/^    MainWindow(QWidget *parent = 0);$/;"	p	class:MainWindow	access:public	signature:(QWidget *parent = 0)
+MainWindow	smart_home_qt_server/mainwindow.h	/^class MainWindow : public QMainWindow$/;"	c	inherits:QMainWindow
+MainWindow::MainWindow	smart_home_qt_dev/mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow::MainWindow	smart_home_qt_dev/mainwindow.h	/^    MainWindow(QWidget *parent = 0);$/;"	p	class:MainWindow	access:public	signature:(QWidget *parent = 0)
+MainWindow::MainWindow	smart_home_qt_phone/mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow::MainWindow	smart_home_qt_phone/mainwindow.h	/^    MainWindow(QWidget *parent = 0);$/;"	p	class:MainWindow	access:public	signature:(QWidget *parent = 0)
+MainWindow::MainWindow	smart_home_qt_server/mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow	signature:(QWidget *parent)
+MainWindow::MainWindow	smart_home_qt_server/mainwindow.h	/^    MainWindow(QWidget *parent = 0);$/;"	p	class:MainWindow	access:public	signature:(QWidget *parent = 0)
+MainWindow::addMsg	smart_home_qt_phone/mainwindow.cpp	/^int MainWindow::addMsg(int msgid, const char* buf, int size)$/;"	f	class:MainWindow	signature:(int msgid, const char* buf, int size)
+MainWindow::addMsg	smart_home_qt_phone/mainwindow.h	/^    int addMsg(int msgid, const char* buf, int size);$/;"	p	class:MainWindow	access:public	signature:(int msgid, const char* buf, int size)
+MainWindow::deal_recvData	smart_home_qt_dev/mainwindow.cpp	/^void MainWindow::deal_recvData(Msgbuf* msg)$/;"	f	class:MainWindow	signature:(Msgbuf* msg)
+MainWindow::deal_recvData	smart_home_qt_dev/mainwindow.h	/^    void deal_recvData(Msgbuf* msg);$/;"	p	class:MainWindow	access:public	signature:(Msgbuf* msg)
+MainWindow::deal_recvData	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::deal_recvData(Msgbuf* msg)$/;"	f	class:MainWindow	signature:(Msgbuf* msg)
+MainWindow::deal_recvData	smart_home_qt_phone/mainwindow.h	/^    void deal_recvData(Msgbuf* msg);$/;"	p	class:MainWindow	access:public	signature:(Msgbuf* msg)
+MainWindow::deal_recvData	smart_home_qt_server/mainwindow.cpp	/^void MainWindow::deal_recvData(Msgbuf* msg)$/;"	f	class:MainWindow	signature:(Msgbuf* msg)
+MainWindow::deal_recvData	smart_home_qt_server/mainwindow.h	/^    void deal_recvData(Msgbuf* msg);$/;"	p	class:MainWindow	access:public	signature:(Msgbuf* msg)
+MainWindow::fanStatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *fanStatusButton;$/;"	m	class:MainWindow	access:private
+MainWindow::fanStatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::fanStatusButton_click()$/;"	f	class:MainWindow	signature:()
+MainWindow::fanStatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void fanStatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::fan_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* fan_img;$/;"	m	class:MainWindow	access:private
+MainWindow::fan_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* fan_img;$/;"	m	class:MainWindow	access:private
+MainWindow::fan_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* fan_img;$/;"	m	class:MainWindow	access:private
+MainWindow::fan_status	smart_home_qt_dev/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
+MainWindow::fan_status	smart_home_qt_phone/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
+MainWindow::fan_status	smart_home_qt_server/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
+MainWindow::label_fan_img	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+MainWindow::label_fan_img	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+MainWindow::label_fan_img	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+MainWindow::label_fan_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_fan_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_fan_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_light1	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_light1;$/;"	m	class:MainWindow	access:private
+MainWindow::label_light1	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_light1;$/;"	m	class:MainWindow	access:private
+MainWindow::label_light1	smart_home_qt_server/mainwindow.h	/^    QLabel* label_light1;$/;"	m	class:MainWindow	access:private
+MainWindow::label_light2	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+MainWindow::label_light2	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+MainWindow::label_light2	smart_home_qt_server/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+MainWindow::label_switch_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_switch_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_switch_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
+MainWindow::label_tempruature	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_tempruature;$/;"	m	class:MainWindow	access:private
+MainWindow::label_tempruature	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_tempruature;$/;"	m	class:MainWindow	access:private
+MainWindow::label_tempruature	smart_home_qt_server/mainwindow.h	/^    QLabel* label_tempruature;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp1ModeButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp1ModeButton;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp1ModeButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp1ModeButton_click()$/;"	f	class:MainWindow	signature:()
+MainWindow::lamp1ModeButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp1ModeButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::lamp1StatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp1StatusButton;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp1StatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp1StatusButton_click()$/;"	f	class:MainWindow	signature:()
+MainWindow::lamp1StatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp1StatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::lamp1_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* lamp1_img;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp1_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* lamp1_img;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp1_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* lamp1_img;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp1_mode	smart_home_qt_dev/mainwindow.h	/^    int lamp1_mode;$/;"	m	class:MainWindow	access:public
+MainWindow::lamp1_mode	smart_home_qt_phone/mainwindow.h	/^    int lamp1_mode;$/;"	m	class:MainWindow	access:public
+MainWindow::lamp1_mode	smart_home_qt_server/mainwindow.h	/^    int lamp1_mode;$/;"	m	class:MainWindow	access:public
+MainWindow::lamp1_status	smart_home_qt_dev/mainwindow.h	/^    int lamp1_status; \/\/ÁÅØ1$/;"	m	class:MainWindow	access:public
+MainWindow::lamp1_status	smart_home_qt_phone/mainwindow.h	/^    int lamp1_status; \/\/ÁÅØ1$/;"	m	class:MainWindow	access:public
+MainWindow::lamp1_status	smart_home_qt_server/mainwindow.h	/^    int lamp1_status; \/\/ÁÅØ1$/;"	m	class:MainWindow	access:public
+MainWindow::lamp2ModeButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp2ModeButton;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp2ModeButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp2ModeButton_click()$/;"	f	class:MainWindow	signature:()
+MainWindow::lamp2ModeButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp2ModeButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::lamp2StatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp2StatusButton;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp2StatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp2StatusButton_click()$/;"	f	class:MainWindow	signature:()
+MainWindow::lamp2StatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp2StatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::lamp2_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* lamp2_img;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp2_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* lamp2_img;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp2_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* lamp2_img;$/;"	m	class:MainWindow	access:private
+MainWindow::lamp2_mode	smart_home_qt_dev/mainwindow.h	/^    int lamp2_mode;$/;"	m	class:MainWindow	access:public
+MainWindow::lamp2_mode	smart_home_qt_phone/mainwindow.h	/^    int lamp2_mode;$/;"	m	class:MainWindow	access:public
+MainWindow::lamp2_mode	smart_home_qt_server/mainwindow.h	/^    int lamp2_mode;$/;"	m	class:MainWindow	access:public
+MainWindow::lamp2_status	smart_home_qt_dev/mainwindow.h	/^    int lamp2_status; \/\/ÁÅØ2$/;"	m	class:MainWindow	access:public
+MainWindow::lamp2_status	smart_home_qt_phone/mainwindow.h	/^    int lamp2_status; \/\/ÁÅØ2$/;"	m	class:MainWindow	access:public
+MainWindow::lamp2_status	smart_home_qt_server/mainwindow.h	/^    int lamp2_status; \/\/ÁÅØ2$/;"	m	class:MainWindow	access:public
+MainWindow::light1	smart_home_qt_dev/mainwindow.h	/^    int light1;$/;"	m	class:MainWindow	access:public
+MainWindow::light1	smart_home_qt_phone/mainwindow.h	/^    int light1;$/;"	m	class:MainWindow	access:public
+MainWindow::light1	smart_home_qt_server/mainwindow.h	/^    int light1;$/;"	m	class:MainWindow	access:public
+MainWindow::light2	smart_home_qt_dev/mainwindow.h	/^    int light2;$/;"	m	class:MainWindow	access:public
+MainWindow::light2	smart_home_qt_phone/mainwindow.h	/^    int light2;$/;"	m	class:MainWindow	access:public
+MainWindow::light2	smart_home_qt_server/mainwindow.h	/^    int light2;$/;"	m	class:MainWindow	access:public
+MainWindow::metaObject	smart_home_qt_dev/moc_mainwindow.cpp	/^const QMetaObject *MainWindow::metaObject() const$/;"	f	class:MainWindow	signature:() const
+MainWindow::metaObject	smart_home_qt_phone/moc_mainwindow.cpp	/^const QMetaObject *MainWindow::metaObject() const$/;"	f	class:MainWindow	signature:() const
+MainWindow::metaObject	smart_home_qt_server/moc_mainwindow.cpp	/^const QMetaObject *MainWindow::metaObject() const$/;"	f	class:MainWindow	signature:() const
+MainWindow::qt_metacall	smart_home_qt_dev/moc_mainwindow.cpp	/^int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QMetaObject::Call _c, int _id, void **_a)
+MainWindow::qt_metacall	smart_home_qt_phone/moc_mainwindow.cpp	/^int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QMetaObject::Call _c, int _id, void **_a)
+MainWindow::qt_metacall	smart_home_qt_server/moc_mainwindow.cpp	/^int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QMetaObject::Call _c, int _id, void **_a)
+MainWindow::qt_metacast	smart_home_qt_dev/moc_mainwindow.cpp	/^void *MainWindow::qt_metacast(const char *_clname)$/;"	f	class:MainWindow	signature:(const char *_clname)
+MainWindow::qt_metacast	smart_home_qt_phone/moc_mainwindow.cpp	/^void *MainWindow::qt_metacast(const char *_clname)$/;"	f	class:MainWindow	signature:(const char *_clname)
+MainWindow::qt_metacast	smart_home_qt_server/moc_mainwindow.cpp	/^void *MainWindow::qt_metacast(const char *_clname)$/;"	f	class:MainWindow	signature:(const char *_clname)
+MainWindow::qt_static_metacall	smart_home_qt_dev/moc_mainwindow.cpp	/^void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+MainWindow::qt_static_metacall	smart_home_qt_phone/moc_mainwindow.cpp	/^void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+MainWindow::qt_static_metacall	smart_home_qt_server/moc_mainwindow.cpp	/^void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+MainWindow::recvThread	smart_home_qt_dev/mainwindow.h	/^    RecvMsgThread* recvThread;$/;"	m	class:MainWindow	access:private
+MainWindow::recvThread	smart_home_qt_phone/mainwindow.h	/^    RecvMsgThread* recvThread;$/;"	m	class:MainWindow	access:private
+MainWindow::recvThread	smart_home_qt_server/mainwindow.h	/^    RecvMsgThread* recvThread;$/;"	m	class:MainWindow	access:private
+MainWindow::staticMetaObject	smart_home_qt_dev/moc_mainwindow.cpp	/^const QMetaObject MainWindow::staticMetaObject = {$/;"	m	class:MainWindow	file:
+MainWindow::staticMetaObject	smart_home_qt_phone/moc_mainwindow.cpp	/^const QMetaObject MainWindow::staticMetaObject = {$/;"	m	class:MainWindow	file:
+MainWindow::staticMetaObject	smart_home_qt_server/moc_mainwindow.cpp	/^const QMetaObject MainWindow::staticMetaObject = {$/;"	m	class:MainWindow	file:
+MainWindow::switchStatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *switchStatusButton;$/;"	m	class:MainWindow	access:private
+MainWindow::switchStatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::switchStatusButton_click()$/;"	f	class:MainWindow	signature:()
+MainWindow::switchStatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void switchStatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::switch_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* switch_img;$/;"	m	class:MainWindow	access:private
+MainWindow::switch_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* switch_img;$/;"	m	class:MainWindow	access:private
+MainWindow::switch_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* switch_img;$/;"	m	class:MainWindow	access:private
+MainWindow::switch_status	smart_home_qt_dev/mainwindow.h	/^    int switch_status; \/\/Êô∫ËÉΩÂºÄÂÖ≥$/;"	m	class:MainWindow	access:public
+MainWindow::switch_status	smart_home_qt_phone/mainwindow.h	/^    int switch_status; \/\/Êô∫ËÉΩÂºÄÂÖ≥$/;"	m	class:MainWindow	access:public
+MainWindow::switch_status	smart_home_qt_server/mainwindow.h	/^    int switch_status; \/\/Êô∫ËÉΩÂºÄÂÖ≥$/;"	m	class:MainWindow	access:public
+MainWindow::temprature	smart_home_qt_dev/mainwindow.h	/^    int temprature;$/;"	m	class:MainWindow	access:public
+MainWindow::temprature	smart_home_qt_phone/mainwindow.h	/^    int temprature;$/;"	m	class:MainWindow	access:public
+MainWindow::temprature	smart_home_qt_server/mainwindow.h	/^    int temprature;$/;"	m	class:MainWindow	access:public
+MainWindow::updateView	smart_home_qt_dev/mainwindow.cpp	/^void MainWindow::updateView()$/;"	f	class:MainWindow	signature:()
+MainWindow::updateView	smart_home_qt_dev/mainwindow.h	/^    void updateView();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::updateView	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::updateView()$/;"	f	class:MainWindow	signature:()
+MainWindow::updateView	smart_home_qt_phone/mainwindow.h	/^    void updateView();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::updateView	smart_home_qt_server/mainwindow.cpp	/^void MainWindow::updateView()$/;"	f	class:MainWindow	signature:()
+MainWindow::updateView	smart_home_qt_server/mainwindow.h	/^    void updateView();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::~MainWindow	smart_home_qt_dev/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+MainWindow::~MainWindow	smart_home_qt_dev/mainwindow.h	/^    ~MainWindow();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::~MainWindow	smart_home_qt_phone/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+MainWindow::~MainWindow	smart_home_qt_phone/mainwindow.h	/^    ~MainWindow();$/;"	p	class:MainWindow	access:public	signature:()
+MainWindow::~MainWindow	smart_home_qt_server/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+MainWindow::~MainWindow	smart_home_qt_server/mainwindow.h	/^    ~MainWindow();$/;"	p	class:MainWindow	access:public	signature:()
+Msgbuf	header/common.h	/^struct Msgbuf$/;"	s
+Msgbuf	smart_home_qt_dev/common.h	/^struct Msgbuf$/;"	s
+Msgbuf	smart_home_qt_phone/common.h	/^struct Msgbuf$/;"	s
+Msgbuf	smart_home_qt_server/common.h	/^struct Msgbuf$/;"	s
+Msgbuf::mtext	header/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+Msgbuf::mtext	smart_home_qt_dev/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+Msgbuf::mtext	smart_home_qt_phone/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+Msgbuf::mtext	smart_home_qt_server/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+Msgbuf::mtype	header/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
+Msgbuf::mtype	smart_home_qt_dev/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
+Msgbuf::mtype	smart_home_qt_phone/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
+Msgbuf::mtype	smart_home_qt_server/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
+N	smart_home_qt_dev/images/light_on.png	/^@‡}¨Ÿ¨˛ã‘ÜúLŒG+mpÛ€·ã«åy)¨o 0ÁÎ»…NÌœë;M1á ny:ﬁY=h	Zc˝}‹íÁàG%¢Rÿ7Bl 2Ò…YËπN‘eêÎ@…Cg}yÈ≥—üÅÀ∆$/;"	v
+N	smart_home_qt_phone/images/light_on.png	/^@‡}¨Ÿ¨˛ã‘ÜúLŒG+mpÛ€·ã«åy)¨o 0ÁÎ»…NÌœë;M1á ny:ﬁY=h	Zc˝}‹íÁàG%¢Rÿ7Bl 2Ò…YËπN‘eêÎ@…Cg}yÈ≥—üÅÀ∆$/;"	v
+N	smart_home_qt_server/images/light_on.png	/^@‡}¨Ÿ¨˛ã‘ÜúLŒG+mpÛ€·ã«åy)¨o 0ÁÎ»…NÌœë;M1á ny:ﬁY=h	Zc˝}‹íÁàG%¢Rÿ7Bl 2Ò…YËπN‘eêÎ@…Cg}yÈ≥—üÅÀ∆$/;"	v
+NOCRC16	header/protocol.h	36;"	d
+NOCRC16	smart_home_qt_dev/protocol.h	36;"	d
+NOCRC16	smart_home_qt_phone/protocol.h	36;"	d
+NOCRC16	smart_home_qt_server/protocol.h	36;"	d
+NOENCRYPT	header/protocol.h	38;"	d
+NOENCRYPT	smart_home_qt_dev/protocol.h	38;"	d
+NOENCRYPT	smart_home_qt_phone/protocol.h	38;"	d
+NOENCRYPT	smart_home_qt_server/protocol.h	38;"	d
+NSEMS	header/common.h	20;"	d
+OFFLINE_CMD	header/protocol.h	25;"	d
+OFFLINE_CMD	smart_home_qt_dev/protocol.h	25;"	d
+OFFLINE_CMD	smart_home_qt_phone/protocol.h	25;"	d
+OFFLINE_CMD	smart_home_qt_server/protocol.h	25;"	d
+PACKAGE_LEN_EXCEPT_DATA	header/protocol.h	10;"	d
+PACKAGE_LEN_EXCEPT_DATA	smart_home_qt_dev/protocol.h	10;"	d
+PACKAGE_LEN_EXCEPT_DATA	smart_home_qt_phone/protocol.h	10;"	d
+PACKAGE_LEN_EXCEPT_DATA	smart_home_qt_server/protocol.h	10;"	d
+PHONE1	phone/client.cpp	20;"	d	file:
+POLY16	header/protocol.h	12;"	d
+POLY16	smart_home_qt_dev/protocol.h	12;"	d
+POLY16	smart_home_qt_phone/protocol.h	12;"	d
+POLY16	smart_home_qt_server/protocol.h	12;"	d
 PROTOCOL_H	header/protocol.h	2;"	d
+PROTOCOL_H	smart_home_qt_dev/protocol.h	2;"	d
+PROTOCOL_H	smart_home_qt_phone/protocol.h	2;"	d
+PROTOCOL_H	smart_home_qt_server/protocol.h	2;"	d
 Protocol	header/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
 Protocol	header/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
 Protocol	header/protocol.h	/^class Protocol$/;"	c
+Protocol	smart_home_qt_dev/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol	smart_home_qt_dev/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol	smart_home_qt_dev/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol	smart_home_qt_dev/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol	smart_home_qt_dev/protocol.h	/^class Protocol$/;"	c
+Protocol	smart_home_qt_phone/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol	smart_home_qt_phone/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol	smart_home_qt_phone/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol	smart_home_qt_phone/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol	smart_home_qt_phone/protocol.h	/^class Protocol$/;"	c
+Protocol	smart_home_qt_server/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol	smart_home_qt_server/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol	smart_home_qt_server/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol	smart_home_qt_server/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol	smart_home_qt_server/protocol.h	/^class Protocol$/;"	c
 Protocol	source/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
 Protocol	source/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
 Protocol::CRC_16	header/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::CRC_16	smart_home_qt_dev/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::CRC_16	smart_home_qt_dev/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::CRC_16	smart_home_qt_phone/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::CRC_16	smart_home_qt_phone/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::CRC_16	smart_home_qt_server/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::CRC_16	smart_home_qt_server/protocol.h	/^    int CRC_16(unsigned char* buf);                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 Protocol::CRC_16	source/protocol.cpp	/^int Protocol::CRC_16(unsigned char* buf)                      \/\/ËÆ°ÁÆóCRCÔºåÂπ∂Â°´ÂÖÖÂà∞package‰∏≠$/;"	f	class:Protocol	signature:(unsigned char* buf)
 Protocol::CRC_high	header/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::CRC_high	smart_home_qt_dev/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::CRC_high	smart_home_qt_phone/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::CRC_high	smart_home_qt_server/protocol.h	/^    unsigned char CRC_high;         \/\/CRCÈ´ò‰Ωç$/;"	m	class:Protocol	access:public
 Protocol::CRC_low	header/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::CRC_low	smart_home_qt_dev/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::CRC_low	smart_home_qt_phone/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::CRC_low	smart_home_qt_server/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
 Protocol::Protocol	header/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
 Protocol::Protocol	header/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol::Protocol	smart_home_qt_dev/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol::Protocol	smart_home_qt_dev/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol::Protocol	smart_home_qt_dev/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::Protocol	smart_home_qt_dev/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol::Protocol	smart_home_qt_phone/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol::Protocol	smart_home_qt_phone/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol::Protocol	smart_home_qt_phone/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::Protocol	smart_home_qt_phone/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
+Protocol::Protocol	smart_home_qt_server/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
+Protocol::Protocol	smart_home_qt_server/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
+Protocol::Protocol	smart_home_qt_server/protocol.h	/^    Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::Protocol	smart_home_qt_server/protocol.h	/^    Protocol(Protocol &p);$/;"	p	class:Protocol	access:public	signature:(Protocol &p)
 Protocol::Protocol	source/protocol.cpp	/^Protocol::Protocol()$/;"	f	class:Protocol	signature:()
 Protocol::Protocol	source/protocol.cpp	/^Protocol::Protocol(Protocol &p)$/;"	f	class:Protocol	signature:(Protocol &p)
 Protocol::clean_data	header/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::clean_data	smart_home_qt_dev/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+Protocol::clean_data	smart_home_qt_dev/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::clean_data	smart_home_qt_phone/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+Protocol::clean_data	smart_home_qt_phone/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::clean_data	smart_home_qt_server/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+Protocol::clean_data	smart_home_qt_server/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
 Protocol::clean_data	source/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
 Protocol::cmd	header/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
+Protocol::cmd	smart_home_qt_dev/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
+Protocol::cmd	smart_home_qt_phone/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
+Protocol::cmd	smart_home_qt_server/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
 Protocol::cmd_order_high	header/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_high	smart_home_qt_dev/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_high	smart_home_qt_phone/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_high	smart_home_qt_server/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
 Protocol::cmd_order_low	header/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_low	smart_home_qt_dev/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_low	smart_home_qt_phone/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::cmd_order_low	smart_home_qt_server/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
 Protocol::cmd_type	header/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
+Protocol::cmd_type	smart_home_qt_dev/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
+Protocol::cmd_type	smart_home_qt_phone/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
+Protocol::cmd_type	smart_home_qt_server/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
 Protocol::data	header/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
+Protocol::data	smart_home_qt_dev/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
+Protocol::data	smart_home_qt_phone/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
+Protocol::data	smart_home_qt_server/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
 Protocol::device_id	header/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
+Protocol::device_id	smart_home_qt_dev/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
+Protocol::device_id	smart_home_qt_phone/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
+Protocol::device_id	smart_home_qt_server/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
 Protocol::extend_info	header/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
+Protocol::extend_info	smart_home_qt_dev/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
+Protocol::extend_info	smart_home_qt_phone/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
+Protocol::extend_info	smart_home_qt_server/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
 Protocol::fill_buf	header/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::fill_buf	smart_home_qt_dev/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::fill_buf	smart_home_qt_dev/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::fill_buf	smart_home_qt_phone/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::fill_buf	smart_home_qt_phone/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::fill_buf	smart_home_qt_server/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::fill_buf	smart_home_qt_server/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 Protocol::fill_buf	source/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
 Protocol::have_CRC16	header/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
+Protocol::have_CRC16	smart_home_qt_dev/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
+Protocol::have_CRC16	smart_home_qt_phone/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
+Protocol::have_CRC16	smart_home_qt_server/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
 Protocol::have_extend	header/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::have_extend	smart_home_qt_dev/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::have_extend	smart_home_qt_phone/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::have_extend	smart_home_qt_server/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
 Protocol::len_high	header/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::len_high	smart_home_qt_dev/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::len_high	smart_home_qt_phone/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::len_high	smart_home_qt_server/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
 Protocol::len_low	header/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::len_low	smart_home_qt_dev/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::len_low	smart_home_qt_phone/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+Protocol::len_low	smart_home_qt_server/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
 Protocol::package_header	header/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
+Protocol::package_header	smart_home_qt_dev/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
+Protocol::package_header	smart_home_qt_phone/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
+Protocol::package_header	smart_home_qt_server/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
 Protocol::package_tail	header/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
+Protocol::package_tail	smart_home_qt_dev/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
+Protocol::package_tail	smart_home_qt_phone/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
+Protocol::package_tail	smart_home_qt_server/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
 Protocol::parse_buf	header/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::parse_buf	smart_home_qt_dev/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::parse_buf	smart_home_qt_dev/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::parse_buf	smart_home_qt_phone/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::parse_buf	smart_home_qt_phone/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::parse_buf	smart_home_qt_server/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::parse_buf	smart_home_qt_server/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 Protocol::parse_buf	source/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
 Protocol::status	header/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
+Protocol::status	smart_home_qt_dev/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
+Protocol::status	smart_home_qt_phone/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
+Protocol::status	smart_home_qt_server/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
 Protocol::torken	header/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
+Protocol::torken	smart_home_qt_dev/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
+Protocol::torken	smart_home_qt_phone/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
+Protocol::torken	smart_home_qt_server/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
 Protocol::torken_len	header/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
+Protocol::torken_len	smart_home_qt_dev/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
+Protocol::torken_len	smart_home_qt_phone/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
+Protocol::torken_len	smart_home_qt_server/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
 Protocol::transferDecode	header/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+Protocol::transferDecode	smart_home_qt_dev/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+Protocol::transferDecode	smart_home_qt_dev/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+Protocol::transferDecode	smart_home_qt_phone/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+Protocol::transferDecode	smart_home_qt_phone/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+Protocol::transferDecode	smart_home_qt_server/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+Protocol::transferDecode	smart_home_qt_server/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
 Protocol::transferDecode	source/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
 Protocol::transferEncode	header/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::transferEncode	smart_home_qt_dev/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::transferEncode	smart_home_qt_dev/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::transferEncode	smart_home_qt_phone/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::transferEncode	smart_home_qt_phone/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+Protocol::transferEncode	smart_home_qt_server/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+Protocol::transferEncode	smart_home_qt_server/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 Protocol::transferEncode	source/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
 Protocol::~Protocol	header/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::~Protocol	smart_home_qt_dev/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+Protocol::~Protocol	smart_home_qt_dev/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::~Protocol	smart_home_qt_phone/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+Protocol::~Protocol	smart_home_qt_phone/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+Protocol::~Protocol	smart_home_qt_server/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+Protocol::~Protocol	smart_home_qt_server/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
 Protocol::~Protocol	source/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
-REGIST_CMD	header/protocol.h	18;"	d
-REGIST_DEV_CMD	header/protocol.h	23;"	d
-RES	header/protocol.h	26;"	d
+QT_MOC_LITERAL	smart_home_qt_dev/moc_mainwindow.cpp	25;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_dev/moc_mainwindow.cpp	41;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_dev/moc_recvmsgthread.cpp	25;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_dev/moc_recvmsgthread.cpp	42;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_phone/moc_mainwindow.cpp	25;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_phone/moc_mainwindow.cpp	50;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_phone/moc_recvmsgthread.cpp	25;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_phone/moc_recvmsgthread.cpp	42;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_server/moc_mainwindow.cpp	25;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_server/moc_mainwindow.cpp	41;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_server/moc_recvmsgthread.cpp	25;"	d	file:
+QT_MOC_LITERAL	smart_home_qt_server/moc_recvmsgthread.cpp	42;"	d	file:
+QT_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	/^namespace QT_NAMESPACE {$/;"	n	file:
+QT_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	/^namespace QT_NAMESPACE {$/;"	n	file:
+QT_NAMESPACE	smart_home_qt_server/qrc_img.cpp	/^namespace QT_NAMESPACE {$/;"	n	file:
+QT_NAMESPACE::qRegisterResourceData	smart_home_qt_dev/qrc_img.cpp	/^bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+QT_NAMESPACE::qRegisterResourceData	smart_home_qt_phone/qrc_img.cpp	/^bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+QT_NAMESPACE::qRegisterResourceData	smart_home_qt_server/qrc_img.cpp	/^bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+QT_NAMESPACE::qUnregisterResourceData	smart_home_qt_dev/qrc_img.cpp	/^bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+QT_NAMESPACE::qUnregisterResourceData	smart_home_qt_phone/qrc_img.cpp	/^bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+QT_NAMESPACE::qUnregisterResourceData	smart_home_qt_server/qrc_img.cpp	/^bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	24552;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	24556;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	24552;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	24556;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24552;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24556;"	d	file:
+QT_RCC_MANGLE_NAMESPACE0	smart_home_qt_dev/qrc_img.cpp	24549;"	d	file:
+QT_RCC_MANGLE_NAMESPACE0	smart_home_qt_phone/qrc_img.cpp	24549;"	d	file:
+QT_RCC_MANGLE_NAMESPACE0	smart_home_qt_server/qrc_img.cpp	24549;"	d	file:
+QT_RCC_MANGLE_NAMESPACE1	smart_home_qt_dev/qrc_img.cpp	24550;"	d	file:
+QT_RCC_MANGLE_NAMESPACE1	smart_home_qt_phone/qrc_img.cpp	24550;"	d	file:
+QT_RCC_MANGLE_NAMESPACE1	smart_home_qt_server/qrc_img.cpp	24550;"	d	file:
+QT_RCC_MANGLE_NAMESPACE2	smart_home_qt_dev/qrc_img.cpp	24551;"	d	file:
+QT_RCC_MANGLE_NAMESPACE2	smart_home_qt_phone/qrc_img.cpp	24551;"	d	file:
+QT_RCC_MANGLE_NAMESPACE2	smart_home_qt_server/qrc_img.cpp	24551;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	24548;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	24555;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	24548;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	24555;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24548;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24555;"	d	file:
+RECVMSGTHREAD_H	smart_home_qt_dev/recvmsgthread.h	2;"	d
+RECVMSGTHREAD_H	smart_home_qt_phone/recvmsgthread.h	2;"	d
+RECVMSGTHREAD_H	smart_home_qt_server/recvmsgthread.h	2;"	d
+REGIST_CMD	header/protocol.h	19;"	d
+REGIST_CMD	smart_home_qt_dev/protocol.h	19;"	d
+REGIST_CMD	smart_home_qt_phone/protocol.h	19;"	d
+REGIST_CMD	smart_home_qt_server/protocol.h	19;"	d
+REGIST_DEV_CMD	header/protocol.h	24;"	d
+REGIST_DEV_CMD	smart_home_qt_dev/protocol.h	24;"	d
+REGIST_DEV_CMD	smart_home_qt_phone/protocol.h	24;"	d
+REGIST_DEV_CMD	smart_home_qt_server/protocol.h	24;"	d
+RES	header/protocol.h	27;"	d
+RES	smart_home_qt_dev/protocol.h	27;"	d
+RES	smart_home_qt_phone/protocol.h	27;"	d
+RES	smart_home_qt_server/protocol.h	27;"	d
 RecvData	header/socket_route.h	/^int RecvData(int hSocket, unsigned char *lpData, unsigned int  dwSize);$/;"	p	signature:(int hSocket, unsigned char *lpData, unsigned int dwSize)
 RecvData	source/socket_route.cpp	/^int RecvData(int hSocket,unsigned char *lpData,unsigned int dwSize)$/;"	f	signature:(int hSocket,unsigned char *lpData,unsigned int dwSize)
+RecvMsgThread	smart_home_qt_dev/recvmsgthread.cpp	/^RecvMsgThread::RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread	smart_home_qt_dev/recvmsgthread.h	/^    RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread	smart_home_qt_dev/recvmsgthread.h	/^class RecvMsgThread : public QThread$/;"	c	inherits:QThread
+RecvMsgThread	smart_home_qt_phone/recvmsgthread.cpp	/^RecvMsgThread::RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread	smart_home_qt_phone/recvmsgthread.h	/^    RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread	smart_home_qt_phone/recvmsgthread.h	/^class RecvMsgThread : public QThread$/;"	c	inherits:QThread
+RecvMsgThread	smart_home_qt_server/recvmsgthread.cpp	/^RecvMsgThread::RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread	smart_home_qt_server/recvmsgthread.h	/^    RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread	smart_home_qt_server/recvmsgthread.h	/^class RecvMsgThread : public QThread$/;"	c	inherits:QThread
+RecvMsgThread::RecvMsgThread	smart_home_qt_dev/recvmsgthread.cpp	/^RecvMsgThread::RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::RecvMsgThread	smart_home_qt_dev/recvmsgthread.h	/^    RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::RecvMsgThread	smart_home_qt_phone/recvmsgthread.cpp	/^RecvMsgThread::RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::RecvMsgThread	smart_home_qt_phone/recvmsgthread.h	/^    RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::RecvMsgThread	smart_home_qt_server/recvmsgthread.cpp	/^RecvMsgThread::RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::RecvMsgThread	smart_home_qt_server/recvmsgthread.h	/^    RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::getMsgBuf	smart_home_qt_dev/recvmsgthread.cpp	/^Msgbuf*  RecvMsgThread::getMsgBuf()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::getMsgBuf	smart_home_qt_dev/recvmsgthread.h	/^    Msgbuf* getMsgBuf();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::getMsgBuf	smart_home_qt_phone/recvmsgthread.cpp	/^Msgbuf*  RecvMsgThread::getMsgBuf()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::getMsgBuf	smart_home_qt_phone/recvmsgthread.h	/^    Msgbuf* getMsgBuf();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::getMsgBuf	smart_home_qt_server/recvmsgthread.cpp	/^Msgbuf*  RecvMsgThread::getMsgBuf()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::getMsgBuf	smart_home_qt_server/recvmsgthread.h	/^    Msgbuf* getMsgBuf();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::getMsgId	smart_home_qt_dev/recvmsgthread.cpp	/^int RecvMsgThread::getMsgId()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::getMsgId	smart_home_qt_dev/recvmsgthread.h	/^    int getMsgId();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::getMsgId	smart_home_qt_phone/recvmsgthread.cpp	/^int RecvMsgThread::getMsgId()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::getMsgId	smart_home_qt_phone/recvmsgthread.h	/^    int getMsgId();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::getMsgId	smart_home_qt_server/recvmsgthread.cpp	/^int RecvMsgThread::getMsgId()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::getMsgId	smart_home_qt_server/recvmsgthread.h	/^    int getMsgId();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::metaObject	smart_home_qt_dev/moc_recvmsgthread.cpp	/^const QMetaObject *RecvMsgThread::metaObject() const$/;"	f	class:RecvMsgThread	signature:() const
+RecvMsgThread::metaObject	smart_home_qt_phone/moc_recvmsgthread.cpp	/^const QMetaObject *RecvMsgThread::metaObject() const$/;"	f	class:RecvMsgThread	signature:() const
+RecvMsgThread::metaObject	smart_home_qt_server/moc_recvmsgthread.cpp	/^const QMetaObject *RecvMsgThread::metaObject() const$/;"	f	class:RecvMsgThread	signature:() const
+RecvMsgThread::msg	smart_home_qt_dev/recvmsgthread.h	/^    Msgbuf msg;$/;"	m	class:RecvMsgThread	access:private
+RecvMsgThread::msg	smart_home_qt_phone/recvmsgthread.h	/^    Msgbuf msg;$/;"	m	class:RecvMsgThread	access:private
+RecvMsgThread::msg	smart_home_qt_server/recvmsgthread.h	/^    Msgbuf msg;$/;"	m	class:RecvMsgThread	access:private
+RecvMsgThread::msgid	smart_home_qt_dev/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
+RecvMsgThread::msgid	smart_home_qt_phone/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
+RecvMsgThread::msgid	smart_home_qt_server/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
+RecvMsgThread::qt_metacall	smart_home_qt_dev/moc_recvmsgthread.cpp	/^int RecvMsgThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QMetaObject::Call _c, int _id, void **_a)
+RecvMsgThread::qt_metacall	smart_home_qt_phone/moc_recvmsgthread.cpp	/^int RecvMsgThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QMetaObject::Call _c, int _id, void **_a)
+RecvMsgThread::qt_metacall	smart_home_qt_server/moc_recvmsgthread.cpp	/^int RecvMsgThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QMetaObject::Call _c, int _id, void **_a)
+RecvMsgThread::qt_metacast	smart_home_qt_dev/moc_recvmsgthread.cpp	/^void *RecvMsgThread::qt_metacast(const char *_clname)$/;"	f	class:RecvMsgThread	signature:(const char *_clname)
+RecvMsgThread::qt_metacast	smart_home_qt_phone/moc_recvmsgthread.cpp	/^void *RecvMsgThread::qt_metacast(const char *_clname)$/;"	f	class:RecvMsgThread	signature:(const char *_clname)
+RecvMsgThread::qt_metacast	smart_home_qt_server/moc_recvmsgthread.cpp	/^void *RecvMsgThread::qt_metacast(const char *_clname)$/;"	f	class:RecvMsgThread	signature:(const char *_clname)
+RecvMsgThread::qt_static_metacall	smart_home_qt_dev/moc_recvmsgthread.cpp	/^void RecvMsgThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+RecvMsgThread::qt_static_metacall	smart_home_qt_phone/moc_recvmsgthread.cpp	/^void RecvMsgThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+RecvMsgThread::qt_static_metacall	smart_home_qt_server/moc_recvmsgthread.cpp	/^void RecvMsgThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+RecvMsgThread::run	smart_home_qt_dev/recvmsgthread.cpp	/^void RecvMsgThread::run()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::run	smart_home_qt_dev/recvmsgthread.h	/^    void run();$/;"	p	class:RecvMsgThread	access:protected	signature:()
+RecvMsgThread::run	smart_home_qt_phone/recvmsgthread.cpp	/^void RecvMsgThread::run()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::run	smart_home_qt_phone/recvmsgthread.h	/^    void run();$/;"	p	class:RecvMsgThread	access:protected	signature:()
+RecvMsgThread::run	smart_home_qt_server/recvmsgthread.cpp	/^void RecvMsgThread::run()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::run	smart_home_qt_server/recvmsgthread.h	/^    void run();$/;"	p	class:RecvMsgThread	access:protected	signature:()
+RecvMsgThread::sig_recvDataOk	smart_home_qt_dev/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
+RecvMsgThread::sig_recvDataOk	smart_home_qt_dev/recvmsgthread.h	/^    void sig_recvDataOk(Msgbuf* msg);$/;"	p	class:RecvMsgThread	access:public	signature:(Msgbuf* msg)
+RecvMsgThread::sig_recvDataOk	smart_home_qt_phone/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
+RecvMsgThread::sig_recvDataOk	smart_home_qt_phone/recvmsgthread.h	/^    void sig_recvDataOk(Msgbuf* msg);$/;"	p	class:RecvMsgThread	access:public	signature:(Msgbuf* msg)
+RecvMsgThread::sig_recvDataOk	smart_home_qt_server/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
+RecvMsgThread::sig_recvDataOk	smart_home_qt_server/recvmsgthread.h	/^    void sig_recvDataOk(Msgbuf* msg);$/;"	p	class:RecvMsgThread	access:public	signature:(Msgbuf* msg)
+RecvMsgThread::staticMetaObject	smart_home_qt_dev/moc_recvmsgthread.cpp	/^const QMetaObject RecvMsgThread::staticMetaObject = {$/;"	m	class:RecvMsgThread	file:
+RecvMsgThread::staticMetaObject	smart_home_qt_phone/moc_recvmsgthread.cpp	/^const QMetaObject RecvMsgThread::staticMetaObject = {$/;"	m	class:RecvMsgThread	file:
+RecvMsgThread::staticMetaObject	smart_home_qt_server/moc_recvmsgthread.cpp	/^const QMetaObject RecvMsgThread::staticMetaObject = {$/;"	m	class:RecvMsgThread	file:
+RecvMsgThread::~RecvMsgThread	smart_home_qt_dev/recvmsgthread.cpp	/^RecvMsgThread::~RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::~RecvMsgThread	smart_home_qt_dev/recvmsgthread.h	/^    ~RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::~RecvMsgThread	smart_home_qt_phone/recvmsgthread.cpp	/^RecvMsgThread::~RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::~RecvMsgThread	smart_home_qt_phone/recvmsgthread.h	/^    ~RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+RecvMsgThread::~RecvMsgThread	smart_home_qt_server/recvmsgthread.cpp	/^RecvMsgThread::~RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+RecvMsgThread::~RecvMsgThread	smart_home_qt_server/recvmsgthread.h	/^    ~RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
 RecvPacket	header/socket_route.h	/^bool RecvPacket(int hSocket, unsigned char *lpBuffer);$/;"	p	signature:(int hSocket, unsigned char *lpBuffer)
 RecvPacket	source/socket_route.cpp	/^bool RecvPacket(int hSocket,unsigned char *lpBuffer)$/;"	f	signature:(int hSocket,unsigned char *lpBuffer)
-SEM_FILE	header/common.h	16;"	d
+S	smart_home_qt_dev/images/switch_off.png	/^/;"	v
+S	smart_home_qt_phone/images/switch_off.png	/^/;"	v
+S	smart_home_qt_server/images/switch_off.png	/^/;"	v
+SEM_FILE	header/common.h	19;"	d
+SEM_FILE	smart_home_qt_dev/common.h	19;"	d
+SEM_FILE	smart_home_qt_phone/common.h	19;"	d
+SEM_FILE	smart_home_qt_server/common.h	19;"	d
 SEM_FILE1	server/server.cpp	18;"	d	file:
 SEM_FILE2	server/server.cpp	19;"	d	file:
 SEM_FILE3	server/server.cpp	20;"	d	file:
 SEM_FILE4	server/server.cpp	21;"	d	file:
 SERADDR	header/protocol.h	6;"	d
+SERADDR	smart_home_qt_dev/protocol.h	6;"	d
+SERADDR	smart_home_qt_phone/protocol.h	6;"	d
+SERADDR	smart_home_qt_server/protocol.h	6;"	d
 SERPORT	header/protocol.h	5;"	d
-SER_INFO	devices/fan.cpp	10;"	d	file:
-SER_INFO	devices/lamp1.cpp	9;"	d	file:
-SER_INFO	devices/lamp2.cpp	9;"	d	file:
-SER_INFO	devices/switch.cpp	10;"	d	file:
-SER_INFO	phone/client.cpp	16;"	d	file:
-SHM_FILE	header/common.h	13;"	d
-SHM_SIZE	header/common.h	14;"	d
-STATUS_LIGHT	header/protocol.h	29;"	d
-SWITCH1	devices/switch.cpp	11;"	d	file:
+SERPORT	smart_home_qt_dev/protocol.h	5;"	d
+SERPORT	smart_home_qt_phone/protocol.h	5;"	d
+SERPORT	smart_home_qt_server/protocol.h	5;"	d
+SER_INFO	devices/fan.cpp	13;"	d	file:
+SER_INFO	devices/lamp1.cpp	14;"	d	file:
+SER_INFO	devices/lamp2.cpp	14;"	d	file:
+SER_INFO	devices/switch.cpp	13;"	d	file:
+SER_INFO	phone/client.cpp	19;"	d	file:
+SHM_FILE	header/common.h	16;"	d
+SHM_FILE	smart_home_qt_dev/common.h	16;"	d
+SHM_FILE	smart_home_qt_phone/common.h	16;"	d
+SHM_FILE	smart_home_qt_server/common.h	16;"	d
+SHM_SIZE	header/common.h	17;"	d
+SHM_SIZE	smart_home_qt_dev/common.h	17;"	d
+SHM_SIZE	smart_home_qt_phone/common.h	17;"	d
+SHM_SIZE	smart_home_qt_server/common.h	17;"	d
+SME_FILE	phone/client.cpp	21;"	d	file:
+STATUS_LIGHT	header/protocol.h	30;"	d
+STATUS_LIGHT	smart_home_qt_dev/protocol.h	30;"	d
+STATUS_LIGHT	smart_home_qt_phone/protocol.h	30;"	d
+STATUS_LIGHT	smart_home_qt_server/protocol.h	30;"	d
+SWITCH1	devices/switch.cpp	14;"	d	file:
 SockClient	header/sock_client.h	/^	SockClient();$/;"	p	class:SockClient	access:public	signature:()
 SockClient	header/sock_client.h	/^	SockClient(int remote_port, string remote_ip);$/;"	p	class:SockClient	access:public	signature:(int remote_port, string remote_ip)
 SockClient	header/sock_client.h	/^class SockClient$/;"	c
@@ -152,10 +716,34 @@ SockServer::remoteaddr	header/sock_server.h	/^	sockaddr_in remoteaddr;$/;"	m	cla
 SockServer::set_localaddr	header/sock_server.h	/^	void set_localaddr(int local_port);$/;"	p	class:SockServer	access:public	signature:(int local_port)
 SockServer::set_localaddr	source/sock_server.cpp	/^void SockServer::set_localaddr(int local_port)$/;"	f	class:SockServer	signature:(int local_port)
 SockServer::sockfd	header/sock_server.h	/^	int sockfd;$/;"	m	class:SockServer	access:public
-TEMPRATURE	header/protocol.h	30;"	d
+TEMPRATURE	header/protocol.h	31;"	d
+TEMPRATURE	smart_home_qt_dev/protocol.h	31;"	d
+TEMPRATURE	smart_home_qt_phone/protocol.h	31;"	d
+TEMPRATURE	smart_home_qt_server/protocol.h	31;"	d
+Va	smart_home_qt_dev/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
+Va	smart_home_qt_phone/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
+Va	smart_home_qt_server/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
 WaitData	header/socket_route.h	/^int WaitData(int hSocket, unsigned int dwTime);$/;"	p	signature:(int hSocket, unsigned int dwTime)
 WaitData	source/socket_route.cpp	/^int WaitData(int hSocket,unsigned int dwTime)$/;"	f	signature:(int hSocket,unsigned int dwTime)
-__buf	header/common.h	/^	struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+Y	smart_home_qt_dev/images/light_on.png	/^@‡}¨Ÿ¨˛ã‘ÜúLŒG+mpÛ€·ã«åy)¨o 0ÁÎ»…NÌœë;M1á ny:ﬁY=h	Zc˝}‹íÁàG%¢Rÿ7Bl 2Ò…YËπN‘eêÎ@…Cg}yÈ≥—üÅÀ∆$/;"	v
+Y	smart_home_qt_phone/images/light_on.png	/^@‡}¨Ÿ¨˛ã‘ÜúLŒG+mpÛ€·ã«åy)¨o 0ÁÎ»…NÌœë;M1á ny:ﬁY=h	Zc˝}‹íÁàG%¢Rÿ7Bl 2Ò…YËπN‘eêÎ@…Cg}yÈ≥—üÅÀ∆$/;"	v
+Y	smart_home_qt_server/images/light_on.png	/^@‡}¨Ÿ¨˛ã‘ÜúLŒG+mpÛ€·ã«åy)¨o 0ÁÎ»…NÌœë;M1á ny:ﬁY=h	Zc˝}‹íÁàG%¢Rÿ7Bl 2Ò…YËπN‘eêÎ@…Cg}yÈ≥—üÅÀ∆$/;"	v
+__anon1::dummy	smart_home_qt_dev/qrc_img.cpp	/^   } dummy;$/;"	m	namespace:__anon1	typeref:struct:__anon1::initializer	file:
+__anon1::initializer	smart_home_qt_dev/qrc_img.cpp	/^   struct initializer {$/;"	s	namespace:__anon1	file:
+__anon1::initializer::initializer	smart_home_qt_dev/qrc_img.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_img)(); }$/;"	f	struct:__anon1::initializer	access:public	signature:()
+__anon1::initializer::~initializer	smart_home_qt_dev/qrc_img.cpp	/^       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)(); }$/;"	f	struct:__anon1::initializer	access:public	signature:()
+__anon2::dummy	smart_home_qt_phone/qrc_img.cpp	/^   } dummy;$/;"	m	namespace:__anon2	typeref:struct:__anon2::initializer	file:
+__anon2::initializer	smart_home_qt_phone/qrc_img.cpp	/^   struct initializer {$/;"	s	namespace:__anon2	file:
+__anon2::initializer::initializer	smart_home_qt_phone/qrc_img.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_img)(); }$/;"	f	struct:__anon2::initializer	access:public	signature:()
+__anon2::initializer::~initializer	smart_home_qt_phone/qrc_img.cpp	/^       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)(); }$/;"	f	struct:__anon2::initializer	access:public	signature:()
+__anon3::dummy	smart_home_qt_server/qrc_img.cpp	/^   } dummy;$/;"	m	namespace:__anon3	typeref:struct:__anon3::initializer	file:
+__anon3::initializer	smart_home_qt_server/qrc_img.cpp	/^   struct initializer {$/;"	s	namespace:__anon3	file:
+__anon3::initializer::initializer	smart_home_qt_server/qrc_img.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_img)(); }$/;"	f	struct:__anon3::initializer	access:public	signature:()
+__anon3::initializer::~initializer	smart_home_qt_server/qrc_img.cpp	/^       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)(); }$/;"	f	struct:__anon3::initializer	access:public	signature:()
+__buf	header/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+__buf	smart_home_qt_dev/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+__buf	smart_home_qt_phone/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+__buf	smart_home_qt_server/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
 _accept	header/sock_server.h	/^	int _accept();$/;"	p	class:SockServer	access:public	signature:()
 _accept	source/sock_server.cpp	/^int SockServer::_accept()$/;"	f	class:SockServer	signature:()
 _bind	header/sock_server.h	/^	int _bind();$/;"	p	class:SockServer	access:public	signature:()
@@ -166,48 +754,140 @@ _listen	header/sock_server.h	/^	int _listen();$/;"	p	class:SockServer	access:pub
 _listen	source/sock_server.cpp	/^int SockServer::_listen()$/;"	f	class:SockServer	signature:()
 _send	header/sock_client.h	/^	int _send(unsigned char *buf);$/;"	p	class:SockClient	access:public	signature:(unsigned char *buf)
 _send	source/sock_client.cpp	/^int SockClient::_send(unsigned char *buf)$/;"	f	class:SockClient	signature:(unsigned char *buf)
-addr	header/common.h	/^	void *addr;$/;"	m	struct:pthread_arg	access:public
-array	header/common.h	/^	unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
-buf	header/common.h	/^	struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+addMsg	smart_home_qt_phone/mainwindow.cpp	/^int MainWindow::addMsg(int msgid, const char* buf, int size)$/;"	f	class:MainWindow	signature:(int msgid, const char* buf, int size)
+addMsg	smart_home_qt_phone/mainwindow.h	/^    int addMsg(int msgid, const char* buf, int size);$/;"	p	class:MainWindow	access:public	signature:(int msgid, const char* buf, int size)
+add_msg	devices/fan.cpp	/^int add_msg(unsigned char* buf)$/;"	f	signature:(unsigned char* buf)
+add_msg	devices/lamp1.cpp	/^int add_msg(unsigned char* buf)$/;"	f	signature:(unsigned char* buf)
+add_msg	devices/lamp2.cpp	/^int add_msg(unsigned char* buf)$/;"	f	signature:(unsigned char* buf)
+add_msg	devices/switch.cpp	/^int add_msg(unsigned char* buf)$/;"	f	signature:(unsigned char* buf)
+add_msg	phone/client.cpp	/^int add_msg(unsigned char* buf, int size)$/;"	f	signature:(unsigned char* buf, int size)
+addr	header/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+addr	smart_home_qt_dev/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+addr	smart_home_qt_phone/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+addr	smart_home_qt_server/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+array	header/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+array	smart_home_qt_dev/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+array	smart_home_qt_phone/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+array	smart_home_qt_server/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+buf	header/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+buf	smart_home_qt_dev/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+buf	smart_home_qt_phone/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+buf	smart_home_qt_server/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
 clean_data	header/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+clean_data	smart_home_qt_dev/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+clean_data	smart_home_qt_dev/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+clean_data	smart_home_qt_phone/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+clean_data	smart_home_qt_phone/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
+clean_data	smart_home_qt_server/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
+clean_data	smart_home_qt_server/protocol.h	/^    void clean_data();$/;"	p	class:Protocol	access:public	signature:()
 clean_data	source/protocol.cpp	/^void Protocol::clean_data()$/;"	f	class:Protocol	signature:()
 client	devices/fan.cpp	/^SockClient client;$/;"	v
 client	devices/lamp1.cpp	/^SockClient client;$/;"	v
 client	devices/lamp2.cpp	/^SockClient client;$/;"	v
 client	devices/switch.cpp	/^SockClient client;$/;"	v
 client	phone/client.cpp	/^SockClient client;$/;"	v
-client	tags	/^client	devices\/switch.cpp	\/^SockClient client;$\/;"	v$/;"	v
 cmd	header/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
+cmd	smart_home_qt_dev/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
+cmd	smart_home_qt_phone/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
+cmd	smart_home_qt_server/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
 cmd_order_high	header/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
+cmd_order_high	smart_home_qt_dev/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
+cmd_order_high	smart_home_qt_phone/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
+cmd_order_high	smart_home_qt_server/protocol.h	/^    unsigned char cmd_order_high;   \/\/ÂëΩ‰ª§Â∫èÂè∑È´ò‰Ωç$/;"	m	class:Protocol	access:public
 cmd_order_low	header/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+cmd_order_low	smart_home_qt_dev/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+cmd_order_low	smart_home_qt_phone/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+cmd_order_low	smart_home_qt_server/protocol.h	/^    unsigned char cmd_order_low;    \/\/ÂëΩ‰ª§Â∫èÂè∑‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
 cmd_type	header/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
+cmd_type	smart_home_qt_dev/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
+cmd_type	smart_home_qt_phone/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
+cmd_type	smart_home_qt_server/protocol.h	/^    unsigned char cmd_type;         \/\/ÂëΩ‰ª§Á±ªÂà´$/;"	m	class:Protocol	access:public
 count_devfile	server/server.cpp	/^int count_devfile = 0;$/;"	v
 count_devonline	server/server.cpp	/^int count_devonline = 0;$/;"	v
 count_mtfile	server/server.cpp	/^int count_mtfile = 0;$/;"	v
+count_phone_dev_online	phone/client.cpp	/^int count_phone_dev_online = 0;$/;"	v
 count_phoneonline	server/server.cpp	/^int count_phoneonline = 0;$/;"	v
-cpp	tags	/^SER_INFO	devices\/switch.cpp	10;"	d	file:$/;"	v
+cpp	tags	/^SER_INFO	devices\/switch.cpp	13;"	d	file:$/;"	v
+cwc	smart_home_qt_dev/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
+cwc	smart_home_qt_phone/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
+cwc	smart_home_qt_server/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
 d	header/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+d	smart_home_qt_dev/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+d	smart_home_qt_phone/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+d	smart_home_qt_server/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
 data	header/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
+data	smart_home_qt_dev/moc_mainwindow.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+data	smart_home_qt_dev/moc_recvmsgthread.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+data	smart_home_qt_dev/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
+data	smart_home_qt_phone/moc_mainwindow.cpp	/^    QByteArrayData data[11];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+data	smart_home_qt_phone/moc_recvmsgthread.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+data	smart_home_qt_phone/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
+data	smart_home_qt_server/moc_mainwindow.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+data	smart_home_qt_server/moc_recvmsgthread.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+data	smart_home_qt_server/protocol.h	/^    unsigned char *data;            \/\/Êï∞ÊçÆÂå∫$/;"	m	class:Protocol	access:public
+deal_recvData	smart_home_qt_dev/mainwindow.cpp	/^void MainWindow::deal_recvData(Msgbuf* msg)$/;"	f	class:MainWindow	signature:(Msgbuf* msg)
+deal_recvData	smart_home_qt_dev/mainwindow.h	/^    void deal_recvData(Msgbuf* msg);$/;"	p	class:MainWindow	access:public	signature:(Msgbuf* msg)
+deal_recvData	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::deal_recvData(Msgbuf* msg)$/;"	f	class:MainWindow	signature:(Msgbuf* msg)
+deal_recvData	smart_home_qt_phone/mainwindow.h	/^    void deal_recvData(Msgbuf* msg);$/;"	p	class:MainWindow	access:public	signature:(Msgbuf* msg)
+deal_recvData	smart_home_qt_server/mainwindow.cpp	/^void MainWindow::deal_recvData(Msgbuf* msg)$/;"	f	class:MainWindow	signature:(Msgbuf* msg)
+deal_recvData	smart_home_qt_server/mainwindow.h	/^    void deal_recvData(Msgbuf* msg);$/;"	p	class:MainWindow	access:public	signature:(Msgbuf* msg)
 deal_recv_message	devices/fan.cpp	/^void deal_recv_message()$/;"	f	signature:()
 deal_recv_message	devices/lamp1.cpp	/^void deal_recv_message()$/;"	f	signature:()
 deal_recv_message	devices/lamp2.cpp	/^void deal_recv_message()$/;"	f	signature:()
 deal_recv_message	devices/switch.cpp	/^void deal_recv_message()$/;"	f	signature:()
-del_sem	header/common.h	/^int del_sem(const int semid, int nsems);$/;"	p	signature:(const int semid, int nsems)
-del_sem	source/common.cpp	/^int del_sem(const int semid, int nsems)$/;"	f	signature:(const int semid, int nsems)
+del_sem	header/common.h	/^int del_sem(const int semid, int nsems, const char* filename);$/;"	p	signature:(const int semid, int nsems, const char* filename)
+del_sem	smart_home_qt_dev/common.cpp	/^int del_sem(const int semid, int nsems, const char* filename)$/;"	f	signature:(const int semid, int nsems, const char* filename)
+del_sem	smart_home_qt_dev/common.h	/^int del_sem(const int semid, int nsems, const char* filename);$/;"	p	signature:(const int semid, int nsems, const char* filename)
+del_sem	smart_home_qt_phone/common.cpp	/^int del_sem(const int semid, int nsems, const char* filename)$/;"	f	signature:(const int semid, int nsems, const char* filename)
+del_sem	smart_home_qt_phone/common.h	/^int del_sem(const int semid, int nsems, const char* filename);$/;"	p	signature:(const int semid, int nsems, const char* filename)
+del_sem	smart_home_qt_server/common.cpp	/^int del_sem(const int semid, int nsems, const char* filename)$/;"	f	signature:(const int semid, int nsems, const char* filename)
+del_sem	smart_home_qt_server/common.h	/^int del_sem(const int semid, int nsems, const char* filename);$/;"	p	signature:(const int semid, int nsems, const char* filename)
+del_sem	source/common.cpp	/^int del_sem(const int semid, int nsems, const char* filename)$/;"	f	signature:(const int semid, int nsems, const char* filename)
 dev	devices/fan.cpp	/^dev_info dev;$/;"	v
 dev	devices/lamp1.cpp	/^dev_info dev;$/;"	v
 dev	devices/lamp2.cpp	/^dev_info dev;$/;"	v
 dev	devices/switch.cpp	/^dev_info dev;$/;"	v
+dev	tags	/^dev	devices\/switch.cpp	\/^dev_info dev;$\/;"	v$/;"	v
 dev_info	header/protocol.h	/^struct dev_info$/;"	s
+dev_info	smart_home_qt_dev/protocol.h	/^struct dev_info$/;"	s
+dev_info	smart_home_qt_phone/protocol.h	/^struct dev_info$/;"	s
+dev_info	smart_home_qt_server/protocol.h	/^struct dev_info$/;"	s
 dev_info::mac	header/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+dev_info::mac	smart_home_qt_dev/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+dev_info::mac	smart_home_qt_phone/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+dev_info::mac	smart_home_qt_server/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
 dev_info::name	header/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+dev_info::name	smart_home_qt_dev/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+dev_info::name	smart_home_qt_phone/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+dev_info::name	smart_home_qt_server/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
 dev_info::type	header/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+dev_info::type	smart_home_qt_dev/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+dev_info::type	smart_home_qt_phone/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+dev_info::type	smart_home_qt_server/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
 dev_info_e	header/protocol.h	/^struct dev_info_e$/;"	s
+dev_info_e	smart_home_qt_dev/protocol.h	/^struct dev_info_e$/;"	s
+dev_info_e	smart_home_qt_phone/protocol.h	/^struct dev_info_e$/;"	s
+dev_info_e	smart_home_qt_server/protocol.h	/^struct dev_info_e$/;"	s
 dev_info_e::d	header/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::d	smart_home_qt_dev/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::d	smart_home_qt_phone/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::d	smart_home_qt_server/protocol.h	/^	dev_info d;$/;"	m	struct:dev_info_e	access:public
 dev_info_e::lamp_auto	header/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
+dev_info_e::lamp_auto	smart_home_qt_dev/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
+dev_info_e::lamp_auto	smart_home_qt_phone/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
+dev_info_e::lamp_auto	smart_home_qt_server/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
 dev_info_e::sockfd	header/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::sockfd	smart_home_qt_dev/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::sockfd	smart_home_qt_phone/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+dev_info_e::sockfd	smart_home_qt_server/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
 dev_info_e::status	header/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
+dev_info_e::status	smart_home_qt_dev/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
+dev_info_e::status	smart_home_qt_phone/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
+dev_info_e::status	smart_home_qt_server/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
 dev_info_e::torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+dev_info_e::torken	smart_home_qt_dev/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+dev_info_e::torken	smart_home_qt_phone/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+dev_info_e::torken	smart_home_qt_server/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
 dev_login	devices/fan.cpp	/^void dev_login()$/;"	f	signature:()
 dev_login	devices/lamp1.cpp	/^void dev_login()$/;"	f	signature:()
 dev_login	devices/lamp2.cpp	/^void dev_login()$/;"	f	signature:()
@@ -215,12 +895,55 @@ dev_login	devices/switch.cpp	/^void dev_login()$/;"	f	signature:()
 dev_online	phone/client.cpp	/^list<dev_info_e> dev_online;$/;"	v
 dev_online	server/server.cpp	/^list<dev_info_e> dev_online;$/;"	v
 device_id	header/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
-err_fun	source/common.cpp	/^static void err_fun(const char *file_name, const int line, const char* fun_name, int err_no)$/;"	f	file:	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+device_id	smart_home_qt_dev/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
+device_id	smart_home_qt_phone/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
+device_id	smart_home_qt_server/protocol.h	/^    unsigned char device_id[8];     \/\/ËÆæÂ§áID$/;"	m	class:Protocol	access:public
+dummy	smart_home_qt_dev/qrc_img.cpp	/^   } dummy;$/;"	m	namespace:__anon1	typeref:struct:__anon1::initializer	file:
+dummy	smart_home_qt_phone/qrc_img.cpp	/^   } dummy;$/;"	m	namespace:__anon2	typeref:struct:__anon2::initializer	file:
+dummy	smart_home_qt_server/qrc_img.cpp	/^   } dummy;$/;"	m	namespace:__anon3	typeref:struct:__anon3::initializer	file:
+err_fun	header/common.h	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no);$/;"	p	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+err_fun	smart_home_qt_dev/common.cpp	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no)$/;"	f	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+err_fun	smart_home_qt_dev/common.h	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no);$/;"	p	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+err_fun	smart_home_qt_phone/common.cpp	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no)$/;"	f	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+err_fun	smart_home_qt_phone/common.h	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no);$/;"	p	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+err_fun	smart_home_qt_server/common.cpp	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no)$/;"	f	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+err_fun	smart_home_qt_server/common.h	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no);$/;"	p	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
+err_fun	source/common.cpp	/^void err_fun(const char *file_name, const int line, const char* fun_name, int err_no)$/;"	f	signature:(const char *file_name, const int line, const char* fun_name, int err_no)
 extend_info	header/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
+extend_info	smart_home_qt_dev/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
+extend_info	smart_home_qt_phone/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
+extend_info	smart_home_qt_server/protocol.h	/^    unsigned char extend_info[2];   \/\/Êâ©Â±ï‰ø°ÊÅØ$/;"	m	class:Protocol	access:public
+fanStatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *fanStatusButton;$/;"	m	class:MainWindow	access:private
+fanStatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::fanStatusButton_click()$/;"	f	class:MainWindow	signature:()
+fanStatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void fanStatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+fan_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* fan_img;$/;"	m	class:MainWindow	access:private
+fan_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* fan_img;$/;"	m	class:MainWindow	access:private
+fan_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* fan_img;$/;"	m	class:MainWindow	access:private
 fan_status	devices/fan.cpp	/^int fan_status = 0; \/\/0 ÂÖ≥ 1ÂºÄ$/;"	v
+fan_status	smart_home_qt_dev/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
+fan_status	smart_home_qt_phone/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
+fan_status	smart_home_qt_server/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
 fill_buf	header/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+fill_buf	smart_home_qt_dev/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+fill_buf	smart_home_qt_dev/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+fill_buf	smart_home_qt_phone/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+fill_buf	smart_home_qt_phone/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+fill_buf	smart_home_qt_server/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+fill_buf	smart_home_qt_server/protocol.h	/^    int fill_buf(unsigned char* buf);  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 fill_buf	source/protocol.cpp	/^int Protocol::fill_buf(unsigned char* buf)  \/\/Â°´ÂÖÖbuf,ËøîÂõûÈïøÂ∫¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
 format	tags	/^!_TAG_FILE_FORMAT	2	\/extended format; --format=1 will not append ;" to lines\/$/;"	v
+getMsgBuf	smart_home_qt_dev/recvmsgthread.cpp	/^Msgbuf*  RecvMsgThread::getMsgBuf()$/;"	f	class:RecvMsgThread	signature:()
+getMsgBuf	smart_home_qt_dev/recvmsgthread.h	/^    Msgbuf* getMsgBuf();$/;"	p	class:RecvMsgThread	access:public	signature:()
+getMsgBuf	smart_home_qt_phone/recvmsgthread.cpp	/^Msgbuf*  RecvMsgThread::getMsgBuf()$/;"	f	class:RecvMsgThread	signature:()
+getMsgBuf	smart_home_qt_phone/recvmsgthread.h	/^    Msgbuf* getMsgBuf();$/;"	p	class:RecvMsgThread	access:public	signature:()
+getMsgBuf	smart_home_qt_server/recvmsgthread.cpp	/^Msgbuf*  RecvMsgThread::getMsgBuf()$/;"	f	class:RecvMsgThread	signature:()
+getMsgBuf	smart_home_qt_server/recvmsgthread.h	/^    Msgbuf* getMsgBuf();$/;"	p	class:RecvMsgThread	access:public	signature:()
+getMsgId	smart_home_qt_dev/recvmsgthread.cpp	/^int RecvMsgThread::getMsgId()$/;"	f	class:RecvMsgThread	signature:()
+getMsgId	smart_home_qt_dev/recvmsgthread.h	/^    int getMsgId();$/;"	p	class:RecvMsgThread	access:public	signature:()
+getMsgId	smart_home_qt_phone/recvmsgthread.cpp	/^int RecvMsgThread::getMsgId()$/;"	f	class:RecvMsgThread	signature:()
+getMsgId	smart_home_qt_phone/recvmsgthread.h	/^    int getMsgId();$/;"	p	class:RecvMsgThread	access:public	signature:()
+getMsgId	smart_home_qt_server/recvmsgthread.cpp	/^int RecvMsgThread::getMsgId()$/;"	f	class:RecvMsgThread	signature:()
+getMsgId	smart_home_qt_server/recvmsgthread.h	/^    int getMsgId();$/;"	p	class:RecvMsgThread	access:public	signature:()
 get_localaddr	header/sock_server.h	/^	sockaddr_in& get_localaddr();$/;"	p	class:SockServer	access:public	signature:()
 get_localaddr	source/sock_server.cpp	/^sockaddr_in& SockServer::get_localaddr()$/;"	f	class:SockServer	signature:()
 get_remoteaddr	header/sock_client.h	/^	sockaddr_in& get_remoteaddr();$/;"	p	class:SockClient	access:public	signature:()
@@ -228,41 +951,206 @@ get_remoteaddr	header/sock_server.h	/^	sockaddr_in& get_remoteaddr();$/;"	p	clas
 get_remoteaddr	source/sock_client.cpp	/^sockaddr_in& SockClient::get_remoteaddr()$/;"	f	class:SockClient	signature:()
 get_remoteaddr	source/sock_server.cpp	/^sockaddr_in& SockServer::get_remoteaddr()$/;"	f	class:SockServer	signature:()
 get_sem	header/common.h	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode);$/;"	p	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+get_sem	smart_home_qt_dev/common.cpp	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)$/;"	f	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+get_sem	smart_home_qt_dev/common.h	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode);$/;"	p	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+get_sem	smart_home_qt_phone/common.cpp	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)$/;"	f	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+get_sem	smart_home_qt_phone/common.h	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode);$/;"	p	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+get_sem	smart_home_qt_server/common.cpp	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)$/;"	f	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+get_sem	smart_home_qt_server/common.h	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode);$/;"	p	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
 get_sem	source/common.cpp	/^int get_sem(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)$/;"	f	signature:(int *semid, const char *sem_file, int nsems, int proj_id, mode_t creatsem_mode)
+h	s	/^à /;"	v
 have_CRC16	header/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
+have_CRC16	smart_home_qt_dev/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
+have_CRC16	smart_home_qt_phone/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
+have_CRC16	smart_home_qt_server/protocol.h	/^    unsigned char have_CRC16;       \/\/ÊòØÂê¶ÊúâCRC$/;"	m	class:Protocol	access:public
 have_extend	header/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+have_extend	smart_home_qt_dev/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+have_extend	smart_home_qt_phone/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+have_extend	smart_home_qt_server/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+i	smart_home_qt_dev/images/AirConImage.png	/^/;"	v
+i	smart_home_qt_phone/images/AirConImage.png	/^/;"	v
+i	smart_home_qt_server/images/AirConImage.png	/^/;"	v
 init_sem	header/common.h	/^int init_sem(const int semid, int sennum, int value);$/;"	p	signature:(const int semid, int sennum, int value)
 init_sem	server/server.cpp	/^int init_sem()$/;"	f	signature:()
+init_sem	smart_home_qt_dev/common.cpp	/^int init_sem(const int semid, int semnum, int value)\/\/‰ø°Âè∑ÈáèÁöÑfdÔºå‰ø°Âè∑ÈáèÁöÑÁºñÂè∑Ôºå‰ø°Âè∑ÈáèÁöÑÂÄº$/;"	f	signature:(const int semid, int semnum, int value)
+init_sem	smart_home_qt_dev/common.h	/^int init_sem(const int semid, int sennum, int value);$/;"	p	signature:(const int semid, int sennum, int value)
+init_sem	smart_home_qt_phone/common.cpp	/^int init_sem(const int semid, int semnum, int value)\/\/‰ø°Âè∑ÈáèÁöÑfdÔºå‰ø°Âè∑ÈáèÁöÑÁºñÂè∑Ôºå‰ø°Âè∑ÈáèÁöÑÂÄº$/;"	f	signature:(const int semid, int semnum, int value)
+init_sem	smart_home_qt_phone/common.h	/^int init_sem(const int semid, int sennum, int value);$/;"	p	signature:(const int semid, int sennum, int value)
+init_sem	smart_home_qt_server/common.cpp	/^int init_sem(const int semid, int semnum, int value)\/\/‰ø°Âè∑ÈáèÁöÑfdÔºå‰ø°Âè∑ÈáèÁöÑÁºñÂè∑Ôºå‰ø°Âè∑ÈáèÁöÑÂÄº$/;"	f	signature:(const int semid, int semnum, int value)
+init_sem	smart_home_qt_server/common.h	/^int init_sem(const int semid, int sennum, int value);$/;"	p	signature:(const int semid, int sennum, int value)
 init_sem	source/common.cpp	/^int init_sem(const int semid, int semnum, int value)\/\/‰ø°Âè∑ÈáèÁöÑfdÔºå‰ø°Âè∑ÈáèÁöÑÁºñÂè∑Ôºå‰ø°Âè∑ÈáèÁöÑÂÄº$/;"	f	signature:(const int semid, int semnum, int value)
+initializer	smart_home_qt_dev/qrc_img.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_img)(); }$/;"	f	struct:__anon1::initializer	access:public	signature:()
+initializer	smart_home_qt_dev/qrc_img.cpp	/^   struct initializer {$/;"	s	namespace:__anon1	file:
+initializer	smart_home_qt_phone/qrc_img.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_img)(); }$/;"	f	struct:__anon2::initializer	access:public	signature:()
+initializer	smart_home_qt_phone/qrc_img.cpp	/^   struct initializer {$/;"	s	namespace:__anon2	file:
+initializer	smart_home_qt_server/qrc_img.cpp	/^       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_img)(); }$/;"	f	struct:__anon3::initializer	access:public	signature:()
+initializer	smart_home_qt_server/qrc_img.cpp	/^   struct initializer {$/;"	s	namespace:__anon3	file:
 insert_online_dev	server/server.cpp	/^void insert_online_dev(dev_info_e dev_e)$/;"	f	signature:(dev_info_e dev_e)
 insert_online_mt	server/server.cpp	/^void insert_online_mt(phone_info_e phone_e)$/;"	f	signature:(phone_info_e phone_e)
 is_regist	header/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+is_regist	smart_home_qt_dev/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+is_regist	smart_home_qt_phone/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+is_regist	smart_home_qt_server/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+label_fan_img	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+label_fan_img	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+label_fan_img	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+label_fan_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
+label_fan_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
+label_fan_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
+label_lamp1_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+label_lamp1_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+label_lamp1_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+label_lamp1_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
+label_lamp1_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
+label_lamp1_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
+label_lamp2_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+label_lamp2_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+label_lamp2_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+label_lamp2_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
+label_lamp2_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
+label_lamp2_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
+label_light1	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_light1;$/;"	m	class:MainWindow	access:private
+label_light1	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_light1;$/;"	m	class:MainWindow	access:private
+label_light1	smart_home_qt_server/mainwindow.h	/^    QLabel* label_light1;$/;"	m	class:MainWindow	access:private
+label_light2	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+label_light2	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+label_light2	smart_home_qt_server/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+label_switch_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
+label_switch_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
+label_switch_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
+label_tempruature	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_tempruature;$/;"	m	class:MainWindow	access:private
+label_tempruature	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_tempruature;$/;"	m	class:MainWindow	access:private
+label_tempruature	smart_home_qt_server/mainwindow.h	/^    QLabel* label_tempruature;$/;"	m	class:MainWindow	access:private
+lamp1ModeButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp1ModeButton;$/;"	m	class:MainWindow	access:private
+lamp1ModeButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp1ModeButton_click()$/;"	f	class:MainWindow	signature:()
+lamp1ModeButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp1ModeButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+lamp1StatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp1StatusButton;$/;"	m	class:MainWindow	access:private
+lamp1StatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp1StatusButton_click()$/;"	f	class:MainWindow	signature:()
+lamp1StatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp1StatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+lamp1_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* lamp1_img;$/;"	m	class:MainWindow	access:private
+lamp1_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* lamp1_img;$/;"	m	class:MainWindow	access:private
+lamp1_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* lamp1_img;$/;"	m	class:MainWindow	access:private
+lamp1_mode	smart_home_qt_dev/mainwindow.h	/^    int lamp1_mode;$/;"	m	class:MainWindow	access:public
+lamp1_mode	smart_home_qt_phone/mainwindow.h	/^    int lamp1_mode;$/;"	m	class:MainWindow	access:public
+lamp1_mode	smart_home_qt_server/mainwindow.h	/^    int lamp1_mode;$/;"	m	class:MainWindow	access:public
+lamp1_status	smart_home_qt_dev/mainwindow.h	/^    int lamp1_status; \/\/ÁÅØ1$/;"	m	class:MainWindow	access:public
+lamp1_status	smart_home_qt_phone/mainwindow.h	/^    int lamp1_status; \/\/ÁÅØ1$/;"	m	class:MainWindow	access:public
+lamp1_status	smart_home_qt_server/mainwindow.h	/^    int lamp1_status; \/\/ÁÅØ1$/;"	m	class:MainWindow	access:public
+lamp2ModeButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp2ModeButton;$/;"	m	class:MainWindow	access:private
+lamp2ModeButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp2ModeButton_click()$/;"	f	class:MainWindow	signature:()
+lamp2ModeButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp2ModeButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+lamp2StatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *lamp2StatusButton;$/;"	m	class:MainWindow	access:private
+lamp2StatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::lamp2StatusButton_click()$/;"	f	class:MainWindow	signature:()
+lamp2StatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void lamp2StatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+lamp2_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* lamp2_img;$/;"	m	class:MainWindow	access:private
+lamp2_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* lamp2_img;$/;"	m	class:MainWindow	access:private
+lamp2_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* lamp2_img;$/;"	m	class:MainWindow	access:private
+lamp2_mode	smart_home_qt_dev/mainwindow.h	/^    int lamp2_mode;$/;"	m	class:MainWindow	access:public
+lamp2_mode	smart_home_qt_phone/mainwindow.h	/^    int lamp2_mode;$/;"	m	class:MainWindow	access:public
+lamp2_mode	smart_home_qt_server/mainwindow.h	/^    int lamp2_mode;$/;"	m	class:MainWindow	access:public
+lamp2_status	smart_home_qt_dev/mainwindow.h	/^    int lamp2_status; \/\/ÁÅØ2$/;"	m	class:MainWindow	access:public
+lamp2_status	smart_home_qt_phone/mainwindow.h	/^    int lamp2_status; \/\/ÁÅØ2$/;"	m	class:MainWindow	access:public
+lamp2_status	smart_home_qt_server/mainwindow.h	/^    int lamp2_status; \/\/ÁÅØ2$/;"	m	class:MainWindow	access:public
 lamp_auto	header/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
+lamp_auto	smart_home_qt_dev/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
+lamp_auto	smart_home_qt_phone/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
+lamp_auto	smart_home_qt_server/protocol.h	/^	int lamp_auto; \/\/Âè™ÂíåÁÅØÊúâÂÖ≥ 0 ÊâãÂä® 1Ëá™Âä®$/;"	m	struct:dev_info_e	access:public
 lamp_mode	devices/lamp1.cpp	/^int lamp_mode = 0;\/\/ 0ÊâãÂä®  1Ëá™Âä®$/;"	v
 lamp_mode	devices/lamp2.cpp	/^int lamp_mode = 0;\/\/ 0ÊâãÂä®  1Ëá™Âä®$/;"	v
 lamp_status	devices/lamp1.cpp	/^int lamp_status = 0; \/\/0 ÁÅ≠ 1‰∫Æ$/;"	v
 lamp_status	devices/lamp2.cpp	/^int lamp_status = 0; \/\/0 ÁÅ≠ 1‰∫Æ$/;"	v
 len_high	header/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
+len_high	smart_home_qt_dev/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
+len_high	smart_home_qt_phone/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
+len_high	smart_home_qt_server/protocol.h	/^    unsigned char len_high;         \/\/ÈïøÂ∫¶È´ò‰Ωç$/;"	m	class:Protocol	access:public
 len_low	header/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+len_low	smart_home_qt_dev/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+len_low	smart_home_qt_phone/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
+len_low	smart_home_qt_server/protocol.h	/^    unsigned char len_low;          \/\/ÈïøÂ∫¶‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
 light	devices/lamp1.cpp	/^int light = 0;\/\/ÂÖâÁÖßÂº∫Â∫¶$/;"	v
+light	devices/lamp2.cpp	/^int light = 0;\/\/ÂÖâÁÖßÂº∫Â∫¶$/;"	v
 light	phone/client.cpp	/^int light = 0;$/;"	v
 light	server/server.cpp	/^int light = 0;$/;"	v
+light1	smart_home_qt_dev/mainwindow.h	/^    int light1;$/;"	m	class:MainWindow	access:public
+light1	smart_home_qt_phone/mainwindow.h	/^    int light1;$/;"	m	class:MainWindow	access:public
+light1	smart_home_qt_server/mainwindow.h	/^    int light1;$/;"	m	class:MainWindow	access:public
+light2	smart_home_qt_dev/mainwindow.h	/^    int light2;$/;"	m	class:MainWindow	access:public
+light2	smart_home_qt_phone/mainwindow.h	/^    int light2;$/;"	m	class:MainWindow	access:public
+light2	smart_home_qt_server/mainwindow.h	/^    int light2;$/;"	m	class:MainWindow	access:public
 localaddr	header/sock_server.h	/^	sockaddr_in localaddr;$/;"	m	class:SockServer	access:private
-lock_fun	header/common.h	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)$/;"	f	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	header/common.h	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len);$/;"	p	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	smart_home_qt_dev/common.cpp	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)$/;"	f	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	smart_home_qt_dev/common.h	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len);$/;"	p	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	smart_home_qt_phone/common.cpp	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)$/;"	f	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	smart_home_qt_phone/common.h	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len);$/;"	p	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	smart_home_qt_server/common.cpp	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)$/;"	f	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	smart_home_qt_server/common.h	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len);$/;"	p	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	source/common.cpp	/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)$/;"	f	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
+lock_fun	tags	/^lock_fun	header\/common.h	\/^int lock_fun(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len);$\/;"	p	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)$/;"	p	file:	signature:(int fd, int cmd, int l_type, int l_whence, off_t l_offset, off_t l_len)
 mac	header/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+mac	smart_home_qt_dev/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+mac	smart_home_qt_phone/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
+mac	smart_home_qt_server/protocol.h	/^	char mac[9];$/;"	m	struct:dev_info	access:public
 mail	header/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+mail	smart_home_qt_dev/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+mail	smart_home_qt_phone/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+mail	smart_home_qt_server/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
 main	devices/fan.cpp	/^int main()$/;"	f	signature:()
 main	devices/lamp1.cpp	/^int main()$/;"	f	signature:()
 main	devices/lamp2.cpp	/^int main()$/;"	f	signature:()
 main	devices/switch.cpp	/^int main()$/;"	f	signature:()
 main	phone/client.cpp	/^int main(void)$/;"	f	signature:(void)
 main	server/server.cpp	/^int main()$/;"	f	signature:()
+main	smart_home_qt_dev/main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
+main	smart_home_qt_phone/main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
+main	smart_home_qt_server/main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
 make_torken	server/server.cpp	/^void make_torken(unsigned char* torken)$/;"	f	signature:(unsigned char* torken)
-mk_get_msg	header/common.h	/^int mk_get_msg(int *msgid, mode_t creatmsg_mode, int proj_id);$/;"	p	signature:(int *msgid, mode_t creatmsg_mode, int proj_id)
-mk_get_msg	source/common.cpp	/^int mk_get_msg(int *msgid, mode_t creatmsg_mode, int proj_id)$/;"	f	signature:(int *msgid, mode_t creatmsg_mode, int proj_id)
+metaObject	smart_home_qt_dev/moc_mainwindow.cpp	/^const QMetaObject *MainWindow::metaObject() const$/;"	f	class:MainWindow	signature:() const
+metaObject	smart_home_qt_dev/moc_recvmsgthread.cpp	/^const QMetaObject *RecvMsgThread::metaObject() const$/;"	f	class:RecvMsgThread	signature:() const
+metaObject	smart_home_qt_phone/moc_mainwindow.cpp	/^const QMetaObject *MainWindow::metaObject() const$/;"	f	class:MainWindow	signature:() const
+metaObject	smart_home_qt_phone/moc_recvmsgthread.cpp	/^const QMetaObject *RecvMsgThread::metaObject() const$/;"	f	class:RecvMsgThread	signature:() const
+metaObject	smart_home_qt_server/moc_mainwindow.cpp	/^const QMetaObject *MainWindow::metaObject() const$/;"	f	class:MainWindow	signature:() const
+metaObject	smart_home_qt_server/moc_recvmsgthread.cpp	/^const QMetaObject *RecvMsgThread::metaObject() const$/;"	f	class:RecvMsgThread	signature:() const
+mk_get_msg	header/common.h	/^int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id);$/;"	p	signature:(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	smart_home_qt_dev/common.cpp	/^int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)$/;"	f	signature:(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	smart_home_qt_dev/common.h	/^int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id);$/;"	p	signature:(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	smart_home_qt_phone/common.cpp	/^int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)$/;"	f	signature:(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	smart_home_qt_phone/common.h	/^int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id);$/;"	p	signature:(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	smart_home_qt_server/common.cpp	/^int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)$/;"	f	signature:(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	smart_home_qt_server/common.h	/^int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id);$/;"	p	signature:(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
+mk_get_msg	source/common.cpp	/^int mk_get_msg(int *msgid, const char* filename ,mode_t creatmsg_mode, int proj_id)$/;"	f	signature:(int *msgid, const char* filename ,mode_t creatmsg_mode, int proj_id)
 mk_get_shm	header/common.h	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id);$/;"	p	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+mk_get_shm	smart_home_qt_dev/common.cpp	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id)$/;"	f	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+mk_get_shm	smart_home_qt_dev/common.h	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id);$/;"	p	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+mk_get_shm	smart_home_qt_phone/common.cpp	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id)$/;"	f	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+mk_get_shm	smart_home_qt_phone/common.h	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id);$/;"	p	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+mk_get_shm	smart_home_qt_server/common.cpp	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id)$/;"	f	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+mk_get_shm	smart_home_qt_server/common.h	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id);$/;"	p	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
 mk_get_shm	source/common.cpp	/^int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id)$/;"	f	signature:(int *shmid, mode_t creatshm_mode, int proj_id)
+msg	smart_home_qt_dev/recvmsgthread.h	/^    Msgbuf msg;$/;"	m	class:RecvMsgThread	access:private
+msg	smart_home_qt_phone/recvmsgthread.h	/^    Msgbuf msg;$/;"	m	class:RecvMsgThread	access:private
+msg	smart_home_qt_server/recvmsgthread.h	/^    Msgbuf msg;$/;"	m	class:RecvMsgThread	access:private
+msgid	devices/fan.cpp	/^int msgid;$/;"	v
+msgid	devices/lamp1.cpp	/^int msgid;$/;"	v
+msgid	devices/lamp2.cpp	/^int msgid;$/;"	v
+msgid	devices/switch.cpp	/^int msgid;$/;"	v
+msgid	phone/client.cpp	/^int msgid;$/;"	v
+msgid	server/server.cpp	/^int msgid;$/;"	v
+msgid	smart_home_qt_dev/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
+msgid	smart_home_qt_phone/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
+msgid	smart_home_qt_server/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
+mtext	header/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+mtext	smart_home_qt_dev/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+mtext	smart_home_qt_phone/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+mtext	smart_home_qt_server/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
+mtype	header/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
+mtype	smart_home_qt_dev/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
+mtype	smart_home_qt_phone/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
+mtype	smart_home_qt_server/common.h	/^    long mtype;$/;"	m	struct:Msgbuf	access:public
 name	header/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+name	smart_home_qt_dev/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+name	smart_home_qt_phone/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
+name	smart_home_qt_server/protocol.h	/^	char name[10];$/;"	m	struct:dev_info	access:public
 output_select	phone/client.cpp	/^void output_select()$/;"	f	signature:()
 output_select	server/server.cpp	/^void output_select()$/;"	f	signature:()
 output_select_fan_swutch	phone/client.cpp	/^void output_select_fan_swutch()$/;"	f	signature:()
@@ -270,73 +1158,290 @@ output_select_fan_swutch	server/server.cpp	/^void output_select_fan_swutch()$/;"
 output_select_lamp	phone/client.cpp	/^void output_select_lamp()$/;"	f	signature:()
 output_select_lamp	server/server.cpp	/^void output_select_lamp()$/;"	f	signature:()
 p	header/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+p	server/server.o	/^øﬂ¢’À2BCà!G∞=Ó¯ä7π3ZvóCé`ÔD<©)¸}‡söÇ<\\∏/;"	v
+p	smart_home_qt_dev/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+p	smart_home_qt_phone/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+p	smart_home_qt_server/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
 package_header	header/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
+package_header	smart_home_qt_dev/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
+package_header	smart_home_qt_phone/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
+package_header	smart_home_qt_server/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
 package_tail	header/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
+package_tail	smart_home_qt_dev/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
+package_tail	smart_home_qt_phone/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
+package_tail	smart_home_qt_server/protocol.h	/^    unsigned char package_tail;     \/\/ÂåÖÂ∞æ$/;"	m	class:Protocol	access:public
 parse_buf	header/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+parse_buf	smart_home_qt_dev/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
+parse_buf	smart_home_qt_dev/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+parse_buf	smart_home_qt_phone/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
+parse_buf	smart_home_qt_phone/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+parse_buf	smart_home_qt_server/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
+parse_buf	smart_home_qt_server/protocol.h	/^    int parse_buf(unsigned char* buf); \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 parse_buf	source/protocol.cpp	/^int Protocol::parse_buf(unsigned char* buf) \/\/Ëß£ÊûêbufÔºåÂ∞Übuf‰∏≠Êï∞ÊçÆËΩ¨Êç¢ÊàêÊï∞ÊçÆÂåÖÁöÑÂΩ¢Âºè$/;"	f	class:Protocol	signature:(unsigned char* buf)
 password	header/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+password	smart_home_qt_dev/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+password	smart_home_qt_phone/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+password	smart_home_qt_server/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
 phone1	phone/client.cpp	/^phone_info phone1;$/;"	v
 phone_info	header/protocol.h	/^struct phone_info$/;"	s
+phone_info	smart_home_qt_dev/protocol.h	/^struct phone_info$/;"	s
+phone_info	smart_home_qt_phone/protocol.h	/^struct phone_info$/;"	s
+phone_info	smart_home_qt_server/protocol.h	/^struct phone_info$/;"	s
 phone_info::is_regist	header/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+phone_info::is_regist	smart_home_qt_dev/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+phone_info::is_regist	smart_home_qt_phone/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
+phone_info::is_regist	smart_home_qt_server/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
 phone_info::mail	header/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+phone_info::mail	smart_home_qt_dev/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+phone_info::mail	smart_home_qt_phone/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
+phone_info::mail	smart_home_qt_server/protocol.h	/^	char mail[20];$/;"	m	struct:phone_info	access:public
 phone_info::password	header/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+phone_info::password	smart_home_qt_dev/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+phone_info::password	smart_home_qt_phone/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
+phone_info::password	smart_home_qt_server/protocol.h	/^	char password[20];$/;"	m	struct:phone_info	access:public
 phone_info::phone_name	header/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_info::phone_name	smart_home_qt_dev/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_info::phone_name	smart_home_qt_phone/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_info::phone_name	smart_home_qt_server/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
 phone_info::phone_num	header/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_info::phone_num	smart_home_qt_dev/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_info::phone_num	smart_home_qt_phone/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_info::phone_num	smart_home_qt_server/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
 phone_info_e	header/protocol.h	/^struct phone_info_e$/;"	s
+phone_info_e	smart_home_qt_dev/protocol.h	/^struct phone_info_e$/;"	s
+phone_info_e	smart_home_qt_phone/protocol.h	/^struct phone_info_e$/;"	s
+phone_info_e	smart_home_qt_server/protocol.h	/^struct phone_info_e$/;"	s
 phone_info_e::p	header/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+phone_info_e::p	smart_home_qt_dev/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+phone_info_e::p	smart_home_qt_phone/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+phone_info_e::p	smart_home_qt_server/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
 phone_info_e::torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+phone_info_e::torken	smart_home_qt_dev/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+phone_info_e::torken	smart_home_qt_phone/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+phone_info_e::torken	smart_home_qt_server/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
 phone_login	phone/client.cpp	/^int phone_login(phone_info& phone)$/;"	f	signature:(phone_info& phone)
 phone_name	header/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_name	smart_home_qt_dev/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_name	smart_home_qt_phone/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
+phone_name	smart_home_qt_server/protocol.h	/^	char phone_name[10];$/;"	m	struct:phone_info	access:public
 phone_num	header/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_num	smart_home_qt_dev/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_num	smart_home_qt_phone/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
+phone_num	smart_home_qt_server/protocol.h	/^	char phone_num[20];$/;"	m	struct:phone_info	access:public
 phone_online	server/server.cpp	/^list<phone_info_e> phone_online;$/;"	v
 phone_read_info	phone/client.cpp	/^void phone_read_info(phone_info& phone)$/;"	f	signature:(phone_info& phone)
 phone_write_server_info	phone/client.cpp	/^void phone_write_server_info()$/;"	f	signature:()
-pth_id	header/common.h	/^	pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
-pth_no	header/common.h	/^	int pth_no;$/;"	m	struct:pthread_arg	access:public
+pth_id	header/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pth_id	smart_home_qt_dev/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pth_id	smart_home_qt_phone/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pth_id	smart_home_qt_server/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pth_no	header/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
+pth_no	smart_home_qt_dev/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
+pth_no	smart_home_qt_phone/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
+pth_no	smart_home_qt_server/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
 pthread_arg	header/common.h	/^struct pthread_arg$/;"	s
-pthread_arg::addr	header/common.h	/^	void *addr;$/;"	m	struct:pthread_arg	access:public
-pthread_arg::pth_id	header/common.h	/^	pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
-pthread_arg::pth_no	header/common.h	/^	int pth_no;$/;"	m	struct:pthread_arg	access:public
-pthread_arg::semid	header/common.h	/^	int semid;$/;"	m	struct:pthread_arg	access:public
-pthread_arg::sockfd	header/common.h	/^	int sockfd;$/;"	m	struct:pthread_arg	access:public
+pthread_arg	smart_home_qt_dev/common.h	/^struct pthread_arg$/;"	s
+pthread_arg	smart_home_qt_phone/common.h	/^struct pthread_arg$/;"	s
+pthread_arg	smart_home_qt_server/common.h	/^struct pthread_arg$/;"	s
+pthread_arg::addr	header/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::addr	smart_home_qt_dev/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::addr	smart_home_qt_phone/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::addr	smart_home_qt_server/common.h	/^    void *addr;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_id	header/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_id	smart_home_qt_dev/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_id	smart_home_qt_phone/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_id	smart_home_qt_server/common.h	/^    pthread_t pth_id;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_no	header/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_no	smart_home_qt_dev/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_no	smart_home_qt_phone/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::pth_no	smart_home_qt_server/common.h	/^    int pth_no;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::semid	header/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::semid	smart_home_qt_dev/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::semid	smart_home_qt_phone/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::semid	smart_home_qt_server/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::sockfd	header/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::sockfd	smart_home_qt_dev/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::sockfd	smart_home_qt_phone/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
+pthread_arg::sockfd	smart_home_qt_server/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
+q	smart_home_qt_dev/images/light_on.png	/^†ynÅ#&EâÉ∞2ÖÁ.8√C∆ÚÃW§?Wñ¶q¯ï∏ìû5l\/—*FxÑCåR6∂ÿ«\/uﬂèËC™dØ’V…:≤8Æ” ∏ŒQ˙múπfÑ†˝Q:ÃR∂‘ä2«Y,”—q#,1¬CÁÖ4Iöe-P!\\’÷Ä(å_(Ú√C% ]*18í—30˚ä≠d¿¸)Ç¯Ãuõ$/;"	v
+q	smart_home_qt_phone/images/light_on.png	/^†ynÅ#&EâÉ∞2ÖÁ.8√C∆ÚÃW§?Wñ¶q¯ï∏ìû5l\/—*FxÑCåR6∂ÿ«\/uﬂèËC™dØ’V…:≤8Æ” ∏ŒQ˙múπfÑ†˝Q:ÃR∂‘ä2«Y,”—q#,1¬CÁÖ4Iöe-P!\\’÷Ä(å_(Ú√C% ]*18í—30˚ä≠d¿¸)Ç¯Ãuõ$/;"	v
+q	smart_home_qt_server/images/light_on.png	/^†ynÅ#&EâÉ∞2ÖÁ.8√C∆ÚÃW§?Wñ¶q¯ï∏ìû5l\/—*FxÑCåR6∂ÿ«\/uﬂèËC™dØ’V…:≤8Æ” ∏ŒQ˙múπfÑ†˝Q:ÃR∂‘ä2«Y,”—q#,1¬CÁÖ4Iöe-P!\\’÷Ä(å_(Ú√C% ]*18í—30˚ä≠d¿¸)Ç¯Ãuõ$/;"	v
+qCleanupResources_img	smart_home_qt_dev/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)()$/;"	f	signature:()
+qCleanupResources_img	smart_home_qt_dev/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)();$/;"	p	file:	signature:()
+qCleanupResources_img	smart_home_qt_phone/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)()$/;"	f	signature:()
+qCleanupResources_img	smart_home_qt_phone/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)();$/;"	p	file:	signature:()
+qCleanupResources_img	smart_home_qt_server/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)()$/;"	f	signature:()
+qCleanupResources_img	smart_home_qt_server/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)();$/;"	p	file:	signature:()
+qInitResources_img	smart_home_qt_dev/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qInitResources_img)()$/;"	f	signature:()
+qInitResources_img	smart_home_qt_dev/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qInitResources_img)();$/;"	p	file:	signature:()
+qInitResources_img	smart_home_qt_phone/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qInitResources_img)()$/;"	f	signature:()
+qInitResources_img	smart_home_qt_phone/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qInitResources_img)();$/;"	p	file:	signature:()
+qInitResources_img	smart_home_qt_server/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qInitResources_img)()$/;"	f	signature:()
+qInitResources_img	smart_home_qt_server/qrc_img.cpp	/^int QT_RCC_MANGLE_NAMESPACE(qInitResources_img)();$/;"	p	file:	signature:()
+qRegisterResourceData	smart_home_qt_dev/qrc_img.cpp	/^bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+qRegisterResourceData	smart_home_qt_phone/qrc_img.cpp	/^bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+qRegisterResourceData	smart_home_qt_server/qrc_img.cpp	/^bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+qUnregisterResourceData	smart_home_qt_dev/qrc_img.cpp	/^bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+qUnregisterResourceData	smart_home_qt_phone/qrc_img.cpp	/^bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+qUnregisterResourceData	smart_home_qt_server/qrc_img.cpp	/^bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);$/;"	p	namespace:QT_NAMESPACE	file:	signature:(int, const unsigned char *, const unsigned char *, const unsigned char *)
+qt_meta_data_MainWindow	smart_home_qt_dev/moc_mainwindow.cpp	/^static const uint qt_meta_data_MainWindow[] = {$/;"	v	file:
+qt_meta_data_MainWindow	smart_home_qt_phone/moc_mainwindow.cpp	/^static const uint qt_meta_data_MainWindow[] = {$/;"	v	file:
+qt_meta_data_MainWindow	smart_home_qt_server/moc_mainwindow.cpp	/^static const uint qt_meta_data_MainWindow[] = {$/;"	v	file:
+qt_meta_data_RecvMsgThread	smart_home_qt_dev/moc_recvmsgthread.cpp	/^static const uint qt_meta_data_RecvMsgThread[] = {$/;"	v	file:
+qt_meta_data_RecvMsgThread	smart_home_qt_phone/moc_recvmsgthread.cpp	/^static const uint qt_meta_data_RecvMsgThread[] = {$/;"	v	file:
+qt_meta_data_RecvMsgThread	smart_home_qt_server/moc_recvmsgthread.cpp	/^static const uint qt_meta_data_RecvMsgThread[] = {$/;"	v	file:
+qt_meta_stringdata_MainWindow	smart_home_qt_dev/moc_mainwindow.cpp	/^static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {$/;"	v	file:
+qt_meta_stringdata_MainWindow	smart_home_qt_phone/moc_mainwindow.cpp	/^static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {$/;"	v	file:
+qt_meta_stringdata_MainWindow	smart_home_qt_server/moc_mainwindow.cpp	/^static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {$/;"	v	file:
+qt_meta_stringdata_MainWindow_t	smart_home_qt_dev/moc_mainwindow.cpp	/^struct qt_meta_stringdata_MainWindow_t {$/;"	s	file:
+qt_meta_stringdata_MainWindow_t	smart_home_qt_phone/moc_mainwindow.cpp	/^struct qt_meta_stringdata_MainWindow_t {$/;"	s	file:
+qt_meta_stringdata_MainWindow_t	smart_home_qt_server/moc_mainwindow.cpp	/^struct qt_meta_stringdata_MainWindow_t {$/;"	s	file:
+qt_meta_stringdata_MainWindow_t::data	smart_home_qt_dev/moc_mainwindow.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+qt_meta_stringdata_MainWindow_t::data	smart_home_qt_phone/moc_mainwindow.cpp	/^    QByteArrayData data[11];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+qt_meta_stringdata_MainWindow_t::data	smart_home_qt_server/moc_mainwindow.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+qt_meta_stringdata_MainWindow_t::stringdata0	smart_home_qt_dev/moc_mainwindow.cpp	/^    char stringdata0[38];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+qt_meta_stringdata_MainWindow_t::stringdata0	smart_home_qt_phone/moc_mainwindow.cpp	/^    char stringdata0[177];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+qt_meta_stringdata_MainWindow_t::stringdata0	smart_home_qt_server/moc_mainwindow.cpp	/^    char stringdata0[38];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+qt_meta_stringdata_RecvMsgThread	smart_home_qt_dev/moc_recvmsgthread.cpp	/^static const qt_meta_stringdata_RecvMsgThread_t qt_meta_stringdata_RecvMsgThread = {$/;"	v	file:
+qt_meta_stringdata_RecvMsgThread	smart_home_qt_phone/moc_recvmsgthread.cpp	/^static const qt_meta_stringdata_RecvMsgThread_t qt_meta_stringdata_RecvMsgThread = {$/;"	v	file:
+qt_meta_stringdata_RecvMsgThread	smart_home_qt_server/moc_recvmsgthread.cpp	/^static const qt_meta_stringdata_RecvMsgThread_t qt_meta_stringdata_RecvMsgThread = {$/;"	v	file:
+qt_meta_stringdata_RecvMsgThread_t	smart_home_qt_dev/moc_recvmsgthread.cpp	/^struct qt_meta_stringdata_RecvMsgThread_t {$/;"	s	file:
+qt_meta_stringdata_RecvMsgThread_t	smart_home_qt_phone/moc_recvmsgthread.cpp	/^struct qt_meta_stringdata_RecvMsgThread_t {$/;"	s	file:
+qt_meta_stringdata_RecvMsgThread_t	smart_home_qt_server/moc_recvmsgthread.cpp	/^struct qt_meta_stringdata_RecvMsgThread_t {$/;"	s	file:
+qt_meta_stringdata_RecvMsgThread_t::data	smart_home_qt_dev/moc_recvmsgthread.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+qt_meta_stringdata_RecvMsgThread_t::data	smart_home_qt_phone/moc_recvmsgthread.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+qt_meta_stringdata_RecvMsgThread_t::data	smart_home_qt_server/moc_recvmsgthread.cpp	/^    QByteArrayData data[5];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+qt_meta_stringdata_RecvMsgThread_t::stringdata0	smart_home_qt_dev/moc_recvmsgthread.cpp	/^    char stringdata0[42];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+qt_meta_stringdata_RecvMsgThread_t::stringdata0	smart_home_qt_phone/moc_recvmsgthread.cpp	/^    char stringdata0[42];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+qt_meta_stringdata_RecvMsgThread_t::stringdata0	smart_home_qt_server/moc_recvmsgthread.cpp	/^    char stringdata0[42];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+qt_metacall	smart_home_qt_dev/moc_mainwindow.cpp	/^int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacall	smart_home_qt_dev/moc_recvmsgthread.cpp	/^int RecvMsgThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacall	smart_home_qt_phone/moc_mainwindow.cpp	/^int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacall	smart_home_qt_phone/moc_recvmsgthread.cpp	/^int RecvMsgThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacall	smart_home_qt_server/moc_mainwindow.cpp	/^int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacall	smart_home_qt_server/moc_recvmsgthread.cpp	/^int RecvMsgThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacast	smart_home_qt_dev/moc_mainwindow.cpp	/^void *MainWindow::qt_metacast(const char *_clname)$/;"	f	class:MainWindow	signature:(const char *_clname)
+qt_metacast	smart_home_qt_dev/moc_recvmsgthread.cpp	/^void *RecvMsgThread::qt_metacast(const char *_clname)$/;"	f	class:RecvMsgThread	signature:(const char *_clname)
+qt_metacast	smart_home_qt_phone/moc_mainwindow.cpp	/^void *MainWindow::qt_metacast(const char *_clname)$/;"	f	class:MainWindow	signature:(const char *_clname)
+qt_metacast	smart_home_qt_phone/moc_recvmsgthread.cpp	/^void *RecvMsgThread::qt_metacast(const char *_clname)$/;"	f	class:RecvMsgThread	signature:(const char *_clname)
+qt_metacast	smart_home_qt_server/moc_mainwindow.cpp	/^void *MainWindow::qt_metacast(const char *_clname)$/;"	f	class:MainWindow	signature:(const char *_clname)
+qt_metacast	smart_home_qt_server/moc_recvmsgthread.cpp	/^void *RecvMsgThread::qt_metacast(const char *_clname)$/;"	f	class:RecvMsgThread	signature:(const char *_clname)
+qt_resource_data	smart_home_qt_dev/qrc_img.cpp	/^static const unsigned char qt_resource_data[] = {$/;"	v	file:
+qt_resource_data	smart_home_qt_phone/qrc_img.cpp	/^static const unsigned char qt_resource_data[] = {$/;"	v	file:
+qt_resource_data	smart_home_qt_server/qrc_img.cpp	/^static const unsigned char qt_resource_data[] = {$/;"	v	file:
+qt_resource_name	smart_home_qt_dev/qrc_img.cpp	/^static const unsigned char qt_resource_name[] = {$/;"	v	file:
+qt_resource_name	smart_home_qt_phone/qrc_img.cpp	/^static const unsigned char qt_resource_name[] = {$/;"	v	file:
+qt_resource_name	smart_home_qt_server/qrc_img.cpp	/^static const unsigned char qt_resource_name[] = {$/;"	v	file:
+qt_resource_struct	smart_home_qt_dev/qrc_img.cpp	/^static const unsigned char qt_resource_struct[] = {$/;"	v	file:
+qt_resource_struct	smart_home_qt_phone/qrc_img.cpp	/^static const unsigned char qt_resource_struct[] = {$/;"	v	file:
+qt_resource_struct	smart_home_qt_server/qrc_img.cpp	/^static const unsigned char qt_resource_struct[] = {$/;"	v	file:
+qt_static_metacall	smart_home_qt_dev/moc_mainwindow.cpp	/^void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+qt_static_metacall	smart_home_qt_dev/moc_recvmsgthread.cpp	/^void RecvMsgThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+qt_static_metacall	smart_home_qt_phone/moc_mainwindow.cpp	/^void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+qt_static_metacall	smart_home_qt_phone/moc_recvmsgthread.cpp	/^void RecvMsgThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+qt_static_metacall	smart_home_qt_server/moc_mainwindow.cpp	/^void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:MainWindow	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+qt_static_metacall	smart_home_qt_server/moc_recvmsgthread.cpp	/^void RecvMsgThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:RecvMsgThread	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 read_dev_info	devices/fan.cpp	/^void read_dev_info()$/;"	f	signature:()
 read_dev_info	devices/lamp1.cpp	/^void read_dev_info()$/;"	f	signature:()
 read_dev_info	devices/lamp2.cpp	/^void read_dev_info()$/;"	f	signature:()
 read_dev_info	devices/switch.cpp	/^void read_dev_info()$/;"	f	signature:()
-read_lock	header/common.h	24;"	d
-read_lockw	header/common.h	26;"	d
+read_lock	header/common.h	29;"	d
+read_lock	smart_home_qt_dev/common.h	28;"	d
+read_lock	smart_home_qt_phone/common.h	28;"	d
+read_lock	smart_home_qt_server/common.h	28;"	d
+read_lockw	header/common.h	31;"	d
+read_lockw	smart_home_qt_dev/common.h	30;"	d
+read_lockw	smart_home_qt_phone/common.h	30;"	d
+read_lockw	smart_home_qt_server/common.h	30;"	d
 read_server_info	devices/fan.cpp	/^void read_server_info()$/;"	f	signature:()
 read_server_info	devices/lamp1.cpp	/^void read_server_info()$/;"	f	signature:()
 read_server_info	devices/lamp2.cpp	/^void read_server_info()$/;"	f	signature:()
 read_server_info	devices/switch.cpp	/^void read_server_info()$/;"	f	signature:()
+read_sync_lock	phone/client.cpp	/^int read_sync_lock(int semid, int& count)$/;"	f	signature:(int semid, int& count)
 read_sync_lock	server/server.cpp	/^int read_sync_lock(int semid, int& count)$/;"	f	signature:(int semid, int& count)
+read_sync_unlock	phone/client.cpp	/^int read_sync_unlock(int semid, int& count)$/;"	f	signature:(int semid, int& count)
 read_sync_unlock	server/server.cpp	/^int read_sync_unlock(int semid, int& count)$/;"	f	signature:(int semid, int& count)
+recvThread	smart_home_qt_dev/mainwindow.h	/^    RecvMsgThread* recvThread;$/;"	m	class:MainWindow	access:private
+recvThread	smart_home_qt_phone/mainwindow.h	/^    RecvMsgThread* recvThread;$/;"	m	class:MainWindow	access:private
+recvThread	smart_home_qt_server/mainwindow.h	/^    RecvMsgThread* recvThread;$/;"	m	class:MainWindow	access:private
 regist_device	phone/client.cpp	/^int regist_device()$/;"	f	signature:()
 regist_phone	phone/client.cpp	/^int regist_phone(phone_info& phone)$/;"	f	signature:(phone_info& phone)
 remoteaddr	header/sock_client.h	/^	sockaddr_in remoteaddr;$/;"	m	class:SockClient	access:private
 remoteaddr	header/sock_server.h	/^	sockaddr_in remoteaddr;$/;"	m	class:SockServer	access:private
-rm_msg	header/common.h	/^int rm_msg(const int msgid);$/;"	p	signature:(const int msgid)
-rm_msg	source/common.cpp	/^int rm_msg(const int msgid)$/;"	f	signature:(const int msgid)
+rm_msg	header/common.h	/^int rm_msg(const int msgid, const char* filename);$/;"	p	signature:(const int msgid, const char* filename)
+rm_msg	smart_home_qt_dev/common.cpp	/^int rm_msg(const int msgid, const char* filename)$/;"	f	signature:(const int msgid, const char* filename)
+rm_msg	smart_home_qt_dev/common.h	/^int rm_msg(const int msgid, const char* filename);$/;"	p	signature:(const int msgid, const char* filename)
+rm_msg	smart_home_qt_phone/common.cpp	/^int rm_msg(const int msgid, const char* filename)$/;"	f	signature:(const int msgid, const char* filename)
+rm_msg	smart_home_qt_phone/common.h	/^int rm_msg(const int msgid, const char* filename);$/;"	p	signature:(const int msgid, const char* filename)
+rm_msg	smart_home_qt_server/common.cpp	/^int rm_msg(const int msgid, const char* filename)$/;"	f	signature:(const int msgid, const char* filename)
+rm_msg	smart_home_qt_server/common.h	/^int rm_msg(const int msgid, const char* filename);$/;"	p	signature:(const int msgid, const char* filename)
+rm_msg	source/common.cpp	/^int rm_msg(const int msgid, const char* filename)$/;"	f	signature:(const int msgid, const char* filename)
 rm_shm	header/common.h	/^int rm_shm(const int shmida, void *addr);$/;"	p	signature:(const int shmida, void *addr)
+rm_shm	smart_home_qt_dev/common.cpp	/^int rm_shm(const int shmid, void *addr)$/;"	f	signature:(const int shmid, void *addr)
+rm_shm	smart_home_qt_dev/common.h	/^int rm_shm(const int shmida, void *addr);$/;"	p	signature:(const int shmida, void *addr)
+rm_shm	smart_home_qt_phone/common.cpp	/^int rm_shm(const int shmid, void *addr)$/;"	f	signature:(const int shmid, void *addr)
+rm_shm	smart_home_qt_phone/common.h	/^int rm_shm(const int shmida, void *addr);$/;"	p	signature:(const int shmida, void *addr)
+rm_shm	smart_home_qt_server/common.cpp	/^int rm_shm(const int shmid, void *addr)$/;"	f	signature:(const int shmid, void *addr)
+rm_shm	smart_home_qt_server/common.h	/^int rm_shm(const int shmida, void *addr);$/;"	p	signature:(const int shmida, void *addr)
 rm_shm	source/common.cpp	/^int rm_shm(const int shmid, void *addr)$/;"	f	signature:(const int shmid, void *addr)
+run	smart_home_qt_dev/recvmsgthread.cpp	/^void RecvMsgThread::run()$/;"	f	class:RecvMsgThread	signature:()
+run	smart_home_qt_dev/recvmsgthread.h	/^    void run();$/;"	p	class:RecvMsgThread	access:protected	signature:()
+run	smart_home_qt_phone/recvmsgthread.cpp	/^void RecvMsgThread::run()$/;"	f	class:RecvMsgThread	signature:()
+run	smart_home_qt_phone/recvmsgthread.h	/^    void run();$/;"	p	class:RecvMsgThread	access:protected	signature:()
+run	smart_home_qt_server/recvmsgthread.cpp	/^void RecvMsgThread::run()$/;"	f	class:RecvMsgThread	signature:()
+run	smart_home_qt_server/recvmsgthread.h	/^    void run();$/;"	p	class:RecvMsgThread	access:protected	signature:()
+s	c	/^/;"	v
+s	server/server.o	/^/;"	v
 search_dev	server/server.cpp	/^int search_dev(dev_info& d) \/\/from file$/;"	f	signature:(dev_info& d)
+search_dev_from_dev_online	phone/client.cpp	/^int search_dev_from_dev_online(dev_info_e& dev_e) \/\/Ê†πÊçÆÂêçÁß∞Êü•ËØ¢ÊâÄÊúâÁöÑËÆæÂ§á‰ø°ÊÅØ$/;"	f	signature:(dev_info_e& dev_e)
 search_dev_from_dev_online	server/server.cpp	/^int search_dev_from_dev_online(unsigned char *mac) \/\/ËøîÂõûÂØπÂ∫îÁöÑÂ•óÊé•Â≠óÊèèËø∞Á¨¶$/;"	f	signature:(unsigned char *mac)
 search_phone	server/server.cpp	/^int search_phone(phone_info& p)$/;"	f	signature:(phone_info& p)
 search_phone_from_phone_online	server/server.cpp	/^int search_phone_from_phone_online(phone_info_e& phone_e) $/;"	f	signature:(phone_info_e& phone_e)
 sem_p	header/common.h	/^int sem_p(const int semid, int semnum, int pn);$/;"	p	signature:(const int semid, int semnum, int pn)
+sem_p	smart_home_qt_dev/common.cpp	/^int sem_p(const int semid, int semnum, int pn)$/;"	f	signature:(const int semid, int semnum, int pn)
+sem_p	smart_home_qt_dev/common.h	/^int sem_p(const int semid, int semnum, int pn);$/;"	p	signature:(const int semid, int semnum, int pn)
+sem_p	smart_home_qt_phone/common.cpp	/^int sem_p(const int semid, int semnum, int pn)$/;"	f	signature:(const int semid, int semnum, int pn)
+sem_p	smart_home_qt_phone/common.h	/^int sem_p(const int semid, int semnum, int pn);$/;"	p	signature:(const int semid, int semnum, int pn)
+sem_p	smart_home_qt_server/common.cpp	/^int sem_p(const int semid, int semnum, int pn)$/;"	f	signature:(const int semid, int semnum, int pn)
+sem_p	smart_home_qt_server/common.h	/^int sem_p(const int semid, int semnum, int pn);$/;"	p	signature:(const int semid, int semnum, int pn)
 sem_p	source/common.cpp	/^int sem_p(const int semid, int semnum, int pn)$/;"	f	signature:(const int semid, int semnum, int pn)
 sem_v	header/common.h	/^int sem_v(const int semid, int semnum, int vn);$/;"	p	signature:(const int semid, int semnum, int vn)
+sem_v	smart_home_qt_dev/common.cpp	/^int sem_v(const int semid, int semnum, int vn)$/;"	f	signature:(const int semid, int semnum, int vn)
+sem_v	smart_home_qt_dev/common.h	/^int sem_v(const int semid, int semnum, int vn);$/;"	p	signature:(const int semid, int semnum, int vn)
+sem_v	smart_home_qt_phone/common.cpp	/^int sem_v(const int semid, int semnum, int vn)$/;"	f	signature:(const int semid, int semnum, int vn)
+sem_v	smart_home_qt_phone/common.h	/^int sem_v(const int semid, int semnum, int vn);$/;"	p	signature:(const int semid, int semnum, int vn)
+sem_v	smart_home_qt_server/common.cpp	/^int sem_v(const int semid, int semnum, int vn)$/;"	f	signature:(const int semid, int semnum, int vn)
+sem_v	smart_home_qt_server/common.h	/^int sem_v(const int semid, int semnum, int vn);$/;"	p	signature:(const int semid, int semnum, int vn)
 sem_v	source/common.cpp	/^int sem_v(const int semid, int semnum, int vn)$/;"	f	signature:(const int semid, int semnum, int vn)
-semid	header/common.h	/^	int semid;$/;"	m	struct:pthread_arg	access:public
+semid	header/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
+semid	smart_home_qt_dev/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
+semid	smart_home_qt_phone/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
+semid	smart_home_qt_server/common.h	/^    int semid;$/;"	m	struct:pthread_arg	access:public
 semid_devfile	server/server.cpp	/^int semid_devfile;$/;"	v
 semid_devonline	server/server.cpp	/^int semid_devonline;$/;"	v
 semid_mtfile	server/server.cpp	/^int semid_mtfile;$/;"	v
+semid_phone_dev_online	phone/client.cpp	/^int semid_phone_dev_online; \/\/Áî®‰∫éÊéßÂà∂phoneÁ´ØËÆæÂ§á‰ø°ÊÅØËØªÂÜôÂêåÊ≠•ÁöÑ‰ø°Âè∑Èáè$/;"	v
 semid_phoneonline	server/server.cpp	/^int semid_phoneonline;$/;"	v
 semun	header/common.h	/^union semun$/;"	u
-semun::__buf	header/common.h	/^	struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
-semun::array	header/common.h	/^	unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
-semun::buf	header/common.h	/^	struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
-semun::val	header/common.h	/^	int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+semun	smart_home_qt_dev/common.h	/^union semun$/;"	u
+semun	smart_home_qt_phone/common.h	/^union semun$/;"	u
+semun	smart_home_qt_server/common.h	/^union semun$/;"	u
+semun::__buf	header/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+semun::__buf	smart_home_qt_dev/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+semun::__buf	smart_home_qt_phone/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+semun::__buf	smart_home_qt_server/common.h	/^    struct seminfo  *__buf;    \/* Buffer for IPC_INFO *\/$/;"	m	union:semun	typeref:struct:semun::seminfo	access:public
+semun::array	header/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+semun::array	smart_home_qt_dev/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+semun::array	smart_home_qt_phone/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+semun::array	smart_home_qt_server/common.h	/^    unsigned short  *array;    \/* Array for GETALL, SETALL *\/$/;"	m	union:semun	access:public
+semun::buf	header/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+semun::buf	smart_home_qt_dev/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+semun::buf	smart_home_qt_phone/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+semun::buf	smart_home_qt_server/common.h	/^    struct semid_ds *buf;      \/* Buffer for IPC_STAT, IPC_SET *\/$/;"	m	union:semun	typeref:struct:semun::semid_ds	access:public
+semun::val	header/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+semun::val	smart_home_qt_dev/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+semun::val	smart_home_qt_phone/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+semun::val	smart_home_qt_server/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
 send_light	devices/lamp1.cpp	/^void send_light()$/;"	f	signature:()
 send_light	devices/lamp2.cpp	/^void send_light()$/;"	f	signature:()
 send_status_light	devices/lamp1.cpp	/^void send_status_light()$/;"	f	signature:()
@@ -346,11 +1451,11 @@ ser_ip	devices/fan.cpp	/^char ser_ip[20] = {0};$/;"	v
 ser_ip	devices/lamp1.cpp	/^char ser_ip[20] = {0};$/;"	v
 ser_ip	devices/lamp2.cpp	/^char ser_ip[20] = {0};$/;"	v
 ser_ip	devices/switch.cpp	/^char ser_ip[20] = {0};$/;"	v
-ser_ip	tags	/^ser_ip	devices\/switch.cpp	\/^char ser_ip[20] = {0};$\/;"	v$/;"	v
 ser_port	devices/fan.cpp	/^short ser_port = 0;$/;"	v
 ser_port	devices/lamp1.cpp	/^short ser_port = 0;$/;"	v
 ser_port	devices/lamp2.cpp	/^short ser_port = 0;$/;"	v
 ser_port	devices/switch.cpp	/^short ser_port = 0;$/;"	v
+ser_port	tags	/^ser_port	devices\/switch.cpp	\/^short ser_port = 0;$\/;"	v$/;"	v
 set_lamp_status	server/server.cpp	/^void set_lamp_status(unsigned char* mac, int status)$/;"	f	signature:(unsigned char* mac, int status)
 set_localaddr	header/sock_server.h	/^	void set_localaddr(int local_port);$/;"	p	class:SockServer	access:public	signature:(int local_port)
 set_localaddr	source/sock_server.cpp	/^void SockServer::set_localaddr(int local_port)$/;"	f	class:SockServer	signature:(int local_port)
@@ -358,22 +1463,66 @@ set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(int remote_port, stri
 set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(sockaddr_in remoteaddr);$/;"	p	class:SockClient	access:public	signature:(sockaddr_in remoteaddr)
 set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(int remote_port, string remote_ip)$/;"	f	class:SockClient	signature:(int remote_port, string remote_ip)
 set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(sockaddr_in remoteaddr)$/;"	f	class:SockClient	signature:(sockaddr_in remoteaddr)
+sig_recvDataOk	smart_home_qt_dev/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
+sig_recvDataOk	smart_home_qt_dev/recvmsgthread.h	/^    void sig_recvDataOk(Msgbuf* msg);$/;"	p	class:RecvMsgThread	access:public	signature:(Msgbuf* msg)
+sig_recvDataOk	smart_home_qt_phone/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
+sig_recvDataOk	smart_home_qt_phone/recvmsgthread.h	/^    void sig_recvDataOk(Msgbuf* msg);$/;"	p	class:RecvMsgThread	access:public	signature:(Msgbuf* msg)
+sig_recvDataOk	smart_home_qt_server/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
+sig_recvDataOk	smart_home_qt_server/recvmsgthread.h	/^    void sig_recvDataOk(Msgbuf* msg);$/;"	p	class:RecvMsgThread	access:public	signature:(Msgbuf* msg)
 signal_fun	server/server.cpp	/^void signal_fun(int signo) \/\/‰ø°Âè∑ÊçïËé∑ÂáΩÊï∞$/;"	f	signature:(int signo)
-sockfd	header/common.h	/^	int sockfd;$/;"	m	struct:pthread_arg	access:public
+sockfd	header/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
 sockfd	header/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
 sockfd	header/sock_client.h	/^	int sockfd;$/;"	m	class:SockClient	access:public
 sockfd	header/sock_server.h	/^	int sockfd;$/;"	m	class:SockServer	access:public
+sockfd	smart_home_qt_dev/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
+sockfd	smart_home_qt_dev/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+sockfd	smart_home_qt_phone/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
+sockfd	smart_home_qt_phone/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+sockfd	smart_home_qt_server/common.h	/^    int sockfd;$/;"	m	struct:pthread_arg	access:public
+sockfd	smart_home_qt_server/protocol.h	/^	int sockfd;$/;"	m	struct:dev_info_e	access:public
+staticMetaObject	smart_home_qt_dev/moc_mainwindow.cpp	/^const QMetaObject MainWindow::staticMetaObject = {$/;"	m	class:MainWindow	file:
+staticMetaObject	smart_home_qt_dev/moc_recvmsgthread.cpp	/^const QMetaObject RecvMsgThread::staticMetaObject = {$/;"	m	class:RecvMsgThread	file:
+staticMetaObject	smart_home_qt_phone/moc_mainwindow.cpp	/^const QMetaObject MainWindow::staticMetaObject = {$/;"	m	class:MainWindow	file:
+staticMetaObject	smart_home_qt_phone/moc_recvmsgthread.cpp	/^const QMetaObject RecvMsgThread::staticMetaObject = {$/;"	m	class:RecvMsgThread	file:
+staticMetaObject	smart_home_qt_server/moc_mainwindow.cpp	/^const QMetaObject MainWindow::staticMetaObject = {$/;"	m	class:MainWindow	file:
+staticMetaObject	smart_home_qt_server/moc_recvmsgthread.cpp	/^const QMetaObject RecvMsgThread::staticMetaObject = {$/;"	m	class:RecvMsgThread	file:
 status	header/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
 status	header/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
+status	smart_home_qt_dev/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
+status	smart_home_qt_dev/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
+status	smart_home_qt_phone/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
+status	smart_home_qt_phone/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
+status	smart_home_qt_server/protocol.h	/^	int status; \/\/0 ÂÖ≥  1 ÂºÄ$/;"	m	struct:dev_info_e	access:public
+status	smart_home_qt_server/protocol.h	/^    unsigned char status;           \/\/Áä∂ÊÄÅ$/;"	m	class:Protocol	access:public
+stringdata0	smart_home_qt_dev/moc_mainwindow.cpp	/^    char stringdata0[38];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+stringdata0	smart_home_qt_dev/moc_recvmsgthread.cpp	/^    char stringdata0[42];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+stringdata0	smart_home_qt_phone/moc_mainwindow.cpp	/^    char stringdata0[177];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+stringdata0	smart_home_qt_phone/moc_recvmsgthread.cpp	/^    char stringdata0[42];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+stringdata0	smart_home_qt_server/moc_mainwindow.cpp	/^    char stringdata0[38];$/;"	m	struct:qt_meta_stringdata_MainWindow_t	file:	access:public
+stringdata0	smart_home_qt_server/moc_recvmsgthread.cpp	/^    char stringdata0[42];$/;"	m	struct:qt_meta_stringdata_RecvMsgThread_t	file:	access:public
+switchStatusButton	smart_home_qt_phone/mainwindow.h	/^    QPushButton *switchStatusButton;$/;"	m	class:MainWindow	access:private
+switchStatusButton_click	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::switchStatusButton_click()$/;"	f	class:MainWindow	signature:()
+switchStatusButton_click	smart_home_qt_phone/mainwindow.h	/^    void switchStatusButton_click();$/;"	p	class:MainWindow	access:public	signature:()
+switch_img	smart_home_qt_dev/mainwindow.h	/^    QPixmap* switch_img;$/;"	m	class:MainWindow	access:private
+switch_img	smart_home_qt_phone/mainwindow.h	/^    QPixmap* switch_img;$/;"	m	class:MainWindow	access:private
+switch_img	smart_home_qt_server/mainwindow.h	/^    QPixmap* switch_img;$/;"	m	class:MainWindow	access:private
 switch_status	devices/switch.cpp	/^int switch_status = 0; \/\/0 ÂÖ≥ 1ÂºÄ$/;"	v
+switch_status	smart_home_qt_dev/mainwindow.h	/^    int switch_status; \/\/Êô∫ËÉΩÂºÄÂÖ≥$/;"	m	class:MainWindow	access:public
+switch_status	smart_home_qt_phone/mainwindow.h	/^    int switch_status; \/\/Êô∫ËÉΩÂºÄÂÖ≥$/;"	m	class:MainWindow	access:public
+switch_status	smart_home_qt_server/mainwindow.h	/^    int switch_status; \/\/Êô∫ËÉΩÂºÄÂÖ≥$/;"	m	class:MainWindow	access:public
 switch_status	tags	/^switch_status	devices\/switch.cpp	\/^int switch_status = 0; \\\/\\\/0 ÂÖ≥ 1ÂºÄ$\/;"	v$/;"	v
 temprature	devices/fan.cpp	/^int temprature = 10; \/\/Ê∏©Â∫¶$/;"	v
 temprature	phone/client.cpp	/^int temprature = 0;$/;"	v
 temprature	server/server.cpp	/^int temprature = 0;$/;"	v
+temprature	smart_home_qt_dev/mainwindow.h	/^    int temprature;$/;"	m	class:MainWindow	access:public
+temprature	smart_home_qt_phone/mainwindow.h	/^    int temprature;$/;"	m	class:MainWindow	access:public
+temprature	smart_home_qt_server/mainwindow.h	/^    int temprature;$/;"	m	class:MainWindow	access:public
 thread_input	phone/client.cpp	/^void *thread_input(void *arg){$/;"	f	signature:(void *arg)
 thread_input	server/server.cpp	/^void *thread_input(void *arg){$/;"	f	signature:(void *arg)
 thread_light_produce	devices/lamp1.cpp	/^void* thread_light_produce(void* args)$/;"	f	signature:(void* args)
 thread_light_produce	devices/lamp2.cpp	/^void* thread_light_produce(void* args)$/;"	f	signature:(void* args)
+thread_msg_input	phone/client.cpp	/^void* thread_msg_input(void* arg)$/;"	f	signature:(void* arg)
+thread_msg_input	server/server.cpp	/^void* thread_msg_input(void* arg) \/\/‰∏≠ÊéßÁïåÈù¢ÂèëÁªô‰∏≠Á©∫Á®ãÂ∫èÁöÑ‰ø°ÊÅØ$/;"	f	signature:(void* arg)
 thread_recv	server/server.cpp	/^void* thread_recv(void *arg)$/;"	f	signature:(void *arg)
 thread_sync_dev_online	phone/client.cpp	/^void* thread_sync_dev_online(void* arg) \/\/10sÂêåÊ≠•‰∏ÄÊ¨°$/;"	f	signature:(void* arg)
 thread_temprature_produce	devices/fan.cpp	/^void* thread_temprature_produce(void *arg)$/;"	f	signature:(void *arg)
@@ -385,19 +1534,95 @@ torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	ac
 torken	header/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
 torken	header/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
 torken	phone/client.cpp	/^char torken[20] = {0}; 	\/\/ËÆ∞ÂΩïÊú¨Ê¨°‰ºöËØùÁöÑtorken$/;"	v
+torken	smart_home_qt_dev/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+torken	smart_home_qt_dev/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+torken	smart_home_qt_dev/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
+torken	smart_home_qt_phone/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+torken	smart_home_qt_phone/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+torken	smart_home_qt_phone/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
+torken	smart_home_qt_server/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:dev_info_e	access:public
+torken	smart_home_qt_server/protocol.h	/^	unsigned char torken[20];$/;"	m	struct:phone_info_e	access:public
+torken	smart_home_qt_server/protocol.h	/^    unsigned char *torken;          \/\/ÈÄö‰ø°‰ª§Áâå$/;"	m	class:Protocol	access:public
+torken	tags	/^torken	devices\/switch.cpp	\/^unsigned char torken[20];$\/;"	v$/;"	v
 torken_len	header/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
+torken_len	smart_home_qt_dev/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
+torken_len	smart_home_qt_phone/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
+torken_len	smart_home_qt_server/protocol.h	/^    unsigned char torken_len;       \/\/‰ª§ÁâåÈïøÂ∫¶$/;"	m	class:Protocol	access:public
 transferDecode	header/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+transferDecode	smart_home_qt_dev/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+transferDecode	smart_home_qt_dev/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+transferDecode	smart_home_qt_phone/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+transferDecode	smart_home_qt_phone/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
+transferDecode	smart_home_qt_server/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
+transferDecode	smart_home_qt_server/protocol.h	/^    int transferDecode(unsigned char* buf, int length);   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf, int length)
 transferDecode	source/protocol.cpp	/^int Protocol::transferDecode(unsigned char* buf, int length)   \/\/ÂéªÈô§ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf, int length)
 transferEncode	header/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+transferEncode	smart_home_qt_dev/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+transferEncode	smart_home_qt_dev/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+transferEncode	smart_home_qt_phone/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+transferEncode	smart_home_qt_phone/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
+transferEncode	smart_home_qt_server/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
+transferEncode	smart_home_qt_server/protocol.h	/^    int transferEncode(unsigned char* buf);   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	p	class:Protocol	access:public	signature:(unsigned char* buf)
 transferEncode	source/protocol.cpp	/^int Protocol::transferEncode(unsigned char* buf)   \/\/Ê∑ªÂä†ËΩ¨‰πâÂ≠óÁ¨¶$/;"	f	class:Protocol	signature:(unsigned char* buf)
 type	header/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
-unlock	header/common.h	32;"	d
-val	header/common.h	/^	int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
-wirte_sync_unlock	server/server.cpp	/^int wirte_sync_unlock(int semid)$/;"	f	signature:(int semid)
+type	smart_home_qt_dev/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+type	smart_home_qt_phone/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+type	smart_home_qt_server/protocol.h	/^	char type[10];$/;"	m	struct:dev_info	access:public
+unlock	header/common.h	37;"	d
+unlock	smart_home_qt_dev/common.h	36;"	d
+unlock	smart_home_qt_phone/common.h	36;"	d
+unlock	smart_home_qt_server/common.h	36;"	d
+updateView	smart_home_qt_dev/mainwindow.cpp	/^void MainWindow::updateView()$/;"	f	class:MainWindow	signature:()
+updateView	smart_home_qt_dev/mainwindow.h	/^    void updateView();$/;"	p	class:MainWindow	access:public	signature:()
+updateView	smart_home_qt_phone/mainwindow.cpp	/^void MainWindow::updateView()$/;"	f	class:MainWindow	signature:()
+updateView	smart_home_qt_phone/mainwindow.h	/^    void updateView();$/;"	p	class:MainWindow	access:public	signature:()
+updateView	smart_home_qt_server/mainwindow.cpp	/^void MainWindow::updateView()$/;"	f	class:MainWindow	signature:()
+updateView	smart_home_qt_server/mainwindow.h	/^    void updateView();$/;"	p	class:MainWindow	access:public	signature:()
+val	header/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+val	smart_home_qt_dev/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+val	smart_home_qt_phone/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
+val	smart_home_qt_server/common.h	/^    int            val;    \/* Value for SETVAL *\/$/;"	m	union:semun	access:public
 write_dev_info_to_file	server/server.cpp	/^void write_dev_info_to_file(dev_info& dev)$/;"	f	signature:(dev_info& dev)
-write_lock	header/common.h	28;"	d
-write_lockw	header/common.h	30;"	d
+write_lock	header/common.h	33;"	d
+write_lock	smart_home_qt_dev/common.h	32;"	d
+write_lock	smart_home_qt_phone/common.h	32;"	d
+write_lock	smart_home_qt_server/common.h	32;"	d
+write_lockw	header/common.h	35;"	d
+write_lockw	smart_home_qt_dev/common.h	34;"	d
+write_lockw	smart_home_qt_phone/common.h	34;"	d
+write_lockw	smart_home_qt_server/common.h	34;"	d
 write_regist_info_to_file	server/server.cpp	/^void write_regist_info_to_file(phone_info& phone)$/;"	f	signature:(phone_info& phone)
+write_sync_lock	phone/client.cpp	/^int write_sync_lock(int semid)$/;"	f	signature:(int semid)
 write_sync_lock	server/server.cpp	/^int write_sync_lock(int semid)$/;"	f	signature:(int semid)
+write_sync_unlock	phone/client.cpp	/^int write_sync_unlock(int semid)$/;"	f	signature:(int semid)
+write_sync_unlock	server/server.cpp	/^int write_sync_unlock(int semid)$/;"	f	signature:(int semid)
+x	smart_home_qt_dev/images/lampImage.png	/^/;"	v
+x	smart_home_qt_phone/images/lampImage.png	/^/;"	v
+x	smart_home_qt_server/images/lampImage.png	/^/;"	v
+z	smart_home_qt_dev/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
+z	smart_home_qt_phone/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
+z	smart_home_qt_server/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
+~MainWindow	smart_home_qt_dev/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+~MainWindow	smart_home_qt_dev/mainwindow.h	/^    ~MainWindow();$/;"	p	class:MainWindow	access:public	signature:()
+~MainWindow	smart_home_qt_phone/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+~MainWindow	smart_home_qt_phone/mainwindow.h	/^    ~MainWindow();$/;"	p	class:MainWindow	access:public	signature:()
+~MainWindow	smart_home_qt_server/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
+~MainWindow	smart_home_qt_server/mainwindow.h	/^    ~MainWindow();$/;"	p	class:MainWindow	access:public	signature:()
 ~Protocol	header/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+~Protocol	smart_home_qt_dev/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+~Protocol	smart_home_qt_dev/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+~Protocol	smart_home_qt_phone/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+~Protocol	smart_home_qt_phone/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
+~Protocol	smart_home_qt_server/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+~Protocol	smart_home_qt_server/protocol.h	/^    ~Protocol();$/;"	p	class:Protocol	access:public	signature:()
 ~Protocol	source/protocol.cpp	/^Protocol::~Protocol()$/;"	f	class:Protocol	signature:()
+~RecvMsgThread	smart_home_qt_dev/recvmsgthread.cpp	/^RecvMsgThread::~RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+~RecvMsgThread	smart_home_qt_dev/recvmsgthread.h	/^    ~RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+~RecvMsgThread	smart_home_qt_phone/recvmsgthread.cpp	/^RecvMsgThread::~RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+~RecvMsgThread	smart_home_qt_phone/recvmsgthread.h	/^    ~RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+~RecvMsgThread	smart_home_qt_server/recvmsgthread.cpp	/^RecvMsgThread::~RecvMsgThread()$/;"	f	class:RecvMsgThread	signature:()
+~RecvMsgThread	smart_home_qt_server/recvmsgthread.h	/^    ~RecvMsgThread();$/;"	p	class:RecvMsgThread	access:public	signature:()
+~initializer	smart_home_qt_dev/qrc_img.cpp	/^       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)(); }$/;"	f	struct:__anon1::initializer	access:public	signature:()
+~initializer	smart_home_qt_phone/qrc_img.cpp	/^       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)(); }$/;"	f	struct:__anon2::initializer	access:public	signature:()
+~initializer	smart_home_qt_server/qrc_img.cpp	/^       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_img)(); }$/;"	f	struct:__anon3::initializer	access:public	signature:()
+~s	server/server.o	/^/;"	v

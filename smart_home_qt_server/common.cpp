@@ -13,10 +13,8 @@
 #include <sys/shm.h>
 #include <fcntl.h>
 #include <sys/socket.h>
-#include <sys/msg.h>
 
-
-#include "../header/common.h"
+#include "common.h"
 
 void err_fun(const char *file_name, const int line, const char* fun_name, int err_no)
 {
@@ -25,7 +23,7 @@ void err_fun(const char *file_name, const int line, const char* fun_name, int er
 }
 
 //创建/获取 消息队列
-int mk_get_msg(int *msgid, const char* filename ,mode_t creatmsg_mode, int proj_id)
+int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
 {
     int fd = -1;
     key_t key = -1;
@@ -51,6 +49,7 @@ int mk_get_msg(int *msgid, const char* filename ,mode_t creatmsg_mode, int proj_
 }
 
 
+
 //删除消息队列
 int rm_msg(const int msgid, const char* filename)
 {
@@ -58,7 +57,7 @@ int rm_msg(const int msgid, const char* filename)
 
     ret = msgctl(msgid, IPC_RMID, NULL);
     if(ret < 0)
-        err_fun(__FILE__, __LINE__, "msgctl", errno);
+        err_fun(__FILE__, __LINE__, "msgget", errno);
     remove(filename);
     return 1;
 }
@@ -150,7 +149,7 @@ int del_sem(const int semid, int nsems, const char* filename)
 
     for(i = 0; i < nsems; i++)
     {
-        ret = semctl(semid, i, IPC_RMID);
+        ret = semctl(semid, i, IPC_RMID, NULL);
         if(ret < 0)
             err_fun(__FILE__, __LINE__, "semctl", errno);
 

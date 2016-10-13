@@ -3,7 +3,7 @@
 
 
 #define SERPORT 5000
-#define SERADDR	"192.168.1.102"
+#define SERADDR	"192.168.1.103"
 
 #define MAX_PACKAGE_SIZE 1024
 #define MAX_MSG_SIZE 1024
@@ -42,6 +42,7 @@
 #define MSG_QTTOSERVER      3
 #define MSG_QTTOPHONE       4
 #define MSG_PHONETOQT       5
+
 
 class Protocol
 {

@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -Wall
 OBJS = ./source/socket_route.o  ./source/sock_server.o ./server/server.o ./source/protocol.o ./phone/client.o ./source/sock_client.o ./source/common.o ./devices/lamp1.o \
        ./devices/lamp2.o ./devices/fan.o ./devices/switch.o
-CLIENTOBJS = ./source/protocol.o ./phone/client.o ./source/sock_client.o ./source/socket_route.o
+CLIENTOBJS = ./source/protocol.o ./phone/client.o ./source/sock_client.o ./source/socket_route.o ./source/common.o
 SERVEROBJS =  ./source/protocol.o  ./source/socket_route.o  ./source/sock_server.o ./server/server.o ./source/sock_client.o ./source/common.o
 LAMP1OBJS = ./source/protocol.o ./source/sock_client.o ./source/socket_route.o ./devices/lamp1.o ./source/common.o
 LAMP2OBJS = ./source/protocol.o ./source/sock_client.o ./source/socket_route.o ./devices/lamp2.o ./source/common.o

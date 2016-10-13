@@ -6,9 +6,9 @@
 #include <pthread.h>
 #include <errno.h>
 
-#define MSG_FILE_DEV "./files/msgfile_dev"
-#define MSG_FILE_PHONE "./files/msgfile_phone"
-#define MSG_FILE_SERVER "./files/msgfile_server"
+#define MSG_FILE_DEV "../files/msgfile_dev"
+#define MSG_FILE_PHONE "../files/msgfile_phone"
+#define MSG_FILE_SERVER "../files/msgfile_server"
 
 #define MSG_TYPE 1
 #define MSG_SIZE 1024
@@ -17,13 +17,12 @@
 #define SHM_SIZE 1024
 
 #define SEM_FILE "./sem_file"
-#define NSEMS 2
 
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../header/protocol.h"
+#include "protocol.h"
 
 
 #define read_lock(fd, l_whence, l_offset, l_len) \

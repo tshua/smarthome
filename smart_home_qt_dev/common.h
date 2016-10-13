@@ -6,7 +6,10 @@
 #include <pthread.h>
 #include <errno.h>
 
-#define MSG_FILE "../files/msgfile"
+#define MSG_FILE_DEV "../files/msgfile_dev"
+#define MSG_FILE_PHONE "../files/msgfile_phone"
+#define MSG_FILE_SERVER "../files/msgfile_server"
+
 #define MSG_TYPE 1
 #define MSG_SIZE 1024
 
@@ -64,10 +67,10 @@ struct Msgbuf
 void err_fun(const char *file_name, const int line, const char* fun_name, int err_no);
 
 //创建/获取 消息队列
-int mk_get_msg(int *msgid, mode_t creatmsg_mode, int proj_id);
+int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id);
 
 //删除消息队列
-int rm_msg(const int msgid);
+int rm_msg(const int msgid, const char* filename);
 
 //创建/获取 共享内存
 int mk_get_shm(int *shmid, mode_t creatshm_mode, int proj_id);

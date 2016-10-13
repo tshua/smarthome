@@ -23,20 +23,20 @@ void err_fun(const char *file_name, const int line, const char* fun_name, int er
 }
 
 //创建/获取 消息队列
-int mk_get_msg(int *msgid, mode_t creatmsg_mode, int proj_id)
+int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_id)
 {
     int fd = -1;
     key_t key = -1;
-
+    *msgid = 0;
     /*创建一个新文件，新文件路径名用于生成key值，如果文件存在，
      *不报错，直接用
      * */
-    fd = open(MSG_FILE, O_CREAT, 0664);
+    fd = open(filename, O_CREAT, 0664);
     if(fd < 0 && EEXIST != errno)
         err_fun(__FILE__, __LINE__, "open", errno);
 
     /*利用文件路径和课题ID获取key*/
-    key = ftok(MSG_FILE, proj_id);
+    key = ftok(filename, proj_id);
     if(key < -1)
         err_fun(__FILE__, __LINE__, "ftok", errno);
 
@@ -49,15 +49,16 @@ int mk_get_msg(int *msgid, mode_t creatmsg_mode, int proj_id)
 }
 
 
+
 //删除消息队列
-int rm_msg(const int msgid)
+int rm_msg(const int msgid, const char* filename)
 {
     int ret = -1;
 
     ret = msgctl(msgid, IPC_RMID, NULL);
     if(ret < 0)
         err_fun(__FILE__, __LINE__, "msgget", errno);
-    remove(MSG_FILE);
+    remove(filename);
     return 1;
 }
 

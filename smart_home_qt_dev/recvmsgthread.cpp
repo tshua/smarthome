@@ -3,16 +3,18 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include <QDebug>
 
 
 RecvMsgThread::RecvMsgThread()
 {
-    mk_get_msg(&msgid, 0644, 'a');
+    mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
+    qDebug() << msgid;
 }
 
 RecvMsgThread::~RecvMsgThread()
 {
-    rm_msg(msgid);
+    //rm_msg(msgid, MSG_FILE_DEV);
 }
 
 

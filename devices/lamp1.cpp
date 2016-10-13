@@ -289,7 +289,7 @@ void* thread_light_produce(void* args)
 int main()
 {
 
-	mk_get_msg(&msgid, 0644, 'a');
+	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
 	read_server_info();
 

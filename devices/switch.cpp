@@ -27,7 +27,7 @@ int add_msg(unsigned char* buf)
 	Msgbuf msgbuf;
 	bzero(&msgbuf, sizeof(Msgbuf));
 
-	memcpy(msgbuf.mtext, "switch", 6);
+	memcpy(msgbuf.mtext, "switch1", 6);
 	memcpy(msgbuf.mtext+10, buf, 10);
 
 	msgbuf.mtype = MSG_DEVTOQT; //设置发送消息的类型           
@@ -176,7 +176,7 @@ void deal_recv_message()
 
 int main()
 {
-	mk_get_msg(&msgid, 0644, 'a');
+	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
 	read_server_info();
 

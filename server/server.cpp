@@ -4,6 +4,7 @@
 #include "../header/socket_route.h"
 #include "../header/protocol.h"
 #include "../header/common.h"
+#include <signal.h>
 #include <list>
 #include <stdlib.h>
 #include <pthread.h>
@@ -14,7 +15,6 @@
 #define DEV_REGIST "./files/DEV_REGIST"
 
 
-#define NSEMS 2
 #define SEM_FILE1 "./files/semfile1"
 #define SEM_FILE2 "./files/semfile2"
 #define SEM_FILE3 "./files/semfile3"
@@ -46,12 +46,13 @@ int semid_devfile;
 int semid_mtfile;
 int semid_devonline;
 int semid_phoneonline;
+int msgid;
+
 
 int count_devfile = 0;
 int count_mtfile = 0;
 int count_devonline = 0;
 int count_phoneonline = 0;
-
 
 
 
@@ -114,6 +115,8 @@ void signal_fun(int signo) //信号捕获函数
 	del_sem(semid_devonline, NSEMS, SEM_FILE3);
 	
 	del_sem(semid_phoneonline, NSEMS, SEM_FILE4);
+
+	rm_msg(msgid, MSG_FILE_PHONE); //删除消息队列
 	exit(-1);
 
 }
@@ -177,6 +180,7 @@ int search_dev_from_dev_online(unsigned char *mac) //返回对应的套接字描
 		cout << "step in" << endl;
 		if(strncmp((char*)mac, it->d.mac, 8) == 0)
 		{
+			read_sync_unlock(semid_devonline, count_devonline);
 			return it->sockfd;
 		}
 
@@ -255,14 +259,14 @@ void write_regist_info_to_file(phone_info& phone)
 
 void write_dev_info_to_file(dev_info& dev)
 {
-	write_sync_lock(semid_devfile);
 	if(!search_dev(dev))
 	{
+		write_sync_lock(semid_devfile);
 		FILE *fp = fopen(DEV_REGIST, "a");
 		fprintf(fp, "%s %s %s\n", dev.mac, dev.type, dev.name); 
 		fclose(fp);
+		write_sync_unlock(semid_devfile);
 	}
-	write_sync_unlock(semid_devfile);
 }
 
 void set_lamp_status(unsigned char* mac, int status)
@@ -273,7 +277,7 @@ void set_lamp_status(unsigned char* mac, int status)
 
 	for ( it = dev_online.begin() ; it != dev_online.end(); it++  )
 	{
-		if(strcmp( (char*)it->d.mac, (char*)mac) == 0)
+		if(strncmp( (char*)it->d.mac, (char*)mac, 8) == 0)
 		{
 			it->status = status;
 		}
@@ -444,8 +448,8 @@ void* thread_recv(void *arg)
 						dev_info_e dev_e;
 						memcpy(dev_e.d.mac, p.data, 8);
 						dev_e.sockfd = client.sockfd;
-						dev_e.status = 0;
-						dev_e.lamp_auto = 0;
+						dev_e.status = 0; 	// 默认状态 关闭
+						dev_e.lamp_auto = 0; 	//手动
 						if(search_dev(dev_e.d)) //查找成功
 						{
 							make_torken(dev_e.torken);
@@ -509,8 +513,38 @@ void* thread_recv(void *arg)
 							{
 								sock_tmp.sockfd = sfd;
 							}
-							sock_tmp._send(buf);
+							sock_tmp._send(buf); //转发命令
+	
 
+							//把服务器中该设备的状态更改
+							write_sync_lock(semid_devonline);
+							list<dev_info_e>::iterator it = dev_online.begin();
+							for(; it != dev_online.end(); it++)
+							{
+								if(strncmp((char*)p.device_id, it->d.mac, 8) == 0)
+								{
+
+									if(strcmp((char*)p.data, "off") == 0)
+									{
+										it->status = 0;
+									}
+									if(strcmp((char*)p.data, "on") == 0)
+									{
+										it->status = 1;
+									}
+									if(strcmp((char*)(p.data), "auto") == 0)
+									{
+										it->lamp_auto = 1;
+									}
+									if(strcmp((char*)p.data, "manual") == 0)
+									{
+										it->lamp_auto = 0;
+									}
+								}
+							}
+							write_sync_unlock(semid_devonline);
+
+							//应答，设置成功
 							p1.package_header = 0x55;
 							p1.cmd_type = 0x0B;
 							p1.cmd = RES;                     //应答
@@ -617,7 +651,7 @@ void *thread_input(void *arg){
 		if(c == 'p')
 		{
 			i = 0;
-			
+
 			read_sync_lock(semid_devonline, count_devonline);
 
 			list<dev_info_e>::iterator it = dev_online.begin();
@@ -961,9 +995,16 @@ void *thread_input(void *arg){
 	}
 }
 
+void* thread_msg_input(void* arg) //中控界面发给中空程序的信息
+{
+
+}	
 
 int main()
 {
+	signal(SIGINT, signal_fun);
+	mk_get_msg(&msgid, MSG_FILE_SERVER, 0644, 'a');
+
 	SockServer s(SERPORT);
 	Protocol p;
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -977,27 +1018,18 @@ int main()
 
 	pthread_t thread_id;
 	pthread_create(&thread_id, NULL, thread_input, NULL);//输入控制数据线程
+
+
+	//打开接收消息队列信息的线程
+	pthread_create(&thread_id, NULL, thread_msg_input, NULL);
+
+
 	while(1)
 	{
 		int clnfd = s._accept();
 
 		//打开处理线程
 		pthread_create(&thread_id, NULL, thread_recv, &clnfd);
-
-
-
-		//int ret;
-		//bool res = RecvPacket(clnfd, buf);
-		////int ret = recv(clnfd, buf, sizeof(buf), 0);
-		//cout << res  <<endl;
-		//
-		//p.parse_buf(buf);
-		//
-		////buf[0] = 0x66;
-		//ret = p.CRC_16(buf);
-		//
-		//cout << "CRC result" << ret <<endl;
-
 	}
 }
 

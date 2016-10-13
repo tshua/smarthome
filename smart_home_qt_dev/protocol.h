@@ -40,6 +40,8 @@
 #define MSG_DEVTOQT         1
 #define MSG_SERVERTOQT      2
 #define MSG_QTTOSERVER      3
+#define MSG_QTTOPHONE       4
+#define MSG_PHONETOQT       5
 
 
 class Protocol
