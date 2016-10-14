@@ -1014,7 +1014,7 @@ void* thread_msg_input(void* arg)
 				}
 			}
 		}
-		else if(strcmp(msg.mtext, "fan") == 0 || strcmp(msg.mtext, "switch") == 0)
+		else if(strncmp(msg.mtext, "fan", 3) == 0 || strncmp(msg.mtext, "switch", 6) == 0)
 		{
 			if(strcmp(msg.mtext+10, "on") == 0)
 			{
@@ -1068,7 +1068,7 @@ void* thread_msg_input(void* arg)
 				}
 
 			}
-			if(strcmp(msg.mtext+10, "on") == 0)
+			else if(strcmp(msg.mtext+10, "off") == 0)
 			{
 
 				cout << dev.d.mac << endl;

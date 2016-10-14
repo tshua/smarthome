@@ -349,7 +349,7 @@ void MainWindow::lamp2ModeButton_click()
 void MainWindow::fanStatusButton_click()
 {
     char cmd[20] = {0};
-    memcpy(cmd, "fan", 3);
+    memcpy(cmd, "fan1", 4);
     memcpy(cmd+10, fan_status?"off":"on", fan_status?3:2);
 
     addMsg(recvThread->getMsgId(), cmd, 20);
@@ -358,7 +358,7 @@ void MainWindow::fanStatusButton_click()
 void MainWindow::switchStatusButton_click()
 {
     char cmd[20] = {0};
-    memcpy(cmd, "switch", 6);
+    memcpy(cmd, "switch1", 7);
     memcpy(cmd+10, switch_status?"off":"on", switch_status?3:2);
 
     addMsg(recvThread->getMsgId(), cmd, 20);
