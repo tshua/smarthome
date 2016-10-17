@@ -3,6 +3,7 @@
 #include "../header/common.h"
 #include "../header/socket_route.h"
 
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
@@ -40,6 +41,14 @@ int add_msg(unsigned char* buf)
 	if(ret < 0)
 		return -1;
 	return 1;
+}
+
+void sig_fun(int signo) {
+
+	unsigned char content[10] = "logout";
+	add_msg(content);
+
+	exit(0);
 }
 
 void read_server_info()
@@ -92,6 +101,9 @@ void dev_login()
 		{
 			cout << "longin success!" << endl;
 			memcpy(torken, p.torken, 20);
+			
+			unsigned char content[10] = "login";
+			add_msg(content);
 		}
 		else
 		{
@@ -224,6 +236,7 @@ void* thread_temprature_produce(void *arg)
 
 int main()
 {
+	signal(SIGINT, sig_fun);
 
 	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 

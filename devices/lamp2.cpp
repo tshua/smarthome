@@ -3,6 +3,7 @@
 #include "../header/common.h"
 #include "../header/socket_route.h"
 
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
@@ -27,13 +28,13 @@ dev_info dev;
 int msgid;
 
 
-
 int add_msg(unsigned char* buf)
 {
+	cout << buf << endl;
 	Msgbuf msgbuf;
 	bzero(&msgbuf, sizeof(Msgbuf));
 
-	memcpy(msgbuf.mtext, "lamp1", 5);
+	memcpy(msgbuf.mtext, "lamp2", 5);
 	memcpy(msgbuf.mtext+10, buf, 10);
 
 	msgbuf.mtype = MSG_DEVTOQT; //设置发送消息的类型           
@@ -43,6 +44,14 @@ int add_msg(unsigned char* buf)
 	if(ret < 0)
 		return -1;
 	return 1;
+}
+
+void sig_fun(int signo) {
+
+	unsigned char content[10] = "logout";
+	add_msg(content);
+
+	exit(0);
 }
 
 void read_server_info()
@@ -102,6 +111,9 @@ void dev_login()
 		}	
 
 	}
+	unsigned char content[10] = "login";
+
+	add_msg(content); //发送登录成功的消息
 }
 void deal_recv_message()
 {
@@ -290,6 +302,7 @@ void* thread_light_produce(void* args)
 
 int main()
 {
+	signal(SIGINT, sig_fun);
 
 	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
