@@ -10,5 +10,7 @@
         <file>rightArrow.png</file>
         <file>switch_off.png</file>
         <file>switch_on.png</file>
+        <file>vv.jpg</file>
+        <file>xx.jpg</file>
     </qresource>
 </RCC>

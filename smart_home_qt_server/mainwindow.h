@@ -10,6 +10,7 @@ QT_BEGIN_NAMESPACE
 class QLabel;
 class QPixmap;
 class QGridLayout;
+class QPushButton;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -33,10 +34,20 @@ public:
 
     int switch_status; //智能开关
 
+
+
     void updateView();
+    int addMsg(int msgid, const char* buf, int size);
 
 public slots:
     void deal_recvData(Msgbuf* msg);
+
+    void lamp1StatusButton_click();
+    void lamp1ModeButton_click();
+    void lamp2StatusButton_click();
+    void lamp2ModeButton_click();
+    void fanStatusButton_click();
+    void switchStatusButton_click();
 
 private:
     QLabel* label_lamp1_status;
@@ -57,9 +68,17 @@ private:
     QLabel* label_switch_status;
     QPixmap* switch_img;
 
+    QPushButton *lamp1StatusButton;
+    QPushButton *lamp1ModeButton;
+
+    QPushButton *lamp2StatusButton;
+    QPushButton *lamp2ModeButton;
+
+    QPushButton *fanStatusButton;
+
+    QPushButton *switchStatusButton;
 
     RecvMsgThread* recvThread;
-
 };
 
 #endif // MAINWINDOW_H

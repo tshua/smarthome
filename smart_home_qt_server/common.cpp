@@ -27,7 +27,7 @@ int mk_get_msg(int *msgid, const char* filename, mode_t creatmsg_mode, int proj_
 {
     int fd = -1;
     key_t key = -1;
-
+    *msgid = -1;
     /*创建一个新文件，新文件路径名用于生成key值，如果文件存在，
      *不报错，直接用
      * */

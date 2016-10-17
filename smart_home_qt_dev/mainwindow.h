@@ -43,20 +43,23 @@ private:
     QLabel* label_light1;
     QLabel* label_lamp1_mode;
     QPixmap* lamp1_img;
+    bool is_lamp1_online; //lamp1是否在线
 
     QLabel* label_lamp2_status;
     QLabel* label_light2;
     QLabel* label_lamp2_mode;
     QPixmap* lamp2_img;
+    bool is_lamp2_online; //lamp2是否在线
 
     QLabel* label_fan_status;
     QLabel* label_fan_img;
     QLabel* label_tempruature;
     QPixmap* fan_img;
+    bool is_fan_online; //fan是否在线
 
     QLabel* label_switch_status;
     QPixmap* switch_img;
-
+    bool is_switch_online; //开关是否在线
 
     RecvMsgThread* recvThread;
 

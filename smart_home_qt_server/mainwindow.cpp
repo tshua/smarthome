@@ -2,9 +2,15 @@
 #include <QtWidgets>
 #include <QDebug>
 
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+
     //lamp1 start
     lamp1_status = 0; // 0关 1开
     lamp1_mode = 0;   //0手动 1自动
@@ -20,10 +26,16 @@ MainWindow::MainWindow(QWidget *parent)
     label_lamp1_status->setAlignment(Qt::AlignCenter);
     label_lamp1_status->setPixmap(*lamp1_img);
 
+    lamp1StatusButton = new QPushButton(lamp1_status?"关闭":"打开");
+    lamp1ModeButton = new QPushButton(lamp1_mode?"手动":"自动");
+
     QVBoxLayout* label_lamp1_Layout = new QVBoxLayout();
     label_lamp1_Layout->addWidget(label_light1);
     label_lamp1_Layout->addWidget(label_lamp1_mode);
+    label_lamp1_Layout->addWidget(lamp1StatusButton);
+    label_lamp1_Layout->addWidget(lamp1ModeButton);
     //lamp1 end
+
 
     //lamp2 start
     lamp2_status = 0; // 0关 1开
@@ -40,9 +52,15 @@ MainWindow::MainWindow(QWidget *parent)
     label_lamp2_status->setAlignment(Qt::AlignCenter);
     label_lamp2_status->setPixmap(*lamp2_img);
 
+
+    lamp2StatusButton = new QPushButton(lamp2_status?"关闭":"打开");
+    lamp2ModeButton = new QPushButton(lamp2_mode?"手动":"自动");
+
     QVBoxLayout* label_lamp2_Layout = new QVBoxLayout();
     label_lamp2_Layout->addWidget(label_light2);
     label_lamp2_Layout->addWidget(label_lamp2_mode);
+    label_lamp2_Layout->addWidget(lamp2StatusButton);
+    label_lamp2_Layout->addWidget(lamp2ModeButton);
     //lamp2 end
 
     //fan start
@@ -59,9 +77,12 @@ MainWindow::MainWindow(QWidget *parent)
     label_fan_img->setAlignment(Qt::AlignCenter);
     label_fan_img->setPixmap(*fan_img);
 
+    fanStatusButton = new QPushButton(fan_status?"关闭":"打开");
+
     QVBoxLayout* label_fan_Layout = new QVBoxLayout();
     label_fan_Layout->addWidget(label_fan_status);
     label_fan_Layout->addWidget(label_tempruature);
+    label_fan_Layout->addWidget(fanStatusButton);
     //fan end
 
     //switch start
@@ -73,6 +94,9 @@ MainWindow::MainWindow(QWidget *parent)
     *switch_img = switch_img->scaled(lampStatusLabelWidth, lampStatusLabelHeight, Qt::KeepAspectRatio);
     label_switch_status->setAlignment(Qt::AlignCenter);
     label_switch_status->setPixmap(*switch_img);
+    switchStatusButton = new QPushButton(switch_status?"关闭":"打开");
+    QVBoxLayout* label_switch_Layout = new QVBoxLayout();
+    label_switch_Layout->addWidget(switchStatusButton);
     //switch end
 
 
@@ -89,7 +113,7 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addLayout(label_fan_Layout,1, 1, Qt::AlignCenter);
 
     mainLayout->addWidget(label_switch_status,1,2);
-    //mainLayout->addLayout(label_switch_Layout,1, 3, Qt::AlignTop);
+    mainLayout->addLayout(label_switch_Layout,1, 3, Qt::AlignCenter);
     //! [grid layout]
 
 
@@ -98,12 +122,22 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(widget);
 
     widget->setLayout(mainLayout);
-    setWindowTitle(tr("LAMP"));
+    setWindowTitle(tr("SERVERE"));
 
     recvThread = new RecvMsgThread();
     connect(recvThread, SIGNAL(sig_recvDataOk(Msgbuf*)), this, SLOT(deal_recvData(Msgbuf*)));
     recvThread->start();
 
+
+    connect(lamp1StatusButton, SIGNAL(clicked(bool)), this, SLOT(lamp1StatusButton_click()));
+    connect(lamp1ModeButton, SIGNAL(clicked(bool)), this, SLOT(lamp1ModeButton_click()));
+
+    connect(lamp2StatusButton, SIGNAL(clicked(bool)), this, SLOT(lamp2StatusButton_click()));
+    connect(lamp2ModeButton, SIGNAL(clicked(bool)), this, SLOT(lamp2ModeButton_click()));
+
+    connect(fanStatusButton, SIGNAL(clicked(bool)), this, SLOT(fanStatusButton_click()));
+
+    connect(switchStatusButton, SIGNAL(clicked(bool)), this, SLOT(switchStatusButton_click()));
 }
 
 MainWindow::~MainWindow()
@@ -180,7 +214,7 @@ void MainWindow::deal_recvData(Msgbuf* msg)
             }
         }
     }
-    else if(!strcmp(msg->mtext, "fan"))
+    else if(!strcmp(msg->mtext, "fan1"))
     {
         if(!strcmp(msg->mtext+10, "on"))
         {
@@ -195,7 +229,7 @@ void MainWindow::deal_recvData(Msgbuf* msg)
             temprature = atoi(msg->mtext+10);
         }
     }
-    else if(!strcmp(msg->mtext, "switch"))
+    else if(!strcmp(msg->mtext, "switch1"))
     {
         if(!strcmp(msg->mtext+10, "on"))
         {
@@ -206,6 +240,8 @@ void MainWindow::deal_recvData(Msgbuf* msg)
             switch_status = 0;
         }
     }
+
+    delete msg; //在
 
     updateView();
 }
@@ -262,5 +298,95 @@ void MainWindow::updateView()
     *switch_img = switch_img->scaled(lampStatusLabelWidth, lampStatusLabelHeight, Qt::KeepAspectRatio);
     label_switch_status->setPixmap(*switch_img);
 
+    lamp1StatusButton->setText(lamp1_status?"关闭":"打开");
+    lamp1ModeButton->setText(lamp1_mode?"手动":"自动");
 
+    lamp2StatusButton->setText(lamp2_status?"关闭":"打开");
+    lamp2ModeButton->setText(lamp2_mode?"手动":"自动");
+
+    fanStatusButton->setText(fan_status?"关闭":"打开");
+    switchStatusButton->setText(switch_status?"关闭":"打开");
+
+}
+
+
+void MainWindow::lamp1StatusButton_click()
+{
+    if(lamp1_mode == 1)
+    {
+        QMessageBox::information(this, tr("提示"), tr("请先关闭自动模式！"));
+        return ;
+    }
+    char cmd[20] = {0};
+    memcpy(cmd, "lamp1", 5);
+    memcpy(cmd+10, lamp1_status?"off":"on", lamp1_status?3:2);
+
+    addMsg(recvThread->getMsgId(), cmd, 20);
+}
+
+void MainWindow::lamp1ModeButton_click()
+{
+    char cmd[20] = {0};
+    memcpy(cmd, "lamp1", 5);
+    memcpy(cmd+10, lamp1_mode?"manual":"auto", lamp1_mode?6:4);
+
+    addMsg(recvThread->getMsgId(), cmd, 20);
+}
+
+void MainWindow::lamp2StatusButton_click()
+{
+    if(lamp2_mode == 1)
+    {
+        QMessageBox::information(this, tr("提示"), tr("请先关闭自动模式！"));
+        return ;
+    }
+    char cmd[20] = {0};
+    memcpy(cmd, "lamp2", 5);
+    memcpy(cmd+10, lamp2_status?"off":"on", lamp2_status?3:2);
+
+    addMsg(recvThread->getMsgId(), cmd, 20);
+}
+
+void MainWindow::lamp2ModeButton_click()
+{
+    char cmd[20] = {0};
+    memcpy(cmd, "lamp2", 5);
+    memcpy(cmd+10, lamp2_mode?"manual":"auto", lamp2_mode?6:4);
+
+    addMsg(recvThread->getMsgId(), cmd, 20);
+}
+
+void MainWindow::fanStatusButton_click()
+{
+    char cmd[20] = {0};
+    memcpy(cmd, "fan1", 4);
+    memcpy(cmd+10, fan_status?"off":"on", fan_status?3:2);
+
+    addMsg(recvThread->getMsgId(), cmd, 20);
+}
+
+void MainWindow::switchStatusButton_click()
+{
+    char cmd[20] = {0};
+    memcpy(cmd, "switch1", 7);
+    memcpy(cmd+10, switch_status?"off":"on", switch_status?3:2);
+
+    addMsg(recvThread->getMsgId(), cmd, 20);
+
+}
+
+int MainWindow::addMsg(int msgid, const char* buf, int size)
+{
+            Msgbuf msgbuf;
+            bzero(&msgbuf, sizeof(Msgbuf));
+
+            memcpy(msgbuf.mtext, buf, size);
+
+            msgbuf.mtype = MSG_QTTOSERVER; //设置发送消息的类型
+
+            int ret = msgsnd(msgid, (void *)&msgbuf, size, 0); //阻塞发送消息
+
+            if(ret < 0)
+                    return -1;
+            return 1;
 }

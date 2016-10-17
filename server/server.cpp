@@ -4,6 +4,9 @@
 #include "../header/socket_route.h"
 #include "../header/protocol.h"
 #include "../header/common.h"
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
 #include <signal.h>
 #include <list>
 #include <stdlib.h>
@@ -40,7 +43,8 @@ list<phone_info_e> phone_online;
 list<dev_info_e> dev_online;
 
 int temprature = 0;
-int light = 0;
+int light1 = 0;
+int light2 = 0;
 
 int semid_devfile;
 int semid_mtfile;
@@ -64,7 +68,7 @@ int init_sem()
 
 	get_sem(&semid_mtfile, SEM_FILE2, NSEMS, 'a', 0664);
 	for(int i=0; i<NSEMS; i++) init_sem(semid_mtfile, i, 1);
-	
+
 	get_sem(&semid_devonline, SEM_FILE3, NSEMS, 'a', 0664);
 	for(int i=0; i<NSEMS; i++) init_sem(semid_devonline, i, 1);
 
@@ -111,14 +115,31 @@ void signal_fun(int signo) //信号捕获函数
 	del_sem(semid_devfile, NSEMS, SEM_FILE1); //删除信号量
 
 	del_sem(semid_mtfile, NSEMS, SEM_FILE2); 
-	
+
 	del_sem(semid_devonline, NSEMS, SEM_FILE3);
-	
+
 	del_sem(semid_phoneonline, NSEMS, SEM_FILE4);
 
 	rm_msg(msgid, MSG_FILE_PHONE); //删除消息队列
 	exit(-1);
 
+}
+
+int add_msg(unsigned char* buf, int size)
+{
+	Msgbuf msgbuf;
+	bzero(&msgbuf, sizeof(Msgbuf));
+
+	memcpy(msgbuf.mtext, buf, size);
+
+	msgbuf.mtype = MSG_SERVERTOQT; //设置发送消息的类型           
+
+	cout << "msg" << buf << " "<<  buf+10 << endl;
+	int ret = msgsnd(msgid, (void *)&msgbuf, size, 0); //阻塞发送消息
+
+	if(ret < 0)
+		return -1;
+	return 1;
 }
 
 int search_phone(phone_info& p)
@@ -186,7 +207,7 @@ int search_dev_from_dev_online(unsigned char *mac) //返回对应的套接字描
 
 	}
 
-	
+
 	read_sync_unlock(semid_devonline, count_devonline);
 	return -1;
 }
@@ -194,7 +215,7 @@ int search_dev_from_dev_online(unsigned char *mac) //返回对应的套接字描
 int search_phone_from_phone_online(phone_info_e& phone_e) 
 {
 	read_sync_lock(semid_phoneonline, count_phoneonline);
-	
+
 	int find_ok = 0;
 	list<phone_info_e>::iterator it = phone_online.begin();
 	for(; it != phone_online.end(); it++)
@@ -293,6 +314,7 @@ void* thread_recv(void *arg)
 	client.sockfd = clnfd;
 
 	unsigned char buf[MAX_PACKAGE_SIZE];
+	unsigned char msg_data[20] = {0};
 	Protocol p1;
 	Protocol p;
 
@@ -485,9 +507,42 @@ void* thread_recv(void *arg)
 
 						break;
 
-					case STATUS_LIGHT:
-						light = atoi((char*)p.data);
-						cout << "new light data:"<< light << endl;
+					case STATUS_LIGHT: //光强 on/off device_id
+						{
+							read_sync_lock(semid_devonline, count_devonline);
+
+							list<dev_info_e>::iterator it = dev_online.begin();
+							for(; it != dev_online.end(); it++)
+							{
+								if(strncmp((char*)p.device_id, it->d.mac, 8) == 0)
+								{
+									if(strcmp(it->d.name, "lamp1") == 0)
+									{
+										light1 = atoi((char*)p.data);
+										cout << "new light data:"<< light1 << endl;
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, p.data, 10);
+										add_msg(msg_data, 20);
+									}
+									else if(strcmp(it->d.name, "lamp2") == 0)
+									{
+										light2 = atoi((char*)p.data);
+										cout << "new light data:"<< light2 << endl;
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, p.data, 10);
+										add_msg(msg_data, 20);
+									}
+									break;
+								}
+
+							}
+							read_sync_unlock(semid_devonline, count_devonline);
+						}
+
+						//light = atoi((char*)p.data);
+						//cout << "new light data:"<< light << endl;
 						if(strcmp((char*)(p.data+10), "on") == 0)
 						{
 							set_lamp_status(p.device_id, 1);
@@ -498,12 +553,58 @@ void* thread_recv(void *arg)
 						}
 						break;
 					case LIGHT:
-						light = atoi((char*)p.data);
-						cout << "new light data:"<< light << endl;
+						{
+							read_sync_lock(semid_devonline, count_devonline);
+
+							list<dev_info_e>::iterator it = dev_online.begin();
+							for(; it != dev_online.end(); it++)
+							{
+								if(strncmp((char*)p.device_id, it->d.mac, 8) == 0)
+								{
+									if(strcmp(it->d.name, "lamp1") == 0)
+									{
+										light1 = atoi((char*)p.data);
+										cout << "new light data:"<< light1 << endl;
+										
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, p.data, 10);
+										add_msg(msg_data, 20);
+
+									}
+									else if(strcmp(it->d.name, "lamp2") == 0)
+									{
+										light2 = atoi((char*)p.data);
+										cout << "new light data:"<< light2 << endl;
+										
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, p.data, 10);
+										add_msg(msg_data, 20);
+
+									}
+									break;
+
+								}
+
+
+							}
+							read_sync_unlock(semid_devonline, count_devonline);
+
+							//light = atoi((char*)p.data);
+							//cout << "new light data:"<< light << endl;
+						}
 						break;
 					case TEMPRATURE:
-						temprature = atoi((char*)p.data);
-						cout << "new temprature data:" << temprature << endl;
+						{
+							temprature = atoi((char*)p.data);
+							cout << "new temprature data:" << temprature << endl;
+
+							bzero(msg_data, 20);
+							memcpy(msg_data, "fan1", 4);
+							memcpy(msg_data + 10, p.data, 10);
+							add_msg(msg_data, 20);
+						}
 						break;
 					case CONTRL_DEV_CMD: //根据mac找到设备，直接把控制命令转发
 						{
@@ -514,11 +615,12 @@ void* thread_recv(void *arg)
 								sock_tmp.sockfd = sfd;
 							}
 							sock_tmp._send(buf); //转发命令
-	
+
 
 							//把服务器中该设备的状态更改
 							write_sync_lock(semid_devonline);
 							list<dev_info_e>::iterator it = dev_online.begin();
+							unsigned char msg_data[20] = {0};
 							for(; it != dev_online.end(); it++)
 							{
 								if(strncmp((char*)p.device_id, it->d.mac, 8) == 0)
@@ -527,18 +629,38 @@ void* thread_recv(void *arg)
 									if(strcmp((char*)p.data, "off") == 0)
 									{
 										it->status = 0;
+
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, "off", 3);
+										add_msg(msg_data, 20);
+
 									}
 									if(strcmp((char*)p.data, "on") == 0)
 									{
 										it->status = 1;
+
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, "on", 2);
+										add_msg(msg_data, 20);
 									}
 									if(strcmp((char*)(p.data), "auto") == 0)
 									{
 										it->lamp_auto = 1;
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, "auto", 4);
+										add_msg(msg_data, 20);
+
 									}
 									if(strcmp((char*)p.data, "manual") == 0)
 									{
 										it->lamp_auto = 0;
+										bzero(msg_data, 20);
+										memcpy(msg_data, it->d.name, 10);
+										memcpy(msg_data + 10, "manual", 6);
+										add_msg(msg_data, 20);
 									}
 								}
 							}
@@ -588,7 +710,7 @@ void* thread_recv(void *arg)
 
 							p1.extend_info[0] = dev_online.size();
 
-							p1.data = new unsigned char[sizeof(dev_info_e)*dev_online.size()];
+							p1.data = new unsigned char[sizeof(dev_info_e)*dev_online.size() +30 ]; //后30个字节包括光照1、光照2、温度
 
 							unsigned char* pos = p1.data;
 							//dev_info_e tmp;
@@ -600,9 +722,14 @@ void* thread_recv(void *arg)
 								pos += sizeof(dev_info_e);
 								dev_it++;
 							}
+
+							sprintf((char*)pos, "%d", light1);
+							sprintf((char*)pos+10, "%d", light2);
+							sprintf((char*)pos+20, "%d", temprature);
+
 							p1.package_tail = 0x55;
 
-							len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + sizeof(dev_info_e)*dev_online.size(); 
+							len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + sizeof(dev_info_e)*dev_online.size() + 30; 
 							p1.len_low = len & 0x0ff;
 							p1.len_high = len >> 8;
 
@@ -627,6 +754,7 @@ void output_select()
 {
 	cout << "p/print the devs." << endl;
 }
+
 void output_select_lamp()
 {
 	cout << "on/for open." << endl;
@@ -641,6 +769,8 @@ void output_select_fan_swutch()
 }
 void *thread_input(void *arg){
 	unsigned char buf[MAX_PACKAGE_SIZE];
+	unsigned char msg_data[20] = {0};
+
 	SockClient client;
 	char c;
 	string option;
@@ -723,6 +853,10 @@ void *thread_input(void *arg){
 						{
 							cout << "recv ack!" << endl;
 							it->status = 1;
+							bzero(msg_data, 20);
+							memcpy(msg_data, it->d.name, 10);
+							memcpy(msg_data + 10, "on", 2);
+							add_msg(msg_data, 20);
 						}
 
 					}
@@ -774,6 +908,10 @@ void *thread_input(void *arg){
 						{
 							cout << "recv ack!" << endl;
 							it->status = 0;
+							bzero(msg_data, 20);
+							memcpy(msg_data, it->d.name, 10);
+							memcpy(msg_data + 10, "off", 3);
+							add_msg(msg_data, 20);
 						}
 
 					}
@@ -824,6 +962,10 @@ void *thread_input(void *arg){
 						{
 							cout << "recv ack!" << endl;
 							it->lamp_auto = 1;
+							bzero(msg_data, 20);
+							memcpy(msg_data, it->d.name, 10);
+							memcpy(msg_data + 10, "auto", 4);
+							add_msg(msg_data, 20);
 						}
 
 					}
@@ -874,6 +1016,10 @@ void *thread_input(void *arg){
 						{
 							cout << "recv ack!" << endl;
 							it->lamp_auto = 0;
+							bzero(msg_data, 20);
+							memcpy(msg_data, it->d.name, 10);
+							memcpy(msg_data + 10, "manual", 6);
+							add_msg(msg_data, 20);
 						}
 
 					}
@@ -930,6 +1076,11 @@ void *thread_input(void *arg){
 						{
 							cout << "recv ack!" << endl;
 							it->status = 1;
+
+							bzero(msg_data, 20);
+							memcpy(msg_data, it->d.name, 10);
+							memcpy(msg_data + 10, "on", 2);
+							add_msg(msg_data, 20);
 						}
 
 					}
@@ -981,6 +1132,10 @@ void *thread_input(void *arg){
 						{
 							cout << "recv ack!" << endl;
 							it->status = 0;
+							bzero(msg_data, 20);
+							memcpy(msg_data, it->d.name, 10);
+							memcpy(msg_data + 10, "off", 3);
+							add_msg(msg_data, 20);
 						}
 
 					}
@@ -995,16 +1150,479 @@ void *thread_input(void *arg){
 	}
 }
 
-void* thread_msg_input(void* arg) //中控界面发给中空程序的信息
+
+int search_dev_from_dev_online(dev_info_e& dev_e) //根据名称查询所有的设备信息
 {
 
+	read_sync_lock(semid_devonline, count_devonline);
+
+	int find_ok = 0;
+	list<dev_info_e>::iterator it = dev_online.begin();
+	for(; it != dev_online.end(); it++)
+	{
+		if(strcmp((char*)dev_e.d.name, it->d.name) == 0)
+		{
+			memcpy(&dev_e, &(*it), sizeof(dev_info_e));
+			find_ok = 1;
+			break;
+		}
+	}
+
+
+	read_sync_unlock(semid_devonline, count_devonline);
+	return find_ok;
+}
+
+void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
+{
+	unsigned char buf[MAX_PACKAGE_SIZE];
+	unsigned char msg_data[20] = {0};
+	SockClient client;
+	Msgbuf msg;
+	while(1)
+	{
+		cout << 4 << endl;
+		bzero(&msg, sizeof(Msgbuf));
+		
+		cout << 5 << endl;
+		int ret = msgrcv(msgid, (void *)&msg, MAX_MSG_SIZE, MSG_QTTOSERVER, 0); //阻塞接收消息
+
+		cout << 6 << endl;
+		if(ret < 0)
+			err_fun(__FILE__, __LINE__, "msgrcv", errno);
+		cout << "recv a msg from qt phone " << msg.mtext << endl;
+		cout << "recv a msg from qt phone " << msg.mtext +10 << endl;
+
+		dev_info_e dev;
+		memcpy(dev.d.name, msg.mtext, 10);
+		if(!search_dev_from_dev_online(dev))
+			continue;
+		client.sockfd = dev.sockfd;
+		if(strncmp(msg.mtext, "lamp", 4) == 0)
+		{
+
+			if(strcmp(msg.mtext+10, "on") == 0)
+			{
+				cout << dev.d.mac << endl;
+				cout << "torken" << dev.torken <<endl;
+				cout << "send on lamp!" << endl;
+				Protocol p1;
+
+				p1.package_header = 0x55;
+				p1.cmd_type = 0x0B;
+				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
+				memcpy(p1.device_id, dev.d.mac, 8);
+
+
+				p1.torken_len = 20;
+				p1.torken = new unsigned char[p1.torken_len];
+				memcpy(p1.torken, dev.torken, 20);
+
+				p1.data = new unsigned char[10];
+				memset(p1.data, 0, 10);
+				memcpy(p1.data, "on", 2); 
+
+				p1.package_tail = 0x55;
+
+				int len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10; 
+				p1.len_low = len & 0x0ff;
+				p1.len_high = len >> 8;
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.fill_buf(buf);        //CRC16校验
+				p1.CRC_16(buf);
+				p1.fill_buf(buf);
+				client._send(buf);
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.clean_data();
+				if(RecvPacket(client.sockfd, buf))
+				{
+					p1.parse_buf(buf);
+					if(strcmp((char*)p1.data, "success") == 0)
+					{
+						cout << "recv ack!" << endl;
+
+						//把服务器中该设备的状态更改
+						write_sync_lock(semid_devonline);
+						list<dev_info_e>::iterator it = dev_online.begin();
+						for(; it != dev_online.end(); it++)
+						{
+							if(strncmp((char*)dev.d.mac, it->d.mac, 8) == 0)
+							{
+								it->status = 1;
+								bzero(msg_data, 20);
+								memcpy(msg_data, it->d.name, 10);
+								memcpy(msg_data + 10, "on", 2);
+								add_msg(msg_data, 20);
+							}
+						}
+						write_sync_unlock(semid_devonline);
+						//it->status = 1;
+
+					}
+
+				}
+				else
+				{
+					cout << "set lamp error!" << endl;
+				}
+
+			}
+			if(strcmp(msg.mtext+10, "off") == 0)
+			{
+
+				cout << dev.d.mac << endl;
+				cout << "torken" << dev.torken <<endl;
+				cout << "send off lamp!" << endl;
+				Protocol p1;
+
+				p1.package_header = 0x55;
+				p1.cmd_type = 0x0B;
+				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
+				memcpy(p1.device_id, dev.d.mac, 8);
+
+				p1.torken_len = 20;                       //无torken
+				p1.torken = new unsigned char[p1.torken_len];
+				memcpy(p1.torken, dev.torken, 20);
+
+				p1.data = new unsigned char[10];
+				memset(p1.data, 0, 10);
+				memcpy(p1.data, "off", 3); 
+
+				p1.package_tail = 0x55;
+
+				int len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10; 
+				p1.len_low = len & 0x0ff;
+				p1.len_high = len >> 8;
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.fill_buf(buf);        //CRC16校验
+				p1.CRC_16(buf);
+				p1.fill_buf(buf);
+				client._send(buf);
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.clean_data();
+				if(RecvPacket(client.sockfd, buf))
+				{
+					p1.parse_buf(buf);
+					if(strcmp((char*)p1.data, "success") == 0)
+					{
+						cout << "recv ack!" << endl;
+
+						//把服务器中该设备的状态更改
+						write_sync_lock(semid_devonline);
+						list<dev_info_e>::iterator it = dev_online.begin();
+						for(; it != dev_online.end(); it++)
+						{
+							if(strncmp((char*)dev.d.mac, it->d.mac, 8) == 0)
+							{
+								it->status = 0;
+								bzero(msg_data, 20);
+								memcpy(msg_data, it->d.name, 10);
+								memcpy(msg_data + 10, "off", 3);
+								add_msg(msg_data, 20);
+							}
+						}
+						write_sync_unlock(semid_devonline);
+						//it->status = 0;
+					}
+				}
+				else
+				{
+					cout << "set lamp error!" << endl;
+				}
+			}
+			if(strcmp(msg.mtext+10, "auto") == 0)
+			{
+
+				cout << dev.d.mac << endl;
+				cout << "torken" << dev.torken <<endl;
+				cout << "auto lamp!" << endl;
+				Protocol p1;
+
+				p1.package_header = 0x55;
+				p1.cmd_type = 0x0B;
+				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
+				memcpy(p1.device_id, dev.d.mac, 8);
+
+				p1.torken_len = 20;                       //无torken
+				p1.torken = new unsigned char[p1.torken_len];
+				memcpy(p1.torken, dev.torken, 20);
+
+				p1.data = new unsigned char[10];
+				memset(p1.data, 0, 10);
+				memcpy(p1.data, "auto", 4); 
+
+				p1.package_tail = 0x55;
+
+				int len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10; 
+				p1.len_low = len & 0x0ff;
+				p1.len_high = len >> 8;
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.fill_buf(buf);        //CRC16校验
+				p1.CRC_16(buf);
+				p1.fill_buf(buf);
+				client._send(buf);
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.clean_data();
+				cout << "a" << endl;
+				if(RecvPacket(client.sockfd, buf))
+				{
+					cout << "b" << endl;
+					p1.parse_buf(buf);
+					if(strcmp((char*)p1.data, "success") == 0)
+					{
+						cout << "recv ack!" << endl;
+
+						//把服务器中该设备的状态更改
+						write_sync_lock(semid_devonline);
+						list<dev_info_e>::iterator it = dev_online.begin();
+						for(; it != dev_online.end(); it++)
+						{
+							if(strncmp((char*)dev.d.mac, it->d.mac, 8) == 0)
+							{
+								it->lamp_auto = 1;
+								bzero(msg_data, 20);
+								memcpy(msg_data, it->d.name, 10);
+								memcpy(msg_data + 10, "auto", 4);
+								add_msg(msg_data, 20);
+							}
+						}
+						write_sync_unlock(semid_devonline);
+
+						//it->lamp_auto = 1;
+					}
+
+				}
+				else
+				{
+					cout << "set auto error!" << endl;
+				}
+				cout << 1 << endl;
+			}
+			if(strcmp(msg.mtext+10, "manual") == 0)
+			{
+
+				cout << dev.d.mac << endl;
+				cout << "torken" << dev.torken <<endl;
+				cout << "send manual lamp!" << endl;
+				Protocol p1;
+
+				p1.package_header = 0x55;
+				p1.cmd_type = 0x0B;
+				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
+				memcpy(p1.device_id, dev.d.mac, 8);
+
+				p1.torken_len = 20;                       //无torken
+				p1.torken = new unsigned char[p1.torken_len];
+				memcpy(p1.torken, dev.torken, 20);
+
+				p1.data = new unsigned char[10];
+				memset(p1.data, 0, 10);
+				memcpy(p1.data, "manual", 6); 
+
+				p1.package_tail = 0x55;
+
+				int len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10; 
+				p1.len_low = len & 0x0ff;
+				p1.len_high = len >> 8;
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.fill_buf(buf);        //CRC16校验
+				p1.CRC_16(buf);
+				p1.fill_buf(buf);
+				client._send(buf);
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.clean_data();
+				if(RecvPacket(client.sockfd, buf))
+				{
+					p1.parse_buf(buf);
+					if(strcmp((char*)p1.data, "success") == 0)
+					{
+						cout << "recv ack!" << endl;
+
+						//把服务器中该设备的状态更改
+						write_sync_lock(semid_devonline);
+						list<dev_info_e>::iterator it = dev_online.begin();
+						for(; it != dev_online.end(); it++)
+						{
+							if(strncmp((char*)dev.d.mac, it->d.mac, 8) == 0)
+							{
+								it->lamp_auto = 0;
+								bzero(msg_data, 20);
+								memcpy(msg_data, it->d.name, 10);
+								memcpy(msg_data + 10, "manual", 6);
+								add_msg(msg_data, 20);
+							}
+						}
+						write_sync_unlock(semid_devonline);
+
+						//it->lamp_auto = 0;
+					}
+
+				}
+				else
+				{
+					cout << "set manual error!" << endl;
+				}
+			}
+			cout << 2 << endl;
+		}
+		else if(strncmp(msg.mtext, "fan", 3) == 0 || strncmp(msg.mtext, "switch", 6) == 0)
+		{
+			if(strcmp(msg.mtext+10, "on") == 0)
+			{
+
+				cout << dev.d.mac << endl;
+				cout << "torken" << dev.torken <<endl;
+				cout << "send on fan/switch!" << endl;
+				Protocol p1;
+
+				p1.package_header = 0x55;
+				p1.cmd_type = 0x0B;
+				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
+
+				memcpy(p1.device_id, dev.d.mac, 8);
+
+				p1.torken_len = 20;
+				p1.torken = new unsigned char[p1.torken_len];
+				memcpy(p1.torken, dev.torken, 20);
+
+				p1.data = new unsigned char[10];
+				memset(p1.data, 0, 10);
+				memcpy(p1.data, "on", 2); 
+
+				p1.package_tail = 0x55;
+
+				int len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10; 
+				p1.len_low = len & 0x0ff;
+				p1.len_high = len >> 8;
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.fill_buf(buf);        //CRC16校验
+				p1.CRC_16(buf);
+				p1.fill_buf(buf);
+				client._send(buf);
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.clean_data();
+				if(RecvPacket(client.sockfd, buf))
+				{
+					p1.parse_buf(buf);
+					if(strcmp((char*)p1.data, "success") == 0)
+					{
+						cout << "recv ack!" << endl;
+
+						//把服务器中该设备的状态更改
+						write_sync_lock(semid_devonline);
+						list<dev_info_e>::iterator it = dev_online.begin();
+						for(; it != dev_online.end(); it++)
+						{
+							if(strncmp((char*)dev.d.mac, it->d.mac, 8) == 0)
+							{
+								it->status = 1;
+								bzero(msg_data, 20);
+								memcpy(msg_data, it->d.name, 10);
+								memcpy(msg_data + 10, "on", 2);
+								add_msg(msg_data, 20);
+							}
+						}
+						write_sync_unlock(semid_devonline);
+						//it->status = 1;
+					}
+
+				}
+				else
+				{
+					cout << "set fan/switch error!" << endl;
+				}
+
+			}
+			else if(strcmp(msg.mtext+10, "off") == 0)
+			{
+
+				cout << dev.d.mac << endl;
+				cout << "torken" << dev.torken <<endl;
+				cout << "send off fan/switch!" << endl;
+				Protocol p1;
+
+				p1.package_header = 0x55;
+				p1.cmd_type = 0x0B;
+				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
+
+				memcpy(p1.device_id, dev.d.mac, 8);
+
+				p1.torken_len = 20;                       
+				p1.torken = new unsigned char[p1.torken_len];
+				memcpy(p1.torken, dev.torken, 20);
+
+				p1.data = new unsigned char[10];
+				memset(p1.data, 0, 10);
+				memcpy(p1.data, "off", 3); 
+
+				p1.package_tail = 0x55;
+
+				int len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10; 
+				p1.len_low = len & 0x0ff;
+				p1.len_high = len >> 8;
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.fill_buf(buf);        //CRC16校验
+				p1.CRC_16(buf);
+				p1.fill_buf(buf);
+				client._send(buf);
+
+				bzero(buf, MAX_PACKAGE_SIZE);
+				p1.clean_data();
+				cout << "a" << endl;
+				if(RecvPacket(client.sockfd, buf))
+				{
+					cout << "b" << endl;
+					p1.parse_buf(buf);
+					if(strcmp((char*)p1.data, "success") == 0)
+					{
+						cout << "recv ack!" << endl;
+
+						//把服务器中该设备的状态更改
+						write_sync_lock(semid_devonline);
+						list<dev_info_e>::iterator it = dev_online.begin();
+						for(; it != dev_online.end(); it++)
+						{
+							if(strncmp((char*)dev.d.mac, it->d.mac, 8) == 0)
+							{
+								it->status = 0;
+								bzero(msg_data, 20);
+								memcpy(msg_data, it->d.name, 10);
+								memcpy(msg_data + 10, "off", 3);
+								add_msg(msg_data, 20);
+							}
+						}
+						write_sync_unlock(semid_devonline);
+						//it->status = 0;
+					}
+
+				}
+				else
+				{
+					cout << "set fan/switch error!" << endl;
+				}
+			}
+		}
+
+		cout << 3 << endl;
+	}
 }	
 
 int main()
 {
 	signal(SIGINT, signal_fun);
 	mk_get_msg(&msgid, MSG_FILE_SERVER, 0644, 'a');
-
+	cout << "msgid:" << msgid << endl;
 	SockServer s(SERPORT);
 	Protocol p;
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};

@@ -2,6 +2,7 @@
 #include "../header/socket_route.h"
 #include <time.h>
 #include "../header/protocol.h"
+#include <unistd.h>
 #include <sys/select.h>
 #include <sys/socket.h>
 #include <string.h>
@@ -83,6 +84,7 @@ int RecvData(int hSocket,unsigned char *lpData,unsigned int dwSize)
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 bool RecvPacket(int hSocket,unsigned char *lpBuffer)
 {
+	usleep(1000); //延时1000ms之后再进行接收
 	int dwReturn = false,iRemain, data_len;
 
 	unsigned char *lpContent;

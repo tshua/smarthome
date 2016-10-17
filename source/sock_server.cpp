@@ -5,7 +5,8 @@
 SockServer::SockServer()
 {
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-
+	int on = 1, ret = -1;
+	ret = setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)  );
 	bzero(&remoteaddr, sizeof(remoteaddr));
 	bzero(&localaddr, sizeof(localaddr));
 }
@@ -13,6 +14,8 @@ SockServer::SockServer()
 SockServer::SockServer(int local_port)
 {
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	int on = 1, ret = -1;
+	ret = setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)  );
 
 	bzero(&remoteaddr, sizeof(remoteaddr));
 

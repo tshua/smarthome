@@ -28,7 +28,8 @@ int msgid;
 list<dev_info_e> dev_online;
 
 int temprature = 0;
-int light = 0;
+int light1 = 0;
+int light2 = 0;
 SockClient client;
 
 int semid_phone_dev_online; //用于控制phone端设备信息读写同步的信号量
@@ -392,8 +393,26 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 					memcpy(msg_data + 10, dev_e.lamp_auto?"auto\0\0":"manual", 6);
 					add_msg(msg_data, 20);
 				}
-			}	
+			}
 
+			light1 = atoi((char*)pos);
+			bzero(msg_data, 20);
+			memcpy(msg_data, "lamp1", 5);
+			memcpy(msg_data+10, pos, 10);
+			add_msg(msg_data, 20);
+
+			light2 = atoi((char*)(pos + 10));
+			bzero(msg_data, 20);
+			memcpy(msg_data, "lamp2", 5);
+			memcpy(msg_data+10, pos+10, 10);
+			add_msg(msg_data, 20);
+
+			temprature = atoi((char*)(pos + 20));
+			bzero(msg_data, 20);
+			memcpy(msg_data, "fan1", 10);
+			memcpy(msg_data+10, pos+20, 10);
+			add_msg(msg_data, 20);
+			
 			write_sync_unlock(semid_phone_dev_online);
 		}
 		else
@@ -403,7 +422,7 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 
 		//add_msg(p.data, p.extend_info[0]*sizeof(dev_info_e));
 
-		sleep(3);
+		sleep(1);
 	}
 }
 

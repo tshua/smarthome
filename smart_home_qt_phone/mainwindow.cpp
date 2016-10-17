@@ -312,6 +312,12 @@ void MainWindow::updateView()
 
 void MainWindow::lamp1StatusButton_click()
 {
+
+    if(lamp1_mode == 1)
+    {
+        QMessageBox::information(this, tr("提示"), tr("请先关闭自动模式！"));
+        return ;
+    }
     char cmd[20] = {0};
     memcpy(cmd, "lamp1", 5);
     memcpy(cmd+10, lamp1_status?"off":"on", lamp1_status?3:2);
@@ -330,6 +336,12 @@ void MainWindow::lamp1ModeButton_click()
 
 void MainWindow::lamp2StatusButton_click()
 {
+    if(lamp2_mode == 1)
+    {
+        QMessageBox::information(this, tr("提示"), tr("请先关闭自动模式！"));
+        return ;
+    }
+
     char cmd[20] = {0};
     memcpy(cmd, "lamp2", 5);
     memcpy(cmd+10, lamp2_status?"off":"on", lamp2_status?3:2);

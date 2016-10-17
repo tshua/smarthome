@@ -3,16 +3,18 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
-
+#include <QDebug>
+#include <common.h>
 
 RecvMsgThread::RecvMsgThread()
 {
-    mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
+    mk_get_msg(&msgid, MSG_FILE_SERVER, 0644, 'a');
+    qDebug()<< msgid;
 }
 
 RecvMsgThread::~RecvMsgThread()
 {
-    rm_msg(msgid, MSG_FILE_DEV);
+    //rm_msg(msgid, MSG_FILE_PHONE);
 }
 
 
@@ -30,10 +32,13 @@ void RecvMsgThread::run()
 {
     while(true)
     {
-        int ret = msgrcv(msgid, (void *)&msg, MAX_MSG_SIZE, MSG_DEVTOQT, 0); //阻塞接收消息
+        int ret = msgrcv(msgid, (void *)&msg, MAX_MSG_SIZE, MSG_SERVERTOQT, 0); //阻塞接收消息
         if(ret < 0)
             err_fun(__FILE__, __LINE__, "msgrcv", errno);
         else
-            emit sig_recvDataOk(&msg);
+        {
+            Msgbuf* pmsg = new Msgbuf(msg);//默认构造函数
+            emit sig_recvDataOk(pmsg);
+        }
     }
 }

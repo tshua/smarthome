@@ -459,6 +459,8 @@ qrc_img.cpp: images/img.qrc \
 		images/switch_on.png \
 		images/lampoffbtn.png \
 		images/switch_off.png \
+		images/xx.jpg \
+		images/vv.jpg \
 		images/leftArrow.png
 	/usr/lib/qt/bin/rcc -name img images/img.qrc -o qrc_img.cpp
 

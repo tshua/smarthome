@@ -68,7 +68,11 @@ void Protocol::clean_data()
 	memset(this->device_id, 0, 8); 
 
 	this->torken_len        = 0; 
-
+	
+	if(torken_len  > 0 && torken != NULL)
+		delete torken;
+	if(data != NULL)
+		delete data;
 	this->torken            = NULL;
 
 	this->data              = NULL;
@@ -172,7 +176,7 @@ int Protocol::parse_buf(unsigned char* buf) //解析buf，将buf中数据转换�
 	this->torken = new unsigned char[this->torken_len];
 	memcpy(this->torken, &(buf[20]), this->torken_len);
 
-	this->data = new unsigned char[this->len_low + this->len_high*256 - PACKAGE_LEN_EXCEPT_DATA];
+	this->data = new unsigned char[this->len_low + this->len_high*256 - PACKAGE_LEN_EXCEPT_DATA - this->torken_len];
 	memcpy(this->data, buf + 20 + this->torken_len, this->len_low + this->len_high*256 - PACKAGE_LEN_EXCEPT_DATA - this->torken_len);
 
 	int pos = 20 + this->torken_len + this->len_low + this->len_high*256 - PACKAGE_LEN_EXCEPT_DATA - this->torken_len;//当前buf的位置

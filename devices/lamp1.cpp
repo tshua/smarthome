@@ -153,7 +153,6 @@ void deal_recv_message()
 							lamp_mode = 0;
 							cout << "manual mode" << endl;
 						}
-						add_msg(p.data);
 
 						p1.package_header = 0x55;
 						p1.cmd_type = 0x0B;
@@ -179,6 +178,7 @@ void deal_recv_message()
 						p1.fill_buf(buf);
 						client._send(buf);
 
+						add_msg(p.data);
 						break;
 				}
 			}
@@ -245,6 +245,8 @@ void send_light()
 	p.cmd_type = 0x0B;
 	p.cmd = LIGHT; 		//光照信息
 
+	memcpy(p.device_id, dev.mac,8);//device id
+	
 	p.torken_len = 1; 			//无torken
 	p.torken = new unsigned char[p.torken_len];
 	p.torken[0] = -1;
