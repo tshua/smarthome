@@ -15,6 +15,8 @@
 #include <sys/socket.h>
 #include <sys/msg.h>
 
+#include <iostream>
+using namespace std;
 
 #include "../header/common.h"
 
@@ -142,19 +144,22 @@ int init_sem(const int semid, int semnum, int value)//信号量的fd，信号量
     return 1;
 }
 
-
 //删除sem
 int del_sem(const int semid, int nsems, const char* filename)
 {
+	
+    union semun sem_union;
     int ret = -1,i = 0;
 
-    for(i = 0; i < nsems; i++)
-    {
-        ret = semctl(semid, i, IPC_RMID);
-        if(ret < 0)
-            err_fun(__FILE__, __LINE__, "semctl", errno);
+    //cout << "nsems" << nsems << endl;
+    //for(i = 0; i < nsems; i++)
+    //{
+    //cout << i << endl;
+    ret = semctl(semid, i, IPC_RMID, sem_union);
+    if(ret < 0)
+	    err_fun(__FILE__, __LINE__, "semctl", errno);
 
-    }
+    //}
 
     remove(filename);
 

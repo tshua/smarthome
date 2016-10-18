@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtCore -I. -I/usr/lib/qt/mkspecs/linux-g++
+INCPATH       = -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -52,17 +52,21 @@ SOURCES       = main.cpp \
 		mainwindow.cpp \
 		common.cpp \
 		protocol.cpp \
-		recvmsgthread.cpp qrc_img.cpp \
+		recvmsgthread.cpp \
+		logindialog.cpp qrc_img.cpp \
 		moc_mainwindow.cpp \
-		moc_recvmsgthread.cpp
+		moc_recvmsgthread.cpp \
+		moc_logindialog.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		common.o \
 		protocol.o \
 		recvmsgthread.o \
+		logindialog.o \
 		qrc_img.o \
 		moc_mainwindow.o \
-		moc_recvmsgthread.o
+		moc_recvmsgthread.o \
+		moc_logindialog.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -170,11 +174,13 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		smart_home_phone.pro mainwindow.h \
 		common.h \
 		protocol.h \
-		recvmsgthread.h main.cpp \
+		recvmsgthread.h \
+		logindialog.h main.cpp \
 		mainwindow.cpp \
 		common.cpp \
 		protocol.cpp \
-		recvmsgthread.cpp
+		recvmsgthread.cpp \
+		logindialog.cpp
 QMAKE_TARGET  = smart_home
 DESTDIR       = 
 TARGET        = smart_home
@@ -183,7 +189,7 @@ TARGET        = smart_home
 first: all
 ####### Build rules
 
-$(TARGET):  $(OBJECTS)  
+$(TARGET): ui_logindialog.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: smart_home_phone.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -420,8 +426,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents images/img.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h common.h protocol.h recvmsgthread.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp common.cpp protocol.cpp recvmsgthread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h common.h protocol.h recvmsgthread.h logindialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp common.cpp protocol.cpp recvmsgthread.cpp logindialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents logindialog.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -464,9 +471,9 @@ qrc_img.cpp: images/img.qrc \
 		images/leftArrow.png
 	/usr/lib/qt/bin/rcc -name img images/img.qrc -o qrc_img.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_recvmsgthread.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_recvmsgthread.cpp moc_logindialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_recvmsgthread.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_recvmsgthread.cpp moc_logindialog.cpp
 moc_mainwindow.cpp: recvmsgthread.h \
 		common.h \
 		protocol.h \
@@ -480,24 +487,34 @@ moc_recvmsgthread.cpp: common.h \
 		/usr/lib/qt/bin/moc
 	/usr/lib/qt/bin/moc $(DEFINES) -I/usr/lib/qt/mkspecs/linux-g++ -I/home/tshua/project_qst/smart_home/smart_home_qt_phone -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/6.2.1 -I/usr/include/c++/6.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/6.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include-fixed -I/usr/include recvmsgthread.h -o moc_recvmsgthread.cpp
 
+moc_logindialog.cpp: logindialog.h \
+		/usr/lib/qt/bin/moc
+	/usr/lib/qt/bin/moc $(DEFINES) -I/usr/lib/qt/mkspecs/linux-g++ -I/home/tshua/project_qst/smart_home/smart_home_qt_phone -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/6.2.1 -I/usr/include/c++/6.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/6.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include-fixed -I/usr/include logindialog.h -o moc_logindialog.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all:
+compiler_uic_make_all: ui_logindialog.h
 compiler_uic_clean:
+	-$(DEL_FILE) ui_logindialog.h
+ui_logindialog.h: logindialog.ui \
+		/usr/lib/qt/bin/uic
+	/usr/lib/qt/bin/uic logindialog.ui -o ui_logindialog.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_rcc_clean compiler_moc_header_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
 main.o: main.cpp mainwindow.h \
 		recvmsgthread.h \
 		common.h \
-		protocol.h
+		protocol.h \
+		logindialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -518,6 +535,10 @@ recvmsgthread.o: recvmsgthread.cpp recvmsgthread.h \
 		protocol.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o recvmsgthread.o recvmsgthread.cpp
 
+logindialog.o: logindialog.cpp logindialog.h \
+		ui_logindialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o logindialog.o logindialog.cpp
+
 qrc_img.o: qrc_img.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_img.o qrc_img.cpp
 
@@ -526,6 +547,9 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_recvmsgthread.o: moc_recvmsgthread.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_recvmsgthread.o moc_recvmsgthread.cpp
+
+moc_logindialog.o: moc_logindialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_logindialog.o moc_logindialog.cpp
 
 ####### Install
 

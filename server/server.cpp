@@ -60,7 +60,7 @@ int count_phoneonline = 0;
 
 
 
-int init_sem()
+static int init_sem()
 {
 	/*get_sem(&semid, SEM_FILE, NSEMS, 'a', 0664);*/
 	get_sem(&semid_devfile, SEM_FILE1, NSEMS, 'a', 0664); //2个双态信号量, 0代表count可操作  1代表可以写
@@ -123,7 +123,12 @@ void signal_fun(int signo) //信号捕获函数
 
 		del_sem(semid_phoneonline, NSEMS, SEM_FILE4);
 
-		rm_msg(msgid, MSG_FILE_PHONE); //删除消息队列
+		rm_msg(msgid, MSG_FILE_SERVER); //删除消息队列
+
+		
+		mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a'); //释放设备的消息队列
+		rm_msg(msgid, MSG_FILE_DEV);
+
 		exit(0);
 
 	}
@@ -150,43 +155,43 @@ int add_msg(unsigned char* buf, int size)
 	return 1;
 }
 
-int rmdev_from_list(clnfd)
+int rmdev_from_list(int clnfd)
 {
 	int rm_ok = 0;
-	write_sync_lock(semid_devonline, count_devonline);
+	write_sync_lock(semid_devonline);
 
 	list<dev_info_e>::iterator it = dev_online.begin();
 	for(; it != dev_online.end(); it++)
 	{
 		if(clnfd == it->sockfd)
 		{
-			dev_online.remove_if(dev_rm_fun);
+			dev_online.erase(it);
 			rm_ok = 1;
 			break;
 		}
 	}
 
-	write_sync_unlock(semid_devonline, count_devonline);
+	write_sync_unlock(semid_devonline);
 
 	return rm_ok;
 }
 
-int rmphone_from_list(clnfd)//从在线设备列表中移除该设备
+int rmphone_from_list(int clnfd)//从在线设备列表中移除该设备
 {
 	int rm_ok = 0; 
-	write_sync_lock(semid_phoneonline, count_phoneonline);
+	write_sync_lock(semid_phoneonline);
 
 	list<phone_info_e>::iterator it = phone_online.begin();
 	for(; it != phone_online.end(); it++)
 	{
-		if(clnfd == it->sockfd)
+		if(clnfd == it->p.is_regist)
 		{
-			phone_online.remove_if(phone_rm_fun);
+			phone_online.erase(it);
 			rm_ok = 1; 
 			break;
 		}
 	}
-	write_sync_unlock(semid_phoneonline, count_phoneonline);
+	write_sync_unlock(semid_phoneonline);
 
 	return rm_ok;
 }
@@ -393,6 +398,7 @@ void* thread_recv(void *arg)
 						if(search_phone(phone_e.p)) //查找成功
 						{
 							make_torken(phone_e.torken);
+							phone_e.p.is_regist = clnfd; //这一个标志位在服务器没有意义，用来记录手机的socket fd
 							insert_online_mt(phone_e);
 
 							bzero(buf, MAX_PACKAGE_SIZE);

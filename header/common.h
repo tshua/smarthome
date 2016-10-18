@@ -16,7 +16,7 @@
 #define SHM_FILE "./shmfile"
 #define SHM_SIZE 1024
 
-#define SEM_FILE "./sem_file"
+#define SEM_FILE "./files/sem_file"
 #define NSEMS 2
 
 #include <unistd.h>

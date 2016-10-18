@@ -16,12 +16,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     common.cpp \
     protocol.cpp \
-    recvmsgthread.cpp
+    recvmsgthread.cpp \
+    logindialog.cpp
 
 HEADERS  += mainwindow.h \
     common.h \
     protocol.h \
-    recvmsgthread.h
+    recvmsgthread.h \
+    logindialog.h
 
 RESOURCES += \
     images/img.qrc
+
+FORMS += \
+    logindialog.ui

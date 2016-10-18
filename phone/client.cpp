@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include <signal.h>
 #include <pthread.h>
 #include <iostream>
 using namespace std;
@@ -1166,8 +1167,27 @@ void* thread_msg_input(void* arg)
 
 
 
+void signal_fun(int signo) //信号捕获函数
+{
+	if(SIGINT == signo)
+	{
+		del_sem(semid_phone_dev_online, NSEMS, SEM_FILE); //删除信号量
+
+		rm_msg(msgid, MSG_FILE_PHONE);
+		exit(0);
+	}
+	else if(SIGPIPE == signo)
+	{
+		cout << "sigpipe" << endl;
+	}
+}
+
 int main(void)
 {	
+	signal(SIGINT, signal_fun);
+	signal(SIGPIPE, signal_fun);
+
+
 	mk_get_msg(&msgid, MSG_FILE_PHONE, 0644, 'a');
 	cout << "msgid" << msgid << endl;
 
