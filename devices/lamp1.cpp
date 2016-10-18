@@ -5,6 +5,8 @@
 
 #include <signal.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include <unistd.h>
@@ -14,6 +16,7 @@ using namespace std;
 
 #define SER_INFO "./files/SER_IP_PORT"
 #define LAMP1 "./files/DEV/dev1"
+#define DEV_LED1 "/sys/devices/platform/x210-led/led1"
 
 int lamp_mode = 0;// 0手动  1自动
 int lamp_status = 0; //0 灭 1亮
@@ -115,6 +118,24 @@ void dev_login()
 
 	add_msg(content); //发送登录成功的消息
 }
+
+void lighten_led1(int *lamp_status)
+{
+        int fd;
+        fd = open(DEV_LED1, O_RDWR);
+        if(fd < 0)
+        {
+                printf("open error\n");
+		exit(-1);
+        }
+
+        if(*lamp_status == 1)   write(fd, "1", 1);
+        else if(*lamp_status == 0) write(fd, "0", 1);
+
+        close(fd);
+
+}
+
 void deal_recv_message()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE];
@@ -147,11 +168,13 @@ void deal_recv_message()
 						if(strcmp((char*)p.data, "off") == 0)
 						{
 							lamp_status = 0;
+                            lighten_led1(&lamp_status);
 							cout << "lamp off" <<endl;
 						}
 						if(strcmp((char*)p.data, "on") == 0)
 						{
 							lamp_status = 1;
+                            lighten_led1(&lamp_status);
 							cout << "lamp open" <<endl;
 						}
 						if(strcmp((char*)(p.data), "auto") == 0)
@@ -231,10 +254,16 @@ void send_status_light()
 	srand(time(NULL));
 	light = rand()%100 + 1;
 	if(light > 50)
+    {
 		lamp_status = 0;
-	else
-		lamp_status = 1;
+        lighten_led1(&lamp_status);
 
+    }
+	else
+    {
+		lamp_status = 1;
+        lighten_led1(&lamp_status);
+    }
 
 	Protocol p;
 	p.package_header = 0x55;
