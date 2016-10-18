@@ -121,23 +121,49 @@ MainWindow::MainWindow(QWidget *parent)
     label_switch_Layout->addWidget(switchStatusButton);
     //switch end
 
+    dev_info = "";
+    phone_info = "";
+    label_dev_info = new QLabel(this);
+    label_dev_info->setText(dev_info);
+    label_phone_info = new QLabel(this);
+    label_phone_info->setText(phone_info);
 
 
     //! [grid layout]
-    QGridLayout* mainLayout = new QGridLayout();
-    mainLayout->addWidget(label_lamp1_status,0,0);
-    mainLayout->addLayout(label_lamp1_Layout,0, 1, Qt::AlignCenter);
+    QGridLayout* devLayout = new QGridLayout();
+    devLayout->addWidget(label_lamp1_status,0,0);
+    devLayout->addLayout(label_lamp1_Layout,0, 1, Qt::AlignCenter);
 
-    mainLayout->addWidget(label_lamp2_status,0,2);
-    mainLayout->addLayout(label_lamp2_Layout,0, 3, Qt::AlignCenter);
+    devLayout->addWidget(label_lamp2_status,0,2);
+    devLayout->addLayout(label_lamp2_Layout,0, 3, Qt::AlignCenter);
 
-    mainLayout->addWidget(label_fan_img,1,0);
-    mainLayout->addLayout(label_fan_Layout,1, 1, Qt::AlignCenter);
+    devLayout->addWidget(label_fan_img,1,0);
+    devLayout->addLayout(label_fan_Layout,1, 1, Qt::AlignCenter);
 
-    mainLayout->addWidget(label_switch_status,1,2);
-    mainLayout->addLayout(label_switch_Layout,1, 3, Qt::AlignCenter);
+    devLayout->addWidget(label_switch_status,1,2);
+    devLayout->addLayout(label_switch_Layout,1, 3, Qt::AlignCenter);
     //! [grid layout]
 
+    QHBoxLayout* phoneLayout = new QHBoxLayout();
+    phoneLayout->addWidget(label_phone_info);
+
+    QHBoxLayout* devInfoLayout = new QHBoxLayout();
+    devInfoLayout->addWidget(label_dev_info);
+
+    QGroupBox *group_dev = new QGroupBox(tr("devices"));
+    group_dev->setLayout(devLayout);
+    QGroupBox *group_phone = new QGroupBox(tr("register phone"));
+    group_phone->setLayout(phoneLayout);
+    QGroupBox *group_mt_info = new QGroupBox(tr("register devices_info"));
+    group_mt_info->setLayout(devInfoLayout);
+
+    QVBoxLayout* rightLayout = new QVBoxLayout();
+    rightLayout->addWidget(group_phone);
+    rightLayout->addWidget(group_mt_info);
+
+    QHBoxLayout* mainLayout = new QHBoxLayout();
+    mainLayout->addWidget(group_dev);
+    mainLayout->addLayout(rightLayout);
 
 
     QWidget* widget = new QWidget();
@@ -294,6 +320,33 @@ void MainWindow::deal_recvData(Msgbuf* msg)
             is_switch_online = false;
         }
     }
+    else if(!strcmp(msg->mtext, "phone"))
+    {
+        phone_info += "phone number:";
+        phone_info += (msg->mtext+ 10);
+        phone_info += "  "; //num 20字节
+        phone_info += "phone name:";
+        phone_info += (msg->mtext+ 30);
+        phone_info += "\r\n"; //phone_name 10字节
+    }
+    else if(!strcmp(msg->mtext, "dev"))
+    {
+        dev_info += "device name:";
+        dev_info +=  (msg->mtext + 29);
+        dev_info += "  "; //name
+        dev_info += "mac address:";
+        dev_info += (msg->mtext + 10);
+        dev_info += "  "; //mac
+        dev_info += "device type:";
+        dev_info += (msg->mtext + 19);
+        dev_info += "\r\n"; //type
+
+    }
+    else if(!strcmp(msg->mtext, "cleandata"))
+    {
+        dev_info = "";
+        phone_info = "";
+    }
 
     delete msg; //在
 
@@ -387,6 +440,9 @@ void MainWindow::updateView()
 
     fanStatusButton->setText(fan_status?"关闭":"打开");
     switchStatusButton->setText(switch_status?"关闭":"打开");
+
+    label_phone_info->setText(phone_info);
+    label_dev_info->setText(dev_info);
 
 }
 

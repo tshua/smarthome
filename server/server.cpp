@@ -79,6 +79,7 @@ static int init_sem()
 
 }
 
+
 //读与读同步,读与写互斥
 int write_sync_lock(int semid)
 {
@@ -155,6 +156,46 @@ int add_msg(unsigned char* buf, int size)
 	return 1;
 }
 
+void send_regist_msg()//向qt界面发送已经注册的设备和手机信息
+{
+	unsigned char msg_data[sizeof(phone_info) + 10] = {0};
+
+	read_sync_lock(semid_mtfile, count_mtfile);             //设置读mt文件
+	FILE *fp = fopen(MT_REGIST, "r");
+
+	phone_info phone;
+	while(fscanf(fp, "%s %s %s %s\n", phone.phone_num, phone.phone_name,\
+				phone.password, phone.mail) != EOF) 
+	{
+		{
+			bzero(msg_data, sizeof(phone_info) + 10);
+			memcpy(msg_data, "phone", 5);
+			memcpy(msg_data + 10, &phone, sizeof(phone));
+
+			add_msg(msg_data, sizeof(phone) + 10);
+		}
+	}
+
+	fclose(fp);
+	read_sync_unlock(semid_mtfile, count_mtfile);
+
+	read_sync_lock(semid_devfile, count_devfile);
+	fp = fopen(DEV_REGIST, "r");
+
+	dev_info dev; 
+	while(fscanf(fp, "%s %s %s\n", dev.mac, dev.type, dev.name) != EOF) 
+	{
+		bzero(msg_data, sizeof(phone_info) + 10);
+		memcpy(msg_data, "dev", 3);
+		memcpy(msg_data + 10, &dev, sizeof(dev));
+
+		add_msg(msg_data, sizeof(dev_info) + 10);
+	}
+
+	fclose(fp);
+	read_sync_unlock(semid_devfile, count_devfile);
+}
+
 int rmdev_from_list(int clnfd)
 {
 	int rm_ok = 0;
@@ -216,7 +257,7 @@ int search_phone(phone_info& p)
 	}
 
 	fclose(fp);
-	read_sync_lock(semid_mtfile, count_mtfile);
+	read_sync_unlock(semid_mtfile, count_mtfile);
 	return find_ok;
 
 }
@@ -258,9 +299,7 @@ int search_dev_from_dev_online(unsigned char *mac) //返回对应的套接字描
 			read_sync_unlock(semid_devonline, count_devonline);
 			return it->sockfd;
 		}
-
 	}
-
 
 	read_sync_unlock(semid_devonline, count_devonline);
 	return -1;
@@ -462,6 +501,10 @@ void* thread_recv(void *arg)
 						break;
 
 					case REGIST_CMD:
+						bzero(msg_data, 20);
+						memcpy(msg_data, "cleandata", 9);
+						add_msg(msg_data, 20);
+
 						phone_info phone;
 						memcpy(&phone, p.data, sizeof(phone_info) - 1);
 						write_regist_info_to_file(phone);
@@ -490,10 +533,15 @@ void* thread_recv(void *arg)
 						p1.fill_buf(buf);
 
 						client._send(buf);
-
+						send_regist_msg();
 
 						break;
 					case REGIST_DEV_CMD:
+
+						bzero(msg_data, 20); //先把显示的内容清空
+						memcpy(msg_data, "cleandata", 9);
+						add_msg(msg_data, 20);
+
 						dev_info dev;
 						memcpy(&dev, p.data, sizeof(dev_info));
 						write_dev_info_to_file(dev);
@@ -522,6 +570,7 @@ void* thread_recv(void *arg)
 						p1.fill_buf(buf);
 						client._send(buf);
 
+						send_regist_msg();
 						break;
 
 					case DEV_LOGIN:
@@ -1775,7 +1824,8 @@ int main()
 
 	pthread_t thread_id;
 	pthread_create(&thread_id, NULL, thread_input, NULL);//输入控制数据线程
-
+	
+	send_regist_msg();//向qt界面发送已经注册的设备和手机信息
 
 	//打开接收消息队列信息的线程
 	pthread_create(&thread_id, NULL, thread_msg_input, NULL);

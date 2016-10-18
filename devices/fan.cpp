@@ -220,7 +220,7 @@ void send_temprature()
 
 
 	srand(time(NULL));
-	temprature = rand()%20 + 10;
+	temprature = rand()%20 + 10; //温度范围  10到30
 
 	Protocol p;
 	p.package_header = 0x55;

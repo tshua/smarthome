@@ -11,6 +11,7 @@ class QLabel;
 class QPixmap;
 class QGridLayout;
 class QPushButton;
+class QGroupBox;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -33,6 +34,10 @@ public:
     int temprature;
 
     int switch_status; //智能开关
+    QString dev_info;
+    QString phone_info;
+    QLabel* label_dev_info;
+    QLabel* label_phone_info;
 
 
 
@@ -92,6 +97,11 @@ private:
     QPushButton *switchStatusButton;
 
     RecvMsgThread* recvThread;
+
+
+//    QGroupBox* group_dev;
+//    QGroupBox* group_phone;
+//    QGroupBox* group_tm_info;
 };
 
 #endif // MAINWINDOW_H
