@@ -176,8 +176,33 @@ void deal_recv_message()
 						p1.fill_buf(buf);
 						client._send(buf);
 
-
 						break;
+					case HEARTBEAT_CMD:
+						p1.package_header = 0x55;
+						p1.cmd_type = 0x0B;
+						p1.cmd = RES;                     //应答
+
+						p1.torken_len = 1;                //无torken
+						p1.torken = new unsigned char[p.torken_len];
+						p1.torken[0] = -1;
+
+						p1.data = new unsigned char[10];
+						memset(p1.data, 0, 10);
+						memcpy(p1.data, "success", 8); 
+
+						p1.package_tail = 0x55;
+
+						len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10;
+						p1.len_low = len & 0x0ff;
+						p1.len_high = len >> 8;
+
+						bzero(buf, MAX_PACKAGE_SIZE);
+						p1.fill_buf(buf);        //CRC16校验
+						p1.CRC_16(buf);
+						p1.fill_buf(buf);
+						client._send(buf);
+						break;
+
 				}
 			}
 		}

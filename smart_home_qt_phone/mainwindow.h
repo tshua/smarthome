@@ -50,6 +50,19 @@ public slots:
     void switchStatusButton_click();
 
 private:
+
+    bool is_lamp1_online; //lamp1是否在线
+    QLabel* label_lamp1_online;
+
+    bool is_lamp2_online; //lamp2是否在线
+    QLabel* label_lamp2_online;
+
+    bool is_fan_online; //fan是否在线
+    QLabel* label_fan_online;
+
+    bool is_switch_online; //开关是否在线
+    QLabel* label_switch_online;
+
     QLabel* label_lamp1_status;
     QLabel* label_light1;
     QLabel* label_lamp1_mode;

@@ -334,6 +334,22 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 
 	while(1)
 	{
+		bzero(msg_data, 20);
+		memcpy(msg_data, "lamp1", 10);
+		memcpy(msg_data + 10, "logout", 6);
+		add_msg(msg_data, 20);
+		bzero(msg_data, 20);
+		memcpy(msg_data, "lamp2", 10);
+		memcpy(msg_data + 10, "logout", 6);
+		add_msg(msg_data, 20);
+		bzero(msg_data, 20);
+		memcpy(msg_data, "fan1", 10);
+		memcpy(msg_data + 10, "logout", 6);
+		add_msg(msg_data, 20);
+		bzero(msg_data, 20);
+		memcpy(msg_data, "switch1", 10);
+		memcpy(msg_data + 10, "logout", 6);
+		add_msg(msg_data, 20);
 
 		Protocol p;
 		p.package_header = 0x55;
@@ -393,6 +409,11 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 					memcpy(msg_data + 10, dev_e.lamp_auto?"auto\0\0":"manual", 6);
 					add_msg(msg_data, 20);
 				}
+				
+				bzero(msg_data, 20);
+				memcpy(msg_data, dev_e.d.name, 10);
+				memcpy(msg_data + 10, "login", 5);
+				add_msg(msg_data, 20);
 			}
 
 			light1 = atoi((char*)pos);

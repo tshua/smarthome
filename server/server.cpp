@@ -112,17 +112,25 @@ int read_sync_unlock(int semid, int& count)
 
 void signal_fun(int signo) //信号捕获函数
 {
-	del_sem(semid_devfile, NSEMS, SEM_FILE1); //删除信号量
+	if(SIGINT == signo)
+	{
 
-	del_sem(semid_mtfile, NSEMS, SEM_FILE2); 
+		del_sem(semid_devfile, NSEMS, SEM_FILE1); //删除信号量
 
-	del_sem(semid_devonline, NSEMS, SEM_FILE3);
+		del_sem(semid_mtfile, NSEMS, SEM_FILE2); 
 
-	del_sem(semid_phoneonline, NSEMS, SEM_FILE4);
+		del_sem(semid_devonline, NSEMS, SEM_FILE3);
 
-	rm_msg(msgid, MSG_FILE_PHONE); //删除消息队列
-	exit(-1);
+		del_sem(semid_phoneonline, NSEMS, SEM_FILE4);
 
+		rm_msg(msgid, MSG_FILE_PHONE); //删除消息队列
+		exit(0);
+
+	}
+	else if(SIGPIPE == signo)
+	{
+		cout << "sigpipe" << endl;
+	}
 }
 
 int add_msg(unsigned char* buf, int size)
@@ -140,6 +148,47 @@ int add_msg(unsigned char* buf, int size)
 	if(ret < 0)
 		return -1;
 	return 1;
+}
+
+int rmdev_from_list(clnfd)
+{
+	int rm_ok = 0;
+	write_sync_lock(semid_devonline, count_devonline);
+
+	list<dev_info_e>::iterator it = dev_online.begin();
+	for(; it != dev_online.end(); it++)
+	{
+		if(clnfd == it->sockfd)
+		{
+			dev_online.remove_if(dev_rm_fun);
+			rm_ok = 1;
+			break;
+		}
+	}
+
+	write_sync_unlock(semid_devonline, count_devonline);
+
+	return rm_ok;
+}
+
+int rmphone_from_list(clnfd)//从在线设备列表中移除该设备
+{
+	int rm_ok = 0; 
+	write_sync_lock(semid_phoneonline, count_phoneonline);
+
+	list<phone_info_e>::iterator it = phone_online.begin();
+	for(; it != phone_online.end(); it++)
+	{
+		if(clnfd == it->sockfd)
+		{
+			phone_online.remove_if(phone_rm_fun);
+			rm_ok = 1; 
+			break;
+		}
+	}
+	write_sync_unlock(semid_phoneonline, count_phoneonline);
+
+	return rm_ok;
 }
 
 int search_phone(phone_info& p)
@@ -317,15 +366,18 @@ void* thread_recv(void *arg)
 	unsigned char msg_data[20] = {0};
 	Protocol p1;
 	Protocol p;
-
+	int link_data_count = 0; //心跳检测计数，到达多长时间发送一次心跳检测
 	while(1)
 	{
 		bzero(buf, MAX_PACKAGE_SIZE);
-		bool isRecved = WaitData(clnfd, 100000);
+		int isRecved = WaitData(clnfd, 100000);  //延时100ms
+		link_data_count ++;
+		//cout << link_data_count << endl;
 		if(isRecved)
 		{
 			if(RecvPacket(clnfd, buf))
 			{
+				link_data_count = 0;
 				p.clean_data();
 				p1.clean_data();
 				p.parse_buf(buf);
@@ -503,6 +555,12 @@ void* thread_recv(void *arg)
 							p1.fill_buf(buf);
 
 							client._send(buf);
+
+							bzero(msg_data, 20);
+							memcpy(msg_data, dev_e.d.name, 10);
+							memcpy(msg_data + 10, "login", 5);
+							add_msg(msg_data, 20);
+
 						}
 
 						break;
@@ -565,7 +623,7 @@ void* thread_recv(void *arg)
 									{
 										light1 = atoi((char*)p.data);
 										cout << "new light data:"<< light1 << endl;
-										
+
 										bzero(msg_data, 20);
 										memcpy(msg_data, it->d.name, 10);
 										memcpy(msg_data + 10, p.data, 10);
@@ -576,7 +634,7 @@ void* thread_recv(void *arg)
 									{
 										light2 = atoi((char*)p.data);
 										cout << "new light data:"<< light2 << endl;
-										
+
 										bzero(msg_data, 20);
 										memcpy(msg_data, it->d.name, 10);
 										memcpy(msg_data + 10, p.data, 10);
@@ -746,6 +804,80 @@ void* thread_recv(void *arg)
 				}
 			}
 
+		}
+		if(link_data_count == 100) //100 * 100ms  = 10s 内没有数据到达，发送心跳包，维持tcp连接
+		{
+			p1.package_header = 0x55;
+			p1.cmd_type = 0x0A;
+			p1.cmd = HEARTBEAT_CMD;                     //登录成功应答
+
+			p1.torken_len = 1;                           //无torken
+			p1.torken = new unsigned char[p1.torken_len];
+			p1.torken[0] = -1;
+
+			p1.data = new unsigned char[1]; 
+			p1.data[0] = -1;  
+
+			p1.package_tail = 0x55;
+
+			int len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 1; 
+			p1.len_low = len & 0x0ff;
+			p1.len_high = len >> 8;
+
+			bzero(buf, MAX_PACKAGE_SIZE);
+			p1.fill_buf(buf);        	//CRC16校验
+			p1.CRC_16(buf);
+			p1.fill_buf(buf);
+
+			client._send(buf);
+
+
+			bzero(buf, MAX_PACKAGE_SIZE);
+			p1.clean_data();
+
+			//根据sockfd查找设备名称，给qt界面发送离线或者在线消息
+			bzero(msg_data, 20);
+			read_sync_lock(semid_devonline, count_devonline);
+			list<dev_info_e>::iterator it = dev_online.begin();
+			for(; it != dev_online.end(); it++)
+			{
+				if(it->sockfd == clnfd)
+				{
+					memcpy(msg_data, it->d.name, 10); //获取名字就可以
+					break;
+				}
+
+
+			}
+			read_sync_unlock(semid_devonline, count_devonline);
+
+			if(RecvPacket(client.sockfd, buf))
+			{
+				p1.parse_buf(buf);
+				if(strcmp((char*)p1.data, "success") == 0)
+				{
+					cout << "recv xintiao  ack!" << endl;
+					memcpy(msg_data + 10, "login", 5);
+					add_msg(msg_data, 20); 
+
+				}
+
+
+			}
+			else
+			{
+				cout << "not recv xin tiao ack!" << endl;
+				memcpy(msg_data + 10, "logout", 6);
+				add_msg(msg_data, 20);
+
+				rmdev_from_list(clnfd);
+				rmphone_from_list(clnfd);//从在线设备列表中移除该设备
+
+				break; //心跳检测失败，说明设备已经下线，发送logout消息给qt程序，跳出循环，终止线程
+
+
+			}
+			link_data_count = 0;
 		}
 	}
 }
@@ -1183,7 +1315,7 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 	{
 		cout << 4 << endl;
 		bzero(&msg, sizeof(Msgbuf));
-		
+
 		cout << 5 << endl;
 		int ret = msgrcv(msgid, (void *)&msg, MAX_MSG_SIZE, MSG_QTTOSERVER, 0); //阻塞接收消息
 
@@ -1621,6 +1753,7 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 int main()
 {
 	signal(SIGINT, signal_fun);
+	signal(SIGPIPE, signal_fun);
 	mk_get_msg(&msgid, MSG_FILE_SERVER, 0644, 'a');
 	cout << "msgid:" << msgid << endl;
 	SockServer s(SERPORT);

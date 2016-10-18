@@ -54,7 +54,6 @@ CRC_low	header/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;
 CRC_low	smart_home_qt_dev/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
 CRC_low	smart_home_qt_phone/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
 CRC_low	smart_home_qt_server/protocol.h	/^    unsigned char CRC_low;          \/\/CRC‰Ωé‰Ωç$/;"	m	class:Protocol	access:public
-D	smart_home_qt_dev/smart_home	/^/;"	v
 DELETE_DEV_CMD	header/protocol.h	21;"	d
 DELETE_DEV_CMD	smart_home_qt_dev/protocol.h	21;"	d
 DELETE_DEV_CMD	smart_home_qt_phone/protocol.h	21;"	d
@@ -73,8 +72,7 @@ ENCRYPT	smart_home_qt_dev/protocol.h	37;"	d
 ENCRYPT	smart_home_qt_phone/protocol.h	37;"	d
 ENCRYPT	smart_home_qt_server/protocol.h	37;"	d
 F	smart_home_qt_phone/smart_home	/^/;"	v
-F	smart_home_qt_server/smart_home	/^/;"	v
-FAN	devices/fan.cpp	14;"	d	file:
+FAN	devices/fan.cpp	15;"	d	file:
 GET_DEVLIST_CMD	header/protocol.h	22;"	d
 GET_DEVLIST_CMD	smart_home_qt_dev/protocol.h	22;"	d
 GET_DEVLIST_CMD	smart_home_qt_phone/protocol.h	22;"	d
@@ -100,8 +98,8 @@ H_SOCK_H	header/sock_server.h	2;"	d
 K	smart_home_qt_dev/images/switch_off.png	/^/;"	v
 K	smart_home_qt_phone/images/switch_off.png	/^/;"	v
 K	smart_home_qt_server/images/switch_off.png	/^/;"	v
-LAMP1	devices/lamp1.cpp	15;"	d	file:
-LAMP1	devices/lamp2.cpp	15;"	d	file:
+LAMP1	devices/lamp1.cpp	16;"	d	file:
+LAMP1	devices/lamp2.cpp	16;"	d	file:
 LIGHT	header/protocol.h	29;"	d
 LIGHT	smart_home_qt_dev/protocol.h	29;"	d
 LIGHT	smart_home_qt_phone/protocol.h	29;"	d
@@ -201,24 +199,34 @@ MainWindow::fan_status	smart_home_qt_dev/mainwindow.h	/^    int fan_status; \/\/
 MainWindow::fan_status	smart_home_qt_phone/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
 MainWindow::fan_status	smart_home_qt_server/mainwindow.h	/^    int fan_status; \/\/ÁîµÊâá$/;"	m	class:MainWindow	access:public
 MainWindow::is_fan_online	smart_home_qt_dev/mainwindow.h	/^    bool is_fan_online; \/\/fanÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+MainWindow::is_fan_online	smart_home_qt_server/mainwindow.h	/^    bool is_fan_online; \/\/fanÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 MainWindow::is_lamp1_online	smart_home_qt_dev/mainwindow.h	/^    bool is_lamp1_online; \/\/lamp1ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+MainWindow::is_lamp1_online	smart_home_qt_server/mainwindow.h	/^    bool is_lamp1_online; \/\/lamp1ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 MainWindow::is_lamp2_online	smart_home_qt_dev/mainwindow.h	/^    bool is_lamp2_online; \/\/lamp2ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+MainWindow::is_lamp2_online	smart_home_qt_server/mainwindow.h	/^    bool is_lamp2_online; \/\/lamp2ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 MainWindow::is_switch_online	smart_home_qt_dev/mainwindow.h	/^    bool is_switch_online; \/\/ÂºÄÂÖ≥ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+MainWindow::is_switch_online	smart_home_qt_server/mainwindow.h	/^    bool is_switch_online; \/\/ÂºÄÂÖ≥ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 MainWindow::label_fan_img	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
 MainWindow::label_fan_img	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
 MainWindow::label_fan_img	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+MainWindow::label_fan_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_online;$/;"	m	class:MainWindow	access:private
+MainWindow::label_fan_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_online;$/;"	m	class:MainWindow	access:private
 MainWindow::label_fan_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_fan_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_fan_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp1_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp1_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp1_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_online;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp1_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_online;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp1_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp1_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp1_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp2_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp2_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp2_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_online;$/;"	m	class:MainWindow	access:private
+MainWindow::label_lamp2_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_online;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp2_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp2_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_lamp2_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
@@ -228,6 +236,8 @@ MainWindow::label_light1	smart_home_qt_server/mainwindow.h	/^    QLabel* label_l
 MainWindow::label_light2	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
 MainWindow::label_light2	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
 MainWindow::label_light2	smart_home_qt_server/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+MainWindow::label_switch_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_switch_online;$/;"	m	class:MainWindow	access:private
+MainWindow::label_switch_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_switch_online;$/;"	m	class:MainWindow	access:private
 MainWindow::label_switch_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_switch_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
 MainWindow::label_switch_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
@@ -351,6 +361,7 @@ NOENCRYPT	smart_home_qt_dev/protocol.h	38;"	d
 NOENCRYPT	smart_home_qt_phone/protocol.h	38;"	d
 NOENCRYPT	smart_home_qt_server/protocol.h	38;"	d
 NSEMS	header/common.h	20;"	d
+O	smart_home_qt_server/smart_home	/^≈u75>Éi=X%œ/;"	v
 OFFLINE_CMD	header/protocol.h	25;"	d
 OFFLINE_CMD	smart_home_qt_dev/protocol.h	25;"	d
 OFFLINE_CMD	smart_home_qt_phone/protocol.h	25;"	d
@@ -557,23 +568,23 @@ QT_RCC_MANGLE_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	27489;"	d	file:
 QT_RCC_MANGLE_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	27493;"	d	file:
 QT_RCC_MANGLE_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	27489;"	d	file:
 QT_RCC_MANGLE_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	27493;"	d	file:
-QT_RCC_MANGLE_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24552;"	d	file:
-QT_RCC_MANGLE_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24556;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_server/qrc_img.cpp	27489;"	d	file:
+QT_RCC_MANGLE_NAMESPACE	smart_home_qt_server/qrc_img.cpp	27493;"	d	file:
 QT_RCC_MANGLE_NAMESPACE0	smart_home_qt_dev/qrc_img.cpp	27486;"	d	file:
 QT_RCC_MANGLE_NAMESPACE0	smart_home_qt_phone/qrc_img.cpp	27486;"	d	file:
-QT_RCC_MANGLE_NAMESPACE0	smart_home_qt_server/qrc_img.cpp	24549;"	d	file:
+QT_RCC_MANGLE_NAMESPACE0	smart_home_qt_server/qrc_img.cpp	27486;"	d	file:
 QT_RCC_MANGLE_NAMESPACE1	smart_home_qt_dev/qrc_img.cpp	27487;"	d	file:
 QT_RCC_MANGLE_NAMESPACE1	smart_home_qt_phone/qrc_img.cpp	27487;"	d	file:
-QT_RCC_MANGLE_NAMESPACE1	smart_home_qt_server/qrc_img.cpp	24550;"	d	file:
+QT_RCC_MANGLE_NAMESPACE1	smart_home_qt_server/qrc_img.cpp	27487;"	d	file:
 QT_RCC_MANGLE_NAMESPACE2	smart_home_qt_dev/qrc_img.cpp	27488;"	d	file:
 QT_RCC_MANGLE_NAMESPACE2	smart_home_qt_phone/qrc_img.cpp	27488;"	d	file:
-QT_RCC_MANGLE_NAMESPACE2	smart_home_qt_server/qrc_img.cpp	24551;"	d	file:
+QT_RCC_MANGLE_NAMESPACE2	smart_home_qt_server/qrc_img.cpp	27488;"	d	file:
 QT_RCC_PREPEND_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	27485;"	d	file:
 QT_RCC_PREPEND_NAMESPACE	smart_home_qt_dev/qrc_img.cpp	27492;"	d	file:
 QT_RCC_PREPEND_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	27485;"	d	file:
 QT_RCC_PREPEND_NAMESPACE	smart_home_qt_phone/qrc_img.cpp	27492;"	d	file:
-QT_RCC_PREPEND_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24548;"	d	file:
-QT_RCC_PREPEND_NAMESPACE	smart_home_qt_server/qrc_img.cpp	24555;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_server/qrc_img.cpp	27485;"	d	file:
+QT_RCC_PREPEND_NAMESPACE	smart_home_qt_server/qrc_img.cpp	27492;"	d	file:
 RECVMSGTHREAD_H	smart_home_qt_dev/recvmsgthread.h	2;"	d
 RECVMSGTHREAD_H	smart_home_qt_phone/recvmsgthread.h	2;"	d
 RECVMSGTHREAD_H	smart_home_qt_server/recvmsgthread.h	2;"	d
@@ -678,10 +689,10 @@ SERPORT	header/protocol.h	5;"	d
 SERPORT	smart_home_qt_dev/protocol.h	5;"	d
 SERPORT	smart_home_qt_phone/protocol.h	5;"	d
 SERPORT	smart_home_qt_server/protocol.h	5;"	d
-SER_INFO	devices/fan.cpp	13;"	d	file:
-SER_INFO	devices/lamp1.cpp	14;"	d	file:
-SER_INFO	devices/lamp2.cpp	14;"	d	file:
-SER_INFO	devices/switch.cpp	13;"	d	file:
+SER_INFO	devices/fan.cpp	14;"	d	file:
+SER_INFO	devices/lamp1.cpp	15;"	d	file:
+SER_INFO	devices/lamp2.cpp	15;"	d	file:
+SER_INFO	devices/switch.cpp	14;"	d	file:
 SER_INFO	phone/client.cpp	19;"	d	file:
 SHM_FILE	header/common.h	16;"	d
 SHM_FILE	smart_home_qt_dev/common.h	16;"	d
@@ -696,7 +707,7 @@ STATUS_LIGHT	header/protocol.h	30;"	d
 STATUS_LIGHT	smart_home_qt_dev/protocol.h	30;"	d
 STATUS_LIGHT	smart_home_qt_phone/protocol.h	30;"	d
 STATUS_LIGHT	smart_home_qt_server/protocol.h	30;"	d
-SWITCH1	devices/switch.cpp	14;"	d	file:
+SWITCH1	devices/switch.cpp	15;"	d	file:
 SockClient	header/sock_client.h	/^	SockClient();$/;"	p	class:SockClient	access:public	signature:()
 SockClient	header/sock_client.h	/^	SockClient(int remote_port, string remote_ip);$/;"	p	class:SockClient	access:public	signature:(int remote_port, string remote_ip)
 SockClient	header/sock_client.h	/^class SockClient$/;"	c
@@ -815,7 +826,6 @@ client	devices/lamp1.cpp	/^SockClient client;$/;"	v
 client	devices/lamp2.cpp	/^SockClient client;$/;"	v
 client	devices/switch.cpp	/^SockClient client;$/;"	v
 client	phone/client.cpp	/^SockClient client;$/;"	v
-client	tags	/^client	devices\/switch.cpp	\/^SockClient client;$\/;"	v$/;"	v
 cmd	header/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
 cmd	smart_home_qt_dev/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
 cmd	smart_home_qt_phone/protocol.h	/^    unsigned char cmd;              \/\/ÂëΩ‰ª§Â≠ó$/;"	m	class:Protocol	access:public
@@ -837,7 +847,6 @@ count_devonline	server/server.cpp	/^int count_devonline = 0;$/;"	v
 count_mtfile	server/server.cpp	/^int count_mtfile = 0;$/;"	v
 count_phone_dev_online	phone/client.cpp	/^int count_phone_dev_online = 0;$/;"	v
 count_phoneonline	server/server.cpp	/^int count_phoneonline = 0;$/;"	v
-cpp	tags	/^SWITCH1	devices\/switch.cpp	14;"	d	file:$/;"	v
 cwc	smart_home_qt_dev/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
 cwc	smart_home_qt_phone/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
 cwc	smart_home_qt_server/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
@@ -1004,6 +1013,7 @@ have_extend	header/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶Êú
 have_extend	smart_home_qt_dev/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
 have_extend	smart_home_qt_phone/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
 have_extend	smart_home_qt_server/protocol.h	/^    unsigned char have_extend;      \/\/ÊòØÂê¶ÊúâÊâ©Â±ï‰Ωç$/;"	m	class:Protocol	access:public
+hf	smart_home_qt_server/smart_home	/^≈u75>Éi=X%œ/;"	v
 i	smart_home_qt_dev/images/AirConImage.png	/^/;"	v
 i	smart_home_qt_phone/images/AirConImage.png	/^/;"	v
 i	smart_home_qt_server/images/AirConImage.png	/^/;"	v
@@ -1025,28 +1035,38 @@ initializer	smart_home_qt_server/qrc_img.cpp	/^   struct initializer {$/;"	s	nam
 insert_online_dev	server/server.cpp	/^void insert_online_dev(dev_info_e dev_e)$/;"	f	signature:(dev_info_e dev_e)
 insert_online_mt	server/server.cpp	/^void insert_online_mt(phone_info_e phone_e)$/;"	f	signature:(phone_info_e phone_e)
 is_fan_online	smart_home_qt_dev/mainwindow.h	/^    bool is_fan_online; \/\/fanÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+is_fan_online	smart_home_qt_server/mainwindow.h	/^    bool is_fan_online; \/\/fanÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 is_lamp1_online	smart_home_qt_dev/mainwindow.h	/^    bool is_lamp1_online; \/\/lamp1ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+is_lamp1_online	smart_home_qt_server/mainwindow.h	/^    bool is_lamp1_online; \/\/lamp1ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 is_lamp2_online	smart_home_qt_dev/mainwindow.h	/^    bool is_lamp2_online; \/\/lamp2ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+is_lamp2_online	smart_home_qt_server/mainwindow.h	/^    bool is_lamp2_online; \/\/lamp2ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 is_regist	header/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
 is_regist	smart_home_qt_dev/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
 is_regist	smart_home_qt_phone/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
 is_regist	smart_home_qt_server/protocol.h	/^	char is_regist;$/;"	m	struct:phone_info	access:public
 is_switch_online	smart_home_qt_dev/mainwindow.h	/^    bool is_switch_online; \/\/ÂºÄÂÖ≥ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
+is_switch_online	smart_home_qt_server/mainwindow.h	/^    bool is_switch_online; \/\/ÂºÄÂÖ≥ÊòØÂê¶Âú®Á∫ø$/;"	m	class:MainWindow	access:private
 label_fan_img	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
 label_fan_img	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
 label_fan_img	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_img;$/;"	m	class:MainWindow	access:private
+label_fan_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_online;$/;"	m	class:MainWindow	access:private
+label_fan_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_online;$/;"	m	class:MainWindow	access:private
 label_fan_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
 label_fan_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
 label_fan_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_fan_status;$/;"	m	class:MainWindow	access:private
 label_lamp1_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
 label_lamp1_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
 label_lamp1_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_mode;$/;"	m	class:MainWindow	access:private
+label_lamp1_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_online;$/;"	m	class:MainWindow	access:private
+label_lamp1_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_online;$/;"	m	class:MainWindow	access:private
 label_lamp1_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
 label_lamp1_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
 label_lamp1_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp1_status;$/;"	m	class:MainWindow	access:private
 label_lamp2_mode	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
 label_lamp2_mode	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
 label_lamp2_mode	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_mode;$/;"	m	class:MainWindow	access:private
+label_lamp2_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_online;$/;"	m	class:MainWindow	access:private
+label_lamp2_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_online;$/;"	m	class:MainWindow	access:private
 label_lamp2_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
 label_lamp2_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
 label_lamp2_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_lamp2_status;$/;"	m	class:MainWindow	access:private
@@ -1056,6 +1076,8 @@ label_light1	smart_home_qt_server/mainwindow.h	/^    QLabel* label_light1;$/;"	m
 label_light2	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
 label_light2	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
 label_light2	smart_home_qt_server/mainwindow.h	/^    QLabel* label_light2;$/;"	m	class:MainWindow	access:private
+label_switch_online	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_switch_online;$/;"	m	class:MainWindow	access:private
+label_switch_online	smart_home_qt_server/mainwindow.h	/^    QLabel* label_switch_online;$/;"	m	class:MainWindow	access:private
 label_switch_status	smart_home_qt_dev/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
 label_switch_status	smart_home_qt_phone/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
 label_switch_status	smart_home_qt_server/mainwindow.h	/^    QLabel* label_switch_status;$/;"	m	class:MainWindow	access:private
@@ -1193,7 +1215,6 @@ msgid	server/server.cpp	/^int msgid;$/;"	v
 msgid	smart_home_qt_dev/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
 msgid	smart_home_qt_phone/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
 msgid	smart_home_qt_server/recvmsgthread.h	/^    int msgid;$/;"	m	class:RecvMsgThread	access:private
-msgid	tags	/^msgid	devices\/switch.cpp	\/^int msgid;$\/;"	v$/;"	v
 mtext	header/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
 mtext	smart_home_qt_dev/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
 mtext	smart_home_qt_phone/common.h	/^    char mtext[MAX_MSG_SIZE];$/;"	m	struct:Msgbuf	access:public
@@ -1216,6 +1237,7 @@ p	header/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
 p	smart_home_qt_dev/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
 p	smart_home_qt_phone/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
 p	smart_home_qt_server/protocol.h	/^	phone_info p;$/;"	m	struct:phone_info_e	access:public
+p	smart_home_qt_server/smart_home	/^ELF/;"	v
 package_header	header/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
 package_header	smart_home_qt_dev/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
 package_header	smart_home_qt_phone/protocol.h	/^    unsigned char package_header;   \/\/ÂåÖÂ§¥$/;"	m	class:Protocol	access:public
@@ -1504,7 +1526,6 @@ ser_ip	devices/fan.cpp	/^char ser_ip[20] = {0};$/;"	v
 ser_ip	devices/lamp1.cpp	/^char ser_ip[20] = {0};$/;"	v
 ser_ip	devices/lamp2.cpp	/^char ser_ip[20] = {0};$/;"	v
 ser_ip	devices/switch.cpp	/^char ser_ip[20] = {0};$/;"	v
-ser_ip	tags	/^ser_ip	devices\/switch.cpp	\/^char ser_ip[20] = {0};$\/;"	v$/;"	v
 ser_port	devices/fan.cpp	/^short ser_port = 0;$/;"	v
 ser_port	devices/lamp1.cpp	/^short ser_port = 0;$/;"	v
 ser_port	devices/lamp2.cpp	/^short ser_port = 0;$/;"	v
@@ -1516,6 +1537,11 @@ set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(int remote_port, stri
 set_remoteaddr	header/sock_client.h	/^	void set_remoteaddr(sockaddr_in remoteaddr);$/;"	p	class:SockClient	access:public	signature:(sockaddr_in remoteaddr)
 set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(int remote_port, string remote_ip)$/;"	f	class:SockClient	signature:(int remote_port, string remote_ip)
 set_remoteaddr	source/sock_client.cpp	/^void SockClient::set_remoteaddr(sockaddr_in remoteaddr)$/;"	f	class:SockClient	signature:(sockaddr_in remoteaddr)
+sig_fun	devices/fan.cpp	/^void sig_fun(int signo) {$/;"	f	signature:(int signo)
+sig_fun	devices/lamp1.cpp	/^void sig_fun(int signo) {$/;"	f	signature:(int signo)
+sig_fun	devices/lamp2.cpp	/^void sig_fun(int signo) {$/;"	f	signature:(int signo)
+sig_fun	devices/switch.cpp	/^void sig_fun(int signo)$/;"	f	signature:(int signo)
+sig_fun	tags	/^sig_fun	devices\/lamp1.cpp	\/^void sig_fun(int signo) {$\/;"	f	signature:(int signo)$/;"	f	signature:(int signo)
 sig_recvDataOk	smart_home_qt_dev/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
 sig_recvDataOk	smart_home_qt_dev/recvmsgthread.h	/^    void sig_recvDataOk(Msgbuf* msg);$/;"	p	class:RecvMsgThread	access:public	signature:(Msgbuf* msg)
 sig_recvDataOk	smart_home_qt_phone/moc_recvmsgthread.cpp	/^void RecvMsgThread::sig_recvDataOk(Msgbuf * _t1)$/;"	f	class:RecvMsgThread	signature:(Msgbuf * _t1)
@@ -1659,7 +1685,7 @@ x	smart_home_qt_server/images/lampImage.png	/^/;"	v
 z	smart_home_qt_dev/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
 z	smart_home_qt_phone/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
 z	smart_home_qt_server/images/light_on.png	/^ml©ŸvM[¡∂àmIúÉìÒﬁ≈IT/;"	v
-~6	smart_home_qt_dev/smart_home	/^6p¯.ˆa/;"	v
+~6	smart_home_qt_server/smart_home	/^6p¯.ˆa/;"	v
 ~MainWindow	smart_home_qt_dev/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
 ~MainWindow	smart_home_qt_dev/mainwindow.h	/^    ~MainWindow();$/;"	p	class:MainWindow	access:public	signature:()
 ~MainWindow	smart_home_qt_phone/mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow	signature:()
