@@ -20,7 +20,7 @@ int lamp_status = 0; //0 灭 1亮
 int light = 0;//光照强度
 
 
-short ser_port = 0;
+int ser_port = 0;
 char ser_ip[20] = {0};
 unsigned char torken[20];
 SockClient client;
@@ -139,7 +139,7 @@ void deal_recv_message()
 
 					case CONTRL_DEV_CMD:
 
-						if(strcmp((char*)p.torken, (char*)torken) != 0)//判断torken
+						if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken
 						{
 							break;
 						}

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
-#include <QtWidgets>
+//#include <QtWidgets>
+#include <QtGui>
 #include <QDebug>
 
 #include <sys/types.h>
@@ -20,11 +21,11 @@ MainWindow::MainWindow(QWidget *parent)
     light1 = 0; //光照
 
     label_lamp1_status = new QLabel(this);
-    label_light1 = new QLabel("光照：0");
-    label_lamp1_mode = new QLabel("模式:手动");
+    label_light1 = new QLabel("Light: 0");//("光照：0");
+    label_lamp1_mode = new QLabel("Mode: Manual");//("模式:手动");
     lamp1_img = new QPixmap("://light_off.png");
     is_lamp1_online = false;
-    label_lamp1_online = new QLabel("离线");
+    label_lamp1_online = new QLabel("Offline");//("离线");
     label_lamp1_online->setPalette(pa);
 
     int lampStatusLabelWidth = 200, lampStatusLabelHeight = 200;
@@ -32,8 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
     label_lamp1_status->setAlignment(Qt::AlignCenter);
     label_lamp1_status->setPixmap(*lamp1_img);
 
-    lamp1StatusButton = new QPushButton(lamp1_status?"关闭":"打开");
-    lamp1ModeButton = new QPushButton(lamp1_mode?"手动":"自动");
+    lamp1StatusButton = new QPushButton(lamp1_status?"Close":"Open"); //"关闭":"打开");
+    lamp1ModeButton = new QPushButton(lamp1_mode?"Manual":"Auto");//"手动":"自动");
 
     QVBoxLayout* label_lamp1_Layout = new QVBoxLayout();
     label_lamp1_Layout->addWidget(label_lamp1_online);
@@ -50,11 +51,11 @@ MainWindow::MainWindow(QWidget *parent)
     light2 = 0; //光照
 
     label_lamp2_status = new QLabel(this);
-    label_light2 = new QLabel("光照：0");
-    label_lamp2_mode = new QLabel("模式:手动");
+    label_light2 = new QLabel("Light: 0");//("光照：0");
+    label_lamp2_mode = new QLabel("Mode: Manual");//("模式:手动");
     lamp2_img = new QPixmap("://light_off.png");
     is_lamp2_online = false;
-    label_lamp2_online = new QLabel("离线");
+    label_lamp2_online = new QLabel("Offline");//("离线");
     label_lamp2_online->setPalette(pa);
 
 
@@ -63,8 +64,8 @@ MainWindow::MainWindow(QWidget *parent)
     label_lamp2_status->setPixmap(*lamp2_img);
 
 
-    lamp2StatusButton = new QPushButton(lamp2_status?"关闭":"打开");
-    lamp2ModeButton = new QPushButton(lamp2_mode?"手动":"自动");
+    lamp2StatusButton = new QPushButton(lamp2_status?"Close":"Open");//"关闭":"打开");
+    lamp2ModeButton = new QPushButton(lamp2_mode?"Manual":"Auto");//"手动":"自动");
 
     QVBoxLayout* label_lamp2_Layout = new QVBoxLayout();
     label_lamp2_Layout->addWidget(label_lamp2_online);
@@ -79,11 +80,11 @@ MainWindow::MainWindow(QWidget *parent)
     temprature = 10;
 
     label_fan_img = new QLabel(this);
-    label_fan_status = new QLabel("状态 ：开");
-    label_tempruature = new QLabel("温度 ：10");
+    label_fan_status = new QLabel("Status: On");//("状态 ：开");
+    label_tempruature = new QLabel("Temprature: 10");//("温度 ：10");
     fan_img = new QPixmap("://AirConImage.png");
     is_fan_online = false;
-    label_fan_online = new QLabel("离线");
+    label_fan_online = new QLabel("Offline");//("离线");
     label_fan_online->setPalette(pa);
 
 
@@ -91,7 +92,7 @@ MainWindow::MainWindow(QWidget *parent)
     label_fan_img->setAlignment(Qt::AlignCenter);
     label_fan_img->setPixmap(*fan_img);
 
-    fanStatusButton = new QPushButton(fan_status?"关闭":"打开");
+    fanStatusButton = new QPushButton(fan_status?"Close":"Open");//"关闭":"打开");
 
 
     QVBoxLayout* label_fan_Layout = new QVBoxLayout();
@@ -107,13 +108,13 @@ MainWindow::MainWindow(QWidget *parent)
     label_switch_status = new QLabel(this);
     switch_img = new QPixmap("://switch_off.png");
     is_switch_online = false;
-    label_switch_online = new QLabel("离线");
+    label_switch_online = new QLabel("Offline");//("离线");
     label_switch_online->setPalette(pa);
 
     *switch_img = switch_img->scaled(lampStatusLabelWidth, lampStatusLabelHeight, Qt::KeepAspectRatio);
     label_switch_status->setAlignment(Qt::AlignCenter);
     label_switch_status->setPixmap(*switch_img);
-    switchStatusButton = new QPushButton(switch_status?"关闭":"打开");
+    switchStatusButton = new QPushButton(switch_status?"Close":"Open");//"关闭":"打开");
     QVBoxLayout* label_switch_Layout = new QVBoxLayout();
     label_switch_Layout->addWidget(label_switch_online);
     label_switch_Layout->addWidget(switchStatusButton);
@@ -317,10 +318,10 @@ void MainWindow::updateView()
     *lamp1_img = lamp1_img->scaled(lampStatusLabelWidth, lampStatusLabelHeight, Qt::KeepAspectRatio);
 
     label_lamp1_status->setPixmap(*lamp1_img);
-    QString tmp = lamp1_mode?"自动":"手动";
-    label_light1->setText("光照： " + QString::number(light1, 10));
-    label_lamp1_mode->setText("模式： " + tmp);
-    label_lamp1_online->setText(is_lamp1_online?"在线":"离线");
+    QString tmp = lamp1_mode?"Auto":"Manual"; //"自动":"手动";
+    label_light1->setText(/*"光照： "*/ "Light: "+ QString::number(light1, 10));
+    label_lamp1_mode->setText(/*"模式： "*/ "Mode: " + tmp);
+    label_lamp1_online->setText(is_lamp1_online?"Online":"Offline");//"在线":"离线");
     if(is_lamp1_online)
         label_lamp1_online->setPalette(pa_green);
     else
@@ -338,10 +339,10 @@ void MainWindow::updateView()
     *lamp2_img = lamp2_img->scaled(lampStatusLabelWidth, lampStatusLabelHeight, Qt::KeepAspectRatio);
 
     label_lamp2_status->setPixmap(*lamp2_img);
-    tmp = lamp2_mode?"自动":"手动";
-    label_light2->setText("光照： " + QString::number(light2, 10));
-    label_lamp2_mode->setText("模式： " + tmp);
-    label_lamp2_online->setText(is_lamp2_online?"在线":"离线");
+    tmp = lamp2_mode?"Auto":"Manual"; //"自动":"手动";
+    label_light2->setText(/*"光照： "*/ "Light: " + QString::number(light2, 10));
+    label_lamp2_mode->setText(/*"模式： "*/ "Mode: " + tmp);
+    label_lamp2_online->setText(is_lamp2_online?"Online":"Offline");//"在线":"离线");
     if(is_lamp2_online)
         label_lamp2_online->setPalette(pa_green);
     else
@@ -349,10 +350,10 @@ void MainWindow::updateView()
 
 
     //fan
-    tmp = fan_status?"开":"关";
-    label_fan_status->setText("状态：" + tmp);
-    label_tempruature->setText("温度： " + QString::number(temprature, 10));
-    label_fan_online->setText(is_fan_online?"在线":"离线");
+    tmp = fan_status?"On":"Off";//"开":"关";
+    label_fan_status->setText(/*"状态："*/ "Status: " + tmp);
+    label_tempruature->setText(/*"温度： "*/ "Temprature: " + QString::number(temprature, 10));
+    label_fan_online->setText(is_fan_online?"Online":"Offline");//"在线":"离线");
     if(is_fan_online)
         label_fan_online->setPalette(pa_green);
     else
@@ -368,20 +369,20 @@ void MainWindow::updateView()
 
     *switch_img = switch_img->scaled(lampStatusLabelWidth, lampStatusLabelHeight, Qt::KeepAspectRatio);
     label_switch_status->setPixmap(*switch_img);
-    label_switch_online->setText(is_switch_online?"在线":"离线");
+    label_switch_online->setText(is_switch_online?"Online":"Offline");//"在线":"离线");
     if(is_switch_online)
         label_switch_online->setPalette(pa_green);
     else
         label_switch_online->setPalette(pa_red);
 
-    lamp1StatusButton->setText(lamp1_status?"关闭":"打开");
-    lamp1ModeButton->setText(lamp1_mode?"手动":"自动");
+    lamp1StatusButton->setText(lamp1_status?"Close":"Open");//"关闭":"打开");
+    lamp1ModeButton->setText(lamp1_mode?"Manual":"Auto");//"手动":"自动");
 
-    lamp2StatusButton->setText(lamp2_status?"关闭":"打开");
-    lamp2ModeButton->setText(lamp2_mode?"手动":"自动");
+    lamp2StatusButton->setText(lamp2_status?"Close":"Open");//"关闭":"打开");
+    lamp2ModeButton->setText(lamp2_mode?"Manual":"Auto");//"手动":"自动");
 
-    fanStatusButton->setText(fan_status?"关闭":"打开");
-    switchStatusButton->setText(switch_status?"关闭":"打开");
+    fanStatusButton->setText(fan_status?"Close":"Open");//"关闭":"打开");
+    switchStatusButton->setText(switch_status?"Manual":"Auto");//"手动":"自动");
 
 }
 
@@ -390,13 +391,13 @@ void MainWindow::lamp1StatusButton_click()
 {
     if(is_lamp1_online == 0)
     {
-        QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
+        QMessageBox::information(this, "Info", "Device is not online, please login the device.");//tr("提示"), tr("设备不在线，请重新登录设备！"));
         return;
     }
 
     if(lamp1_mode == 1)
     {
-        QMessageBox::information(this, tr("提示"), tr("请先关闭自动模式！"));
+        QMessageBox::information(this, "Info", "Please close the auto mode first!");//tr("提示"), tr("请先关闭自动模式！"));
         return ;
     }
     char cmd[20] = {0};
@@ -410,7 +411,8 @@ void MainWindow::lamp1ModeButton_click()
 {
     if(is_lamp1_online == 0)
     {
-        QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
+        QMessageBox::information(this, "Info", "Device is not online, please login the device.");//tr("提示"), tr("设备不在线，请重新登录设备！"));
+        //QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
         return;
     }
     char cmd[20] = {0};
@@ -424,12 +426,14 @@ void MainWindow::lamp2StatusButton_click()
 {
     if(is_lamp2_online == 0)
     {
-        QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
+        QMessageBox::information(this, "Info", "Device is not online, please login the device.");//tr("提示"), tr("设备不在线，请重新登录设备！"));
+        //QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
         return;
     }
     if(lamp2_mode == 1)
     {
-        QMessageBox::information(this, tr("提示"), tr("请先关闭自动模式！"));
+        QMessageBox::information(this, "Info", "Please close the auto mode first!");//tr("提示"), tr("请先关闭自动模式！"));
+        //QMessageBox::information(this, tr("提示"), tr("请先关闭自动模式！"));
         return ;
     }
 
@@ -444,7 +448,8 @@ void MainWindow::lamp2ModeButton_click()
 {
     if(is_lamp2_online == 0)
     {
-        QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
+        QMessageBox::information(this, "Info", "Device is not online, please login the device.");//tr("提示"), tr("设备不在线，请重新登录设备！"));
+        //QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
         return;
     }
     char cmd[20] = {0};
@@ -458,7 +463,8 @@ void MainWindow::fanStatusButton_click()
 {
     if(is_fan_online == 0)
     {
-        QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
+        QMessageBox::information(this, "Info", "Device is not online, please login the device.");//tr("提示"), tr("设备不在线，请重新登录设备！"));
+        //QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
         return;
     }
     char cmd[20] = {0};
@@ -472,7 +478,8 @@ void MainWindow::switchStatusButton_click()
 {
     if(is_switch_online == 0)
     {
-        QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
+        QMessageBox::information(this, "Info", "Device is not online, please login the device.");//tr("提示"), tr("设备不在线，请重新登录设备！"));
+        //QMessageBox::information(this, tr("提示"), tr("设备不在线，请重新登录设备！"));
         return;
     }
     char cmd[20] = {0};

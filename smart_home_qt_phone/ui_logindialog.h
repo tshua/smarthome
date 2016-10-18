@@ -10,17 +10,18 @@
 #define UI_LOGINDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QFormLayout>
-#include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QWidget>
+#include <QtGui>
+//#include <QtWidgets/QAction>
+//#include <QtWidgets/QApplication>
+//#include <QtWidgets/QButtonGroup>
+//#include <QtWidgets/QDialog>
+//#include <QtWidgets/QFormLayout>
+//#include <QtWidgets/QHeaderView>
+//#include <QtWidgets/QLabel>
+//#include <QtWidgets/QLineEdit>
+//#include <QtWidgets/QPushButton>
+//#include <QtWidgets/QSpacerItem>
+//#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -40,43 +41,43 @@ public:
     void setupUi(QDialog *LoginDialog)
     {
         if (LoginDialog->objectName().isEmpty())
-            LoginDialog->setObjectName(QStringLiteral("LoginDialog"));
+            LoginDialog->setObjectName(/*/*QStringLiteral*/("LoginDialog"));
         LoginDialog->resize(400, 300);
         label_3 = new QLabel(LoginDialog);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setObjectName(/*/*QStringLiteral*/("label_3"));
         label_3->setGeometry(QRect(130, 20, 181, 31));
         QFont font;
         font.setFamily(QString::fromUtf8("\346\226\207\346\263\211\351\251\277\346\255\243\351\273\221"));
         font.setPointSize(20);
         label_3->setFont(font);
         layoutWidget = new QWidget(LoginDialog);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setObjectName(/*/*QStringLiteral*/("layoutWidget"));
         layoutWidget->setGeometry(QRect(60, 80, 281, 161));
         formLayout = new QFormLayout(layoutWidget);
-        formLayout->setObjectName(QStringLiteral("formLayout"));
+        formLayout->setObjectName(/*/*QStringLiteral*/("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
         label = new QLabel(layoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        label->setObjectName(/*QStringLiteral*/("label"));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label);
 
         lineEdit_name = new QLineEdit(layoutWidget);
-        lineEdit_name->setObjectName(QStringLiteral("lineEdit_name"));
+        lineEdit_name->setObjectName(/*QStringLiteral*/("lineEdit_name"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit_name);
 
         label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setObjectName(/*QStringLiteral*/("label_2"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
 
         lineEdit_pass = new QLineEdit(layoutWidget);
-        lineEdit_pass->setObjectName(QStringLiteral("lineEdit_pass"));
+        lineEdit_pass->setObjectName(/*QStringLiteral*/("lineEdit_pass"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_pass);
 
         pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setObjectName(/*QStringLiteral*/("pushButton"));
 
         formLayout->setWidget(3, QFormLayout::FieldRole, pushButton);
 
