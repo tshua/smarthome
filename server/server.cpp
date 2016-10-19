@@ -358,16 +358,16 @@ void insert_online_dev(dev_info_e dev_e)
 
 void write_regist_info_to_file(phone_info& phone)
 {
-	write_sync_lock(semid_mtfile);
-	if(search_phone(phone))
+	if(!search_phone(phone))
 	{
+		write_sync_lock(semid_mtfile);
 		FILE *fp = fopen(MT_REGIST, "a");
 		fprintf(fp, "%s %s %s %s\n", phone.phone_num, phone.phone_name,\
 				phone.password, phone.mail);
 		fclose(fp);
+		write_sync_unlock(semid_mtfile);
 	}
 
-	write_sync_unlock(semid_mtfile);
 
 }
 

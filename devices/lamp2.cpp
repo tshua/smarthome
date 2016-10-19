@@ -5,6 +5,8 @@
 
 #include <signal.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include <unistd.h>
@@ -14,13 +16,14 @@ using namespace std;
 
 #define SER_INFO "./files/SER_IP_PORT"
 #define LAMP1 "./files/DEV/dev2"
+#define DEV_LED2 "/sys/devices/platform/x210-led/led2"
 
 int lamp_mode = 0;// 0手动  1自动
 int lamp_status = 0; //0 灭 1亮
 int light = 0;//光照强度
 
 
-short ser_port = 0;
+int ser_port = 0;
 char ser_ip[20] = {0};
 unsigned char torken[20];
 SockClient client;
@@ -30,322 +33,348 @@ int msgid;
 
 int add_msg(unsigned char* buf)
 {
-	cout << buf << endl;
-	Msgbuf msgbuf;
-	bzero(&msgbuf, sizeof(Msgbuf));
+    cout << buf << endl;
+    Msgbuf msgbuf;
+    bzero(&msgbuf, sizeof(Msgbuf));
 
-	memcpy(msgbuf.mtext, "lamp2", 5);
-	memcpy(msgbuf.mtext+10, buf, 10);
+    memcpy(msgbuf.mtext, "lamp2", 5);
+    memcpy(msgbuf.mtext+10, buf, 10);
 
-	msgbuf.mtype = MSG_DEVTOQT; //设置发送消息的类型           
+    msgbuf.mtype = MSG_DEVTOQT; //设置发送消息的类型           
 
-	int ret = msgsnd(msgid, (void *)&msgbuf, 20, 0); //阻塞发送消息
+    int ret = msgsnd(msgid, (void *)&msgbuf, 20, 0); //阻塞发送消息
 
-	if(ret < 0)
-		return -1;
-	return 1;
+    if(ret < 0)
+    return -1;
+    return 1;
 }
 
 void sig_fun(int signo) {
 
-	unsigned char content[10] = "logout";
-	add_msg(content);
+    unsigned char content[10] = "logout";
+    add_msg(content);
 
-	exit(0);
+    exit(0);
 }
 
 void read_server_info()
 {
-	FILE* fp = fopen(SER_INFO, "r");
-	fscanf(fp, "%s %d", ser_ip, &ser_port);
-	fclose(fp);
+    FILE* fp = fopen(SER_INFO, "r");
+    fscanf(fp, "%s %d", ser_ip, &ser_port);
+    fclose(fp);
 }
 
 void read_dev_info()
 {
-	FILE* fp = fopen(LAMP1, "r");
-	fscanf(fp, "%s %s %s", dev.mac, dev.type, dev.name);
-	fclose(fp);
+    FILE* fp = fopen(LAMP1, "r");
+    fscanf(fp, "%s %s %s", dev.mac, dev.type, dev.name);
+    fclose(fp);
 }
 
 void dev_login()
 {
-	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
+    unsigned char buf[MAX_PACKAGE_SIZE] = {0};
 
-	Protocol p;
-	p.package_header = 0x55;
-	p.cmd_type = 0x0A;
-	p.cmd = DEV_LOGIN;			//设备登录
+    Protocol p;
+    p.package_header = 0x55;
+    p.cmd_type = 0x0A;
+    p.cmd = DEV_LOGIN;			//设备登录
 
-	p.torken_len = 1; 			//无torken
-	p.torken = new unsigned char[p.torken_len];
-	p.torken[0] = -1;
+    p.torken_len = 1; 			//无torken
+    p.torken = new unsigned char[p.torken_len];
+    p.torken[0] = -1;
 
-	p.data = new unsigned char[8];
-	memcpy(p.data, dev.mac, 8);
-	p.package_tail = 0x55;
+    p.data = new unsigned char[8];
+    memcpy(p.data, dev.mac, 8);
+    p.package_tail = 0x55;
 
-	int len = PACKAGE_LEN_EXCEPT_DATA + p.torken_len + 8;
-	p.len_low = len & 0x0ff;
-	p.len_high = len >> 8;
+    int len = PACKAGE_LEN_EXCEPT_DATA + p.torken_len + 8;
+    p.len_low = len & 0x0ff;
+    p.len_high = len >> 8;
 
 
-	p.fill_buf(buf); 	//CRC16校验
-	p.CRC_16(buf);
-	p.fill_buf(buf);
+    p.fill_buf(buf); 	//CRC16校验
+    p.CRC_16(buf);
+    p.fill_buf(buf);
 
-	client._send(buf);
+    client._send(buf);
 
-	bzero(buf, MAX_PACKAGE_SIZE);
-	if(RecvPacket(client.sockfd, buf))
-	{
-		p.parse_buf(buf);
-		if(p.torken_len > 1)
-		{
-			cout << "longin success!" << endl;
-			memcpy(torken, p.torken, 20);
-		}
-		else
-		{
-			cout << "login failed!" << endl;
-		}	
+    bzero(buf, MAX_PACKAGE_SIZE);
+    if(RecvPacket(client.sockfd, buf))
+    {
+        p.parse_buf(buf);
+        if(p.torken_len > 1)
+        {
+            cout << "longin success!" << endl;
+            memcpy(torken, p.torken, 20);
+        }
+        else
+        {
+            cout << "login failed!" << endl;
+        }	
 
-	}
-	unsigned char content[10] = "login";
+    }
+    unsigned char content[10] = "login";
 
-	add_msg(content); //发送登录成功的消息
+    add_msg(content); //发送登录成功的消息
 }
+
+void lighten_led2(int *lamp_status)
+{
+    int fd;
+    fd = open(DEV_LED2, O_RDWR);
+    if(fd < 0)
+    {
+        printf("open error\n");
+        exit(-1);
+    }
+
+    if(*lamp_status == 1)   write(fd, "1", 1);
+    else if(*lamp_status == 0) write(fd, "0", 1);
+
+    close(fd);
+
+}
+
 void deal_recv_message()
 {
-	unsigned char buf[MAX_PACKAGE_SIZE];
-	Protocol p;
-	Protocol p1;
+    unsigned char buf[MAX_PACKAGE_SIZE];
+    Protocol p;
+    Protocol p1;
 
-	while(1)
-	{
-		bzero(buf, MAX_PACKAGE_SIZE);
-		bool isRecved = WaitData(client.sockfd, 100000);
-		if(isRecved)
-		{
-			if(RecvPacket(client.sockfd, buf))
-			{
-				p.clean_data();
-				p1.clean_data();
-				p.parse_buf(buf);
-				int len;
-				cout << p.cmd << endl;
-				switch(p.cmd)
-				{
+    while(1)
+    {
+        bzero(buf, MAX_PACKAGE_SIZE);
+        bool isRecved = WaitData(client.sockfd, 100000);
+        if(isRecved)
+        {
+            if(RecvPacket(client.sockfd, buf))
+            {
+                p.clean_data();
+                p1.clean_data();
+                p.parse_buf(buf);
+                int len;
+                cout << p.cmd << endl;
+                switch(p.cmd)
+                {
 
-					case CONTRL_DEV_CMD:
+                    case CONTRL_DEV_CMD:
 
-						if(strcmp((char*)p.torken, (char*)torken) != 0)//判断torken
-						{
-							break;
-						}
+                    if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken
+                    {
+                        break;
+                    }
 
-						if(strcmp((char*)p.data, "off") == 0)
-						{
-							lamp_status = 0;
-							cout << "lamp off" <<endl;
-						}
-						if(strcmp((char*)p.data, "on") == 0)
-						{
-							lamp_status = 1;
-							cout << "lamp open" <<endl;
-						}
-						if(strcmp((char*)(p.data), "auto") == 0)
-						{
-							lamp_mode = 1;
-							cout << "auto mode" << endl;
+                    if(strcmp((char*)p.data, "off") == 0)
+                    {
+                        lamp_status = 0;
+                        lighten_led2(&lamp_status);
+                        cout << "lamp off" <<endl;
+                    }
+                    if(strcmp((char*)p.data, "on") == 0)
+                    {
+                        lamp_status = 1;
+                        lighten_led2(&lamp_status);
+                        cout << "lamp open" <<endl;
+                    }
+                    if(strcmp((char*)(p.data), "auto") == 0)
+                    {
+                        lamp_mode = 1;
+                        cout << "auto mode" << endl;
 
-						}
-						if(strcmp((char*)p.data, "manual") == 0)
-						{
-							lamp_mode = 0;
-							cout << "manual mode" << endl;
-						}
+                    }
+                    if(strcmp((char*)p.data, "manual") == 0)
+                    {
+                        lamp_mode = 0;
+                        cout << "manual mode" << endl;
+                    }
 
-						p1.package_header = 0x55;
-						p1.cmd_type = 0x0B;
-						p1.cmd = RES;                     //应答
+                    p1.package_header = 0x55;
+                    p1.cmd_type = 0x0B;
+                    p1.cmd = RES;                     //应答
 
-						p1.torken_len = 1;                       //无torken
-						p1.torken = new unsigned char[p.torken_len];
-						p1.torken[0] = -1;
+                    p1.torken_len = 1;                       //无torken
+                    p1.torken = new unsigned char[p.torken_len];
+                    p1.torken[0] = -1;
 
-						p1.data = new unsigned char[10];
-						memset(p1.data, 0, 10);
-						memcpy(p1.data, "success", 8); 
+                    p1.data = new unsigned char[10];
+                    memset(p1.data, 0, 10);
+                    memcpy(p1.data, "success", 8); 
 
-						p1.package_tail = 0x55;
+                    p1.package_tail = 0x55;
 
-						len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10;
-						p1.len_low = len & 0x0ff;
-						p1.len_high = len >> 8;
+                    len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10;
+                    p1.len_low = len & 0x0ff;
+                    p1.len_high = len >> 8;
 
-						bzero(buf, MAX_PACKAGE_SIZE);
-						p1.fill_buf(buf);        //CRC16校验
-						p1.CRC_16(buf);
-						p1.fill_buf(buf);
-						client._send(buf);
+                    bzero(buf, MAX_PACKAGE_SIZE);
+                    p1.fill_buf(buf);        //CRC16校验
+p1.CRC_16(buf);
+p1.fill_buf(buf);
+client._send(buf);
 
-						add_msg(p.data);
-						break;
-					case HEARTBEAT_CMD:
-						p1.package_header = 0x55;
-						p1.cmd_type = 0x0B;
-						p1.cmd = RES;                     //应答
+                        add_msg(p.data);
+                        break;
+                    case HEARTBEAT_CMD:
+                        p1.package_header = 0x55;
+                        p1.cmd_type = 0x0B;
+                        p1.cmd = RES;                     //应答
 
-						p1.torken_len = 1;                //无torken
-						p1.torken = new unsigned char[p.torken_len];
-						p1.torken[0] = -1;
+                        p1.torken_len = 1;                //无torken
+                        p1.torken = new unsigned char[p.torken_len];
+                        p1.torken[0] = -1;
 
-						p1.data = new unsigned char[10];
-						memset(p1.data, 0, 10);
-						memcpy(p1.data, "success", 8); 
+                        p1.data = new unsigned char[10];
+                        memset(p1.data, 0, 10);
+                        memcpy(p1.data, "success", 8); 
 
-						p1.package_tail = 0x55;
+                        p1.package_tail = 0x55;
 
-						len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10;
-						p1.len_low = len & 0x0ff;
-						p1.len_high = len >> 8;
+                        len = PACKAGE_LEN_EXCEPT_DATA + p1.torken_len + 10;
+                        p1.len_low = len & 0x0ff;
+                        p1.len_high = len >> 8;
 
-						bzero(buf, MAX_PACKAGE_SIZE);
-						p1.fill_buf(buf);        //CRC16校验
-						p1.CRC_16(buf);
-						p1.fill_buf(buf);
-						client._send(buf);
-						break;
+                        bzero(buf, MAX_PACKAGE_SIZE);
+                        p1.fill_buf(buf);        //CRC16校验
+                        p1.CRC_16(buf);
+                        p1.fill_buf(buf);
+                        client._send(buf);
+                        break;
 
-				}
-			}
-		}
-	}
-}
+                }
+                }
+                }
+                }
+                }
 
 void send_status_light()
 {
-	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
+    unsigned char buf[MAX_PACKAGE_SIZE] = {0};
 
-	srand(time(NULL));
-	light = rand()%100 + 1;
-	if(light > 50)
-		lamp_status = 0;
-	else
-		lamp_status = 1;
+    srand(time(NULL));
+    light = rand()%100 + 1;
+    if(light > 50)
+    {
+        lamp_status = 0;
+        lighten_led2(&lamp_status);
+    }
+    else
+    {
+        lamp_status = 1;
+        lighten_led2(&lamp_status);
+    }
 
 
-	Protocol p;
-	p.package_header = 0x55;
-	p.cmd_type = 0x0B;
-	p.cmd = STATUS_LIGHT; 		//光照信息
+    Protocol p;
+    p.package_header = 0x55;
+    p.cmd_type = 0x0B;
+    p.cmd = STATUS_LIGHT; 		//光照信息
 
-	memcpy(p.device_id, dev.mac,8);//device id
+    memcpy(p.device_id, dev.mac,8);//device id
 
-	p.torken_len = 1; 			//无torken
-	p.torken = new unsigned char[p.torken_len];
-	p.torken[0] = -1;
+    p.torken_len = 1; 			//无torken
+    p.torken = new unsigned char[p.torken_len];
+    p.torken[0] = -1;
 
-	p.data = new unsigned char[20];
-	//itoa(light, p.data, 10);
-	sprintf((char*)p.data, "%d", light);
-	memcpy(p.data + 10, lamp_status?"on":"off", sizeof(lamp_status?"on":"off"));
+    p.data = new unsigned char[20];
+    //itoa(light, p.data, 10);
+    sprintf((char*)p.data, "%d", light);
+    memcpy(p.data + 10, lamp_status?"on":"off", sizeof(lamp_status?"on":"off"));
 
-	p.package_tail = 0x55;
+    p.package_tail = 0x55;
 
-	int len = PACKAGE_LEN_EXCEPT_DATA + p.torken_len + 20;
-	p.len_low = len & 0x0ff;
-	p.len_high = len >> 8;
+    int len = PACKAGE_LEN_EXCEPT_DATA + p.torken_len + 20;
+    p.len_low = len & 0x0ff;
+    p.len_high = len >> 8;
 
-	bzero(buf, MAX_PACKAGE_SIZE);
-	p.fill_buf(buf); 	//CRC16校验
-	p.CRC_16(buf);
-	p.fill_buf(buf);
+    bzero(buf, MAX_PACKAGE_SIZE);
+    p.fill_buf(buf); 	//CRC16校验
+    p.CRC_16(buf);
+    p.fill_buf(buf);
 
-	client._send(buf);
+    client._send(buf);
 
-	add_msg(p.data);
+    add_msg(p.data);
 
 }
 
 void send_light()
 {
 
-	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
+    unsigned char buf[MAX_PACKAGE_SIZE] = {0};
 
 
-	srand(time(NULL));
-	light = rand()%100 + 1;
+    srand(time(NULL));
+    light = rand()%100 + 1;
 
-	Protocol p;
-	p.package_header = 0x55;
-	p.cmd_type = 0x0B;
-	p.cmd = LIGHT; 		//光照信息
+    Protocol p;
+    p.package_header = 0x55;
+    p.cmd_type = 0x0B;
+    p.cmd = LIGHT; 		//光照信息
 
-	memcpy(p.device_id, dev.mac,8);//device id
-	
-	p.torken_len = 1; 			//无torken
-	p.torken = new unsigned char[p.torken_len];
-	p.torken[0] = -1;
+    memcpy(p.device_id, dev.mac,8);//device id
 
-	p.data = new unsigned char[10];
-	//itoa(light, p.data, 10);
-	sprintf((char*)p.data, "%d", light);
-	p.package_tail = 0x55;
+    p.torken_len = 1; 			//无torken
+    p.torken = new unsigned char[p.torken_len];
+    p.torken[0] = -1;
 
-	int len = PACKAGE_LEN_EXCEPT_DATA + p.torken_len + 10;
-	p.len_low = len & 0x0ff;
-	p.len_high = len >> 8;
+    p.data = new unsigned char[10];
+    //itoa(light, p.data, 10);
+    sprintf((char*)p.data, "%d", light);
+    p.package_tail = 0x55;
 
-	bzero(buf, MAX_PACKAGE_SIZE);
-	p.fill_buf(buf); 	//CRC16校验
-	p.CRC_16(buf);
-	p.fill_buf(buf);
+    int len = PACKAGE_LEN_EXCEPT_DATA + p.torken_len + 10;
+    p.len_low = len & 0x0ff;
+    p.len_high = len >> 8;
 
-	client._send(buf);
+    bzero(buf, MAX_PACKAGE_SIZE);
+    p.fill_buf(buf); 	//CRC16校验
+    p.CRC_16(buf);
+    p.fill_buf(buf);
 
-	add_msg(p.data);
+    client._send(buf);
+
+    add_msg(p.data);
 
 }
 
 void* thread_light_produce(void* args)
 {
-	while(1)
-	{
+    while(1)
+    {
 
-		if(lamp_mode == 0)
-		{
-			send_light();
-		}
-		else
-		{
-			send_status_light();
-		}
-		sleep(20);
-	}
+        if(lamp_mode == 0)
+        {
+            send_light();
+        }
+        else
+        {
+            send_status_light();
+        }
+        sleep(20);
+    }
 }
 
 int main()
 {
-	signal(SIGINT, sig_fun);
+    signal(SIGINT, sig_fun);
 
-	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
+    mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
-	read_server_info();
+    read_server_info();
 
-	read_dev_info();
+    read_dev_info();
 
-	client.set_remoteaddr(ser_port, ser_ip);
-	client._connect();
+    client.set_remoteaddr(ser_port, ser_ip);
+    client._connect();
 
-	dev_login();
+    dev_login();
 
-	pthread_t thread_id;
-	pthread_create(&thread_id, NULL, thread_light_produce, NULL);
-	while(1)
-	{
-		deal_recv_message();
+    pthread_t thread_id;
+    pthread_create(&thread_id, NULL, thread_light_produce, NULL);
+    while(1)
+    {
+        deal_recv_message();
 
-	}
+    }
 }

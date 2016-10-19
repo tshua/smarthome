@@ -5,14 +5,21 @@
 
 #include <signal.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include <unistd.h>
 #include <iostream>
+#include <sys/ioctl.h>
 using namespace std;
 
 #define SER_INFO "./files/SER_IP_PORT"
 #define FAN "./files/DEV/dev3"
+#define DEVNAME         "/dev/buzzer"
+
+#define PWM_IOCTL_SET_FREQ              1
+#define PWM_IOCTL_STOP                  0
 
 int fan_status = 0; //0 关 1开
 int temprature = 10; //温度
@@ -20,7 +27,7 @@ int temprature = 10; //温度
 int msgid;
 
 
-short ser_port = 0;
+int ser_port = 0;
 char ser_ip[20] = {0};
 unsigned char torken[20];
 SockClient client;
@@ -112,6 +119,28 @@ void dev_login()
 
 	}
 }
+
+void buzzer(int *temprature)
+{
+	if(*temprature > 25 || *temprature < 15)
+	{
+		int fd = -1;
+
+		fd = open(DEVNAME, O_RDWR);
+		if (fd < 0)
+		{
+			perror("open");
+			exit(-1);
+		}
+
+		ioctl(fd, PWM_IOCTL_SET_FREQ, 10000);
+		sleep(3);
+		ioctl(fd, PWM_IOCTL_STOP);
+
+		close(fd);
+	}
+}
+
 void deal_recv_message()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE];
@@ -136,7 +165,7 @@ void deal_recv_message()
 					
 					case CONTRL_DEV_CMD:
 
-						if(strcmp((char*)p.torken, (char*)torken) != 0)//判断torken
+						if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken
 						{
 							break;
 						}
@@ -213,7 +242,7 @@ void deal_recv_message()
 
 
 
-void send_temprature()
+int send_temprature()
 {
 
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -249,13 +278,17 @@ void send_temprature()
 	
 	add_msg(p.data);
 
+    return temprature;
+
 }
 
 void* thread_temprature_produce(void *arg)
 {
+    int temp = 0;
 	while(1)
 	{
-		send_temprature();
+		temp = send_temprature();
+		buzzer(&temp);
 		sleep(20);
 	}
 }

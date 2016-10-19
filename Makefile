@@ -31,6 +31,7 @@ server:
 
 phone:
 	make -C smart_home_qt_phone
+
 clean:
 	find .  -name "*.o" -exec rm -rfv {} \;
 	rm s c lamp1 lamp2 fan switch -v
