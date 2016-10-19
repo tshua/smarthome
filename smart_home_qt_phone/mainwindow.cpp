@@ -382,7 +382,7 @@ void MainWindow::updateView()
     lamp2ModeButton->setText(lamp2_mode?"Manual":"Auto");//"手动":"自动");
 
     fanStatusButton->setText(fan_status?"Close":"Open");//"关闭":"打开");
-    switchStatusButton->setText(switch_status?"Manual":"Auto");//"手动":"自动");
+    switchStatusButton->setText(switch_status?"Close":"Open");//"手动":"自动");
 
 }
 

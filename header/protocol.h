@@ -3,7 +3,7 @@
 
 
 #define SERPORT 5000
-#define SERADDR	"172.16.23.65"
+#define SERADDR	"192.168.1.10"
 
 #define MAX_PACKAGE_SIZE 1024
 #define MAX_MSG_SIZE 1024

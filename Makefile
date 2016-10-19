@@ -12,7 +12,7 @@ SWITCHOBJS = ./source/protocol.o ./source/sock_client.o ./source/socket_route.o 
 
 
 
-all:$(OBJS) 
+all:$(OBJS) server dev phone
 	$(CC) $(FLAGS) -o s $(SERVEROBJS) -g -lpthread
 	$(CC) $(FLAGS) -o c $(CLIENTOBJS) -g -lpthread
 	$(CC) $(FLAGS) -o lamp1 $(LAMP1OBJS) -g -lpthread
@@ -23,15 +23,15 @@ all:$(OBJS)
 %.o:%.cpp
 	$(CC) $(FLAGS) -o $@ -c $< -g
 
-#server dev phone
-#dev:
-#	make -C smart_home_qt_dev
-#
-#server:
-#	make -C smart_home_qt_server
-#
-#phone:
-#	make -C smart_home_qt_phone
+dev:
+	make -C smart_home_qt_dev
+
+server:
+	make -C smart_home_qt_server
+
+phone:
+	make -C smart_home_qt_phone
+
 clean:
 	find .  -name "*.o" -exec rm -rfv {} \;
 	rm s c lamp1 lamp2 fan switch -v

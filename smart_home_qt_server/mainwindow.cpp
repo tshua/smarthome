@@ -11,6 +11,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    this->resize( QSize( 1200, 600 ));
 
     QPalette pa;                                //红色字体
     pa.setColor(QPalette::WindowText,Qt::red);
@@ -437,10 +438,10 @@ void MainWindow::updateView()
         label_switch_online->setPalette(pa_red);
 
     lamp1StatusButton->setText(lamp1_status?"Close":"Open");//"关闭":"打开");
-    lamp1ModeButton->setText(lamp1_mode?"Auto":"Manual");//"手动":"自动");
+    lamp1ModeButton->setText(lamp1_mode?"Manual":"Auto");//"手动":"自动");
 
     lamp2StatusButton->setText(lamp2_status?"Close":"Open");//"关闭":"打开");
-    lamp2ModeButton->setText(lamp2_mode?"Auto":"Manual");//"手动":"自动");
+    lamp2ModeButton->setText(lamp2_mode?"Manual":"Auto");//"手动":"自动");
 
     fanStatusButton->setText(fan_status?"Close":"Open");//"关闭":"打开");
     switchStatusButton->setText(switch_status?"Close":"Open");//"关闭":"打开");

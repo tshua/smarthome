@@ -114,6 +114,7 @@ void dev_login()
 		}	
 
 	}
+        cout << "send login" << endl;
 	unsigned char content[10] = "login";
 
 	add_msg(content); //发送登录成功的消息

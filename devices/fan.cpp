@@ -288,7 +288,7 @@ void* thread_temprature_produce(void *arg)
 	while(1)
 	{
 		temp = send_temprature();
-        buzzer(&temp);
+		buzzer(&temp);
 		sleep(20);
 	}
 }
