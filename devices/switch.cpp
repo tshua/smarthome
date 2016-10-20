@@ -23,6 +23,11 @@ unsigned char torken[20];
 SockClient client;
 dev_info dev;
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：添加缓冲区内容到消息队列
+//参数：buf要添加的缓冲区
+//返回值：添加成功返回 1,失败返回 -1
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int add_msg(unsigned char* buf)
 {
 	Msgbuf msgbuf;
@@ -40,6 +45,9 @@ int add_msg(unsigned char* buf)
 	return 1;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：捕获信号，并往QT界面发送离线消息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void sig_fun(int signo)
 {
 	unsigned char content[10] = "logout";
@@ -48,6 +56,9 @@ void sig_fun(int signo)
 	exit(0);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：读取服务器地址和端口信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void read_server_info()
 {
 	FILE* fp = fopen(SER_INFO, "r");
@@ -55,6 +66,9 @@ void read_server_info()
 	fclose(fp);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：从设备文件读取设备信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void read_dev_info()
 {
 	FILE* fp = fopen(SWITCH1, "r");
@@ -62,6 +76,9 @@ void read_dev_info()
 	fclose(fp);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：设备登录
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void dev_login()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -109,7 +126,9 @@ void dev_login()
 	}
 }
 
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：接收消息线程，并作相应处理
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void deal_recv_message()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE];
@@ -119,10 +138,10 @@ void deal_recv_message()
 	while(1)
 	{
 		bzero(buf, MAX_PACKAGE_SIZE);
-		bool isRecved = WaitData(client.sockfd, 100000);
+		bool isRecved = WaitData(client.sockfd, 100000); //select模型等待数据
 		if(isRecved)
 		{
-			if(RecvPacket(client.sockfd, buf))
+			if(RecvPacket(client.sockfd, buf)) //接收一个完整的数据包
 			{
 				p.clean_data();
 				p1.clean_data();
@@ -132,19 +151,19 @@ void deal_recv_message()
 				switch(p.cmd)
 				{
 					
-					case CONTRL_DEV_CMD:
+					case CONTRL_DEV_CMD: //设备控制数据
 
-						if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken
+						if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken,不匹配不予处理
 						{
 							break;
 						}
 
-						if(strcmp((char*)p.data, "off") == 0)
+						if(strcmp((char*)p.data, "off") == 0) //关闭
 						{
 							switch_status = 0;
 							cout << "switch off" <<endl;
 						}
-						if(strcmp((char*)p.data, "on") == 0)
+						if(strcmp((char*)p.data, "on") == 0) //打开
 						{
 							switch_status = 1;
 							cout << "switch open" <<endl;
@@ -177,7 +196,7 @@ void deal_recv_message()
 						client._send(buf);
 
 						break;
-					case HEARTBEAT_CMD:
+					case HEARTBEAT_CMD: // 心跳检查数据
 						p1.package_header = 0x55;
 						p1.cmd_type = 0x0B;
 						p1.cmd = RES;                     //应答
@@ -210,24 +229,33 @@ void deal_recv_message()
 }
 
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//主程序
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int main()
 {
-	
+	//获取退出信号
 	signal(SIGINT, sig_fun);
 	
+	//获取消息队列
 	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
+	//读取服务器信息
 	read_server_info();
 
+	//读取设备信息
 	read_dev_info();
 
+	//连接到服务器
 	client.set_remoteaddr(ser_port, ser_ip);
 	client._connect();
 
+	//设备登录
 	dev_login();
 	
 	while(1)
 	{
+		//接收控制信息并进行处理
 		deal_recv_message();
 	}
 }

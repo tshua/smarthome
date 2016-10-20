@@ -30,7 +30,11 @@ SockClient client;
 dev_info dev;
 int msgid;
 
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：添加缓冲区内容到消息队列
+//参数：buf要添加的缓冲区
+//返回值：添加成功返回 1,失败返回 -1
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int add_msg(unsigned char* buf)
 {
 	cout << buf << endl;
@@ -49,6 +53,9 @@ int add_msg(unsigned char* buf)
 	return 1;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：捕获信号，并往QT界面发送离线消息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void sig_fun(int signo) {
 
 	unsigned char content[10] = "logout";
@@ -57,6 +64,9 @@ void sig_fun(int signo) {
 	exit(0);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：读取服务器地址和端口信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void read_server_info()
 {
 	FILE* fp = fopen(SER_INFO, "r");
@@ -64,6 +74,9 @@ void read_server_info()
 	fclose(fp);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：从设备文件读取设备信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void read_dev_info()
 {
 	FILE* fp = fopen(LAMP1, "r");
@@ -71,6 +84,10 @@ void read_dev_info()
 	fclose(fp);
 }
 
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：设备登录
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void dev_login()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -106,7 +123,10 @@ void dev_login()
 		if(p.torken_len > 1)
 		{
 			cout << "longin success!" << endl;
-			memcpy(torken, p.torken, 20);
+			memcpy(torken, p.torken, 20);    //记录服务器返回的torken信息
+			//cout << "send login" << endl;
+			unsigned char content[10] = "login";
+			add_msg(content); //发送登录成功的消息
 		}
 		else
 		{
@@ -114,29 +134,32 @@ void dev_login()
 		}	
 
 	}
-        cout << "send login" << endl;
-	unsigned char content[10] = "login";
-
-	add_msg(content); //发送登录成功的消息
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：点亮/关闭 开发板上的led
+//参数：lamp_status代表状态 0关  1开
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void lighten_led1(int *lamp_status)
 {
-        int fd;
-        fd = open(DEV_LED1, O_RDWR);
-        if(fd < 0)
-        {
-                printf("open error\n");
+	int fd;
+	fd = open(DEV_LED1, O_RDWR);
+	if(fd < 0)
+	{
+		printf("open error\n");
 		exit(-1);
-        }
+	}
 
-        if(*lamp_status == 1)   write(fd, "1", 1);
-        else if(*lamp_status == 0) write(fd, "0", 1);
+	if(*lamp_status == 1)   write(fd, "1", 1);
+	else if(*lamp_status == 0) write(fd, "0", 1);
 
         close(fd);
 
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：接收消息线程，并作相应处理
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void deal_recv_message()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE];
@@ -146,10 +169,10 @@ void deal_recv_message()
 	while(1)
 	{
 		bzero(buf, MAX_PACKAGE_SIZE);
-		bool isRecved = WaitData(client.sockfd, 100000);
+		bool isRecved = WaitData(client.sockfd, 100000); //select函数延时100000us等待数据
 		if(isRecved)
 		{
-			if(RecvPacket(client.sockfd, buf))
+			if(RecvPacket(client.sockfd, buf))  //接收一个完整的数据包
 			{
 				p.clean_data();
 				p1.clean_data();
@@ -159,32 +182,32 @@ void deal_recv_message()
 				switch(p.cmd)
 				{
 
-					case CONTRL_DEV_CMD:
+					case CONTRL_DEV_CMD:  //设备控制信息
 
-						if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken
+						if(strncmp((char*)p.torken, (char*)torken, 20) != 0) //判断torken是否匹配，不匹配不予处理
 						{
 							break;
 						}
 
-						if(strcmp((char*)p.data, "off") == 0)
+						if(strcmp((char*)p.data, "off") == 0) //关灯
 						{
 							lamp_status = 0;
-                            lighten_led1(&lamp_status);
+							lighten_led1(&lamp_status);
 							cout << "lamp off" <<endl;
 						}
-						if(strcmp((char*)p.data, "on") == 0)
+						if(strcmp((char*)p.data, "on") == 0) //开灯
 						{
 							lamp_status = 1;
-                            lighten_led1(&lamp_status);
+							lighten_led1(&lamp_status);
 							cout << "lamp open" <<endl;
 						}
-						if(strcmp((char*)(p.data), "auto") == 0)
+						if(strcmp((char*)(p.data), "auto") == 0) //自动模式
 						{
 							lamp_mode = 1;
 							cout << "auto mode" << endl;
 
 						}
-						if(strcmp((char*)p.data, "manual") == 0)
+						if(strcmp((char*)p.data, "manual") == 0) //手动模式
 						{
 							lamp_mode = 0;
 							cout << "manual mode" << endl;
@@ -192,7 +215,7 @@ void deal_recv_message()
 
 						p1.package_header = 0x55;
 						p1.cmd_type = 0x0B;
-						p1.cmd = RES;                     //应答
+						p1.cmd = RES;                            //应答
 
 						p1.torken_len = 1;                       //无torken
 						p1.torken = new unsigned char[p.torken_len];
@@ -216,7 +239,7 @@ void deal_recv_message()
 
 						add_msg(p.data);
 						break;
-					case HEARTBEAT_CMD:
+					case HEARTBEAT_CMD: //心跳检测信息
 						p1.package_header = 0x55;
 						p1.cmd_type = 0x0B;
 						p1.cmd = RES;                     //应答
@@ -248,6 +271,10 @@ void deal_recv_message()
 	}
 }
 
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：生成随机光照数据并发送给服务器
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void send_status_light()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -255,16 +282,16 @@ void send_status_light()
 	srand(time(NULL));
 	light = rand()%100 + 1;
 	if(light > 50)
-    {
+	{
 		lamp_status = 0;
-        lighten_led1(&lamp_status);
+		lighten_led1(&lamp_status); //关闭LED
 
-    }
+	}
 	else
-    {
+	{
 		lamp_status = 1;
-        lighten_led1(&lamp_status);
-    }
+		lighten_led1(&lamp_status); //点亮LED
+	}
 
 	Protocol p;
 	p.package_header = 0x55;
@@ -299,6 +326,9 @@ void send_status_light()
 
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：生成随机光照数据并发送给服务器
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void send_light()
 {
 
@@ -314,7 +344,7 @@ void send_light()
 	p.cmd = LIGHT; 		//光照信息
 
 	memcpy(p.device_id, dev.mac,8);//device id
-	
+
 	p.torken_len = 1; 			//无torken
 	p.torken = new unsigned char[p.torken_len];
 	p.torken[0] = -1;
@@ -339,6 +369,10 @@ void send_light()
 
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：发送光照传感数据线程，
+//根据自动手动两种模式发送
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void* thread_light_produce(void* args)
 {
 	while(1)
@@ -356,26 +390,37 @@ void* thread_light_produce(void* args)
 	}
 }
 
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//主程序
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int main()
 {
+	//捕获退出信号
 	signal(SIGINT, sig_fun);
 
+	//获取消息队列
 	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
+	//读取服务器信息
 	read_server_info();
 
+	//读取设备信息
 	read_dev_info();
 
+	//连接服务器
 	client.set_remoteaddr(ser_port, ser_ip);
 	client._connect();
 
+	//发送登录包
 	dev_login();
 
+	//打开生成光照传感数据线程
 	pthread_t thread_id;
 	pthread_create(&thread_id, NULL, thread_light_produce, NULL);
 	while(1)
 	{
+		//处理控制信息
 		deal_recv_message();
-
 	}
 }

@@ -34,23 +34,29 @@ int light2 = 0;
 SockClient client;
 
 int semid_phone_dev_online; //用于控制phone端设备信息读写同步的信号量
-int count_phone_dev_online = 0;
+int count_phone_dev_online = 0; //用于记录正在进行读操作的线程个数
 
 
-
-//读与读同步,读与写互斥
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//读操作加锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int write_sync_lock(int semid)
 {
 	sem_p(semid, 1, 1);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//读操作解锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int write_sync_unlock(int semid)
 {
 	sem_v(semid, 1, 1);
 }
 
 
-//读与读同步,读与写互斥
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//写操作加锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int read_sync_lock(int semid, int& count)
 {
 	sem_p(semid, 0, 1);//count 可操作
@@ -60,6 +66,9 @@ int read_sync_lock(int semid, int& count)
 	sem_v(semid, 0, 1);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//写操作解锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int read_sync_unlock(int semid, int& count)
 {
 	sem_p(semid, 0, 1);
@@ -69,6 +78,10 @@ int read_sync_unlock(int semid, int& count)
 	sem_v(semid, 0, 1);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：把缓冲区内容放到消息队列
+//参数：buf 缓冲区指针 size 缓冲区大小
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int add_msg(unsigned char* buf, int size)
 {
 	Msgbuf msgbuf;
@@ -86,6 +99,12 @@ int add_msg(unsigned char* buf, int size)
 	return 1;
 }
 
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：从在线设备中查找某个设备信息
+//参数：dev_e 传入名称，函数填入其它相关信息
+//返回值： 查找成功 1  查找失败 0
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int search_dev_from_dev_online(dev_info_e& dev_e) //根据名称查询所有的设备信息
 {
 
@@ -108,6 +127,10 @@ int search_dev_from_dev_online(dev_info_e& dev_e) //根据名称查询所有的�
 	return find_ok;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：注册手机信息
+//返回值： 注册失败 -1  注册成功 1
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int regist_phone(phone_info& phone)
 {
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -157,10 +180,9 @@ int regist_phone(phone_info& phone)
 	return 1;
 }
 
-
-/*
- *读出手机相关信息
- **/
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 从文件中读出手机相关信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void phone_read_info(phone_info& phone)
 {
 	FILE *fp = fopen(PHONE1, "r");
@@ -185,13 +207,13 @@ void phone_read_info(phone_info& phone)
 			exit(-1);
 		}
 	}
-
-
 }
 
-/*
- * 模拟smartlink 手机将服务器及路由器信息写入文件，设备读文件
- * */
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 模拟smartlink 
+// 手机将服务器及路由器信息写入文件，
+// 设备读文件该文件获取服务器地址信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void phone_write_server_info()
 {
 	FILE *fp = fopen(SER_INFO, "w");
@@ -199,6 +221,11 @@ void phone_write_server_info()
 	fclose(fp);	
 }
 
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 手机登录
+//返回值： 登录失败 -1  登录成功 1
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int phone_login(phone_info& phone)
 {
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -253,6 +280,9 @@ int phone_login(phone_info& phone)
 
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 注册设备
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int regist_device()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -264,7 +294,7 @@ int regist_device()
 	DIR *dir = opendir(base);
 	struct dirent *ptr;
 	string b = base;
-	while((ptr=readdir(dir)) != NULL)
+	while((ptr=readdir(dir)) != NULL) //读取指定目录下的所有设备文件，进行注册
 	{
 		if(ptr->d_type == 8) 	//file
 		{
@@ -275,7 +305,7 @@ int regist_device()
 	FILE *fp = NULL;
 	dev_info dev;
 	bzero(&dev, sizeof(dev_info));
-	for(vector<string>::iterator it = devs.begin(); it != devs.end(); it++)
+	for(vector<string>::iterator it = devs.begin(); it != devs.end(); it++) //注册每个设备
 	{
 		fp = fopen((*it).c_str(), "r");
 		fscanf(fp, "%s %s %s", dev.mac, dev.type, dev.name);
@@ -327,6 +357,9 @@ int regist_device()
 	}
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 同步设备状态、传感数据等信息线程
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void* thread_sync_dev_online(void* arg) //10s同步一次
 {
 
@@ -335,6 +368,7 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 
 	while(1)
 	{
+		//先发送离线信息，同步后会被在线信息覆盖
 		bzero(msg_data, 20);
 		memcpy(msg_data, "lamp1", 10);
 		memcpy(msg_data + 10, "logout", 6);
@@ -381,7 +415,7 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 		bzero(buf, MAX_PACKAGE_SIZE);
 		if(RecvPacket(client.sockfd, buf))
 		{
-			write_sync_lock(semid_phone_dev_online);
+			write_sync_lock(semid_phone_dev_online); //对在线设备信息加锁
 
 			dev_online.clear();
 			p.clean_data();
@@ -391,7 +425,7 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 
 			dev_info_e dev_e;
 			unsigned char* pos = p.data;
-			for(int i = 0;i < dev_num; i++)
+			for(int i = 0;i < dev_num; i++) //把接受到的数据写入list中
 			{
 				bzero(&dev_e, sizeof(dev_info_e));
 				bzero(msg_data, 20);
@@ -411,12 +445,13 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 					add_msg(msg_data, 20);
 				}
 				
-				bzero(msg_data, 20);
+				bzero(msg_data, 20); 			//发送登录信息给QT界面
 				memcpy(msg_data, dev_e.d.name, 10);
 				memcpy(msg_data + 10, "login", 5);
 				add_msg(msg_data, 20);
 			}
 
+			//发送光照、温度传感数据
 			light1 = atoi((char*)pos);
 			bzero(msg_data, 20);
 			memcpy(msg_data, "lamp1", 5);
@@ -448,12 +483,19 @@ void* thread_sync_dev_online(void* arg) //10s同步一次
 	}
 }
 
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 菜单输出
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void output_select()
 {
 	cout << "p/print the devs." << endl;
 }
 
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 菜单输出
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void output_select_lamp()
 {
 	cout << "on/for open." << endl;
@@ -461,12 +503,19 @@ void output_select_lamp()
 	cout << "auto/for auto control." <<endl;
 	cout << "manual/for manual control." <<endl;
 }
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 菜单输出
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void output_select_fan_swutch()
 {
 	cout << "on/for open." << endl;
 	cout << "off/for close." << endl;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 接收控制台输入线程
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void *thread_input(void *arg){
 	unsigned char buf[MAX_PACKAGE_SIZE];
 	char c;
@@ -475,7 +524,7 @@ void *thread_input(void *arg){
 	while(1)
 	{
 		cin >> c;
-		if(c == 'p')
+		if(c == 'p') //打印设备列表
 		{
 			i = 0;
 			read_sync_lock(semid_phone_dev_online, count_phone_dev_online);
@@ -505,8 +554,8 @@ void *thread_input(void *arg){
 
 				output_select_lamp();
 				cout << "input control info:" << endl;
-				cin >> option;
-				if(option == "on")
+				cin >> option; 
+				if(option == "on") //发送控制信息
 				{
 
 					dev_info_e dev = *it;
@@ -831,6 +880,9 @@ void *thread_input(void *arg){
 
 
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 接收控制台输入线程
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void* thread_msg_input(void* arg)
 {
 	unsigned char buf[MAX_PACKAGE_SIZE];

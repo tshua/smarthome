@@ -33,6 +33,11 @@ unsigned char torken[20];
 SockClient client;
 dev_info dev;
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：添加缓冲区内容到消息队列
+//参数：buf要添加的缓冲区
+//返回值：添加成功返回 1,失败返回 -1
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int add_msg(unsigned char* buf)
 {
 	Msgbuf msgbuf;
@@ -50,6 +55,9 @@ int add_msg(unsigned char* buf)
 	return 1;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：捕获信号，并往QT界面发送离线消息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void sig_fun(int signo) {
 
 	unsigned char content[10] = "logout";
@@ -58,6 +66,9 @@ void sig_fun(int signo) {
 	exit(0);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：读取服务器地址和端口信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void read_server_info()
 {
 	FILE* fp = fopen(SER_INFO, "r");
@@ -65,6 +76,9 @@ void read_server_info()
 	fclose(fp);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：从设备文件读取设备信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void read_dev_info()
 {
 	FILE* fp = fopen(FAN, "r");
@@ -72,6 +86,9 @@ void read_dev_info()
 	fclose(fp);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：设备登录
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void dev_login()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
@@ -107,7 +124,7 @@ void dev_login()
 		if(p.torken_len > 1)
 		{
 			cout << "longin success!" << endl;
-			memcpy(torken, p.torken, 20);
+			memcpy(torken, p.torken, 20); //记录服务器torken信息
 			
 			unsigned char content[10] = "login";
 			add_msg(content);
@@ -120,9 +137,14 @@ void dev_login()
 	}
 }
 
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：打开/关闭 蜂鸣器
+//参数：temprature 代表温度数据，范围（10～30）
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void buzzer(int *temprature)
 {
-	if(*temprature > 25 || *temprature < 15)
+	if(*temprature > 25 || *temprature < 15) //打开 蜂鸣器
 	{
 		int fd = -1;
 
@@ -141,6 +163,9 @@ void buzzer(int *temprature)
 	}
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：接收消息线程，并作相应处理
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void deal_recv_message()
 {
 	unsigned char buf[MAX_PACKAGE_SIZE];
@@ -150,10 +175,10 @@ void deal_recv_message()
 	while(1)
 	{
 		bzero(buf, MAX_PACKAGE_SIZE);
-		bool isRecved = WaitData(client.sockfd, 100000);
+		bool isRecved = WaitData(client.sockfd, 100000); //select模型延时等待数据
 		if(isRecved)
 		{
-			if(RecvPacket(client.sockfd, buf))
+			if(RecvPacket(client.sockfd, buf)) //接收一个完整的数据包
 			{
 				p.clean_data();
 				p1.clean_data();
@@ -165,17 +190,17 @@ void deal_recv_message()
 					
 					case CONTRL_DEV_CMD:
 
-						if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken
+						if(strncmp((char*)p.torken, (char*)torken, 20) != 0)//判断torken, 不匹配不处理
 						{
 							break;
 						}
 
-						if(strcmp((char*)p.data, "off") == 0)
+						if(strcmp((char*)p.data, "off") == 0) //关闭
 						{
 							fan_status = 0;
 							cout << "fan off" <<endl;
 						}
-						if(strcmp((char*)p.data, "on") == 0)
+						if(strcmp((char*)p.data, "on") == 0) //打开
 						{
 							fan_status = 1;
 							cout << "fan open" <<endl;
@@ -208,7 +233,7 @@ void deal_recv_message()
 						client._send(buf);
 
 						break;
-					case HEARTBEAT_CMD:
+					case HEARTBEAT_CMD: //心跳检测包
 						p1.package_header = 0x55;
 						p1.cmd_type = 0x0B;
 						p1.cmd = RES;                     //应答
@@ -241,7 +266,9 @@ void deal_recv_message()
 }
 
 
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：生成随机温度数据并发送给服务器
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int send_temprature()
 {
 
@@ -278,40 +305,54 @@ int send_temprature()
 	
 	add_msg(p.data);
 
-    return temprature;
+	return temprature;
 
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：发送温度传感数据线程
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void* thread_temprature_produce(void *arg)
 {
     int temp = 0;
 	while(1)
 	{
 		temp = send_temprature();
-		buzzer(&temp);
+		buzzer(&temp); //操作蜂鸣器报警
 		sleep(20);
 	}
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//主程序
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int main()
 {
+	//捕获退出信号
 	signal(SIGINT, sig_fun);
 
+	//获取消息队列
 	mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a');
 
+	//读取服务器信息
 	read_server_info();
 
+	//读取设备信息
 	read_dev_info();
 
+	//连接到服务器
 	client.set_remoteaddr(ser_port, ser_ip);
 	client._connect();
 
+	//发送登录信息
 	dev_login();
 	
+	//打开生成温度传感数据线程
 	pthread_t thread_id;
 	pthread_create(&thread_id, NULL, thread_temprature_produce, NULL);
 	while(1)
 	{
+		//接收控制信息及心跳检测信息
 		deal_recv_message();
 	}
 }
