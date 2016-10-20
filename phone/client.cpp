@@ -881,7 +881,8 @@ void *thread_input(void *arg){
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//功能： 接收控制台输入线程
+//功能： 接收消息队列输入线程，
+//       发送控制命令到服务器
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void* thread_msg_input(void* arg)
 {
@@ -899,12 +900,12 @@ void* thread_msg_input(void* arg)
 
 		dev_info_e dev;
 		memcpy(dev.d.name, msg.mtext, 10);
-		if(!search_dev_from_dev_online(dev))
+		if(!search_dev_from_dev_online(dev)) //根据名称查找设备信息
 			continue;
 		if(strncmp(msg.mtext, "lamp", 4) == 0)
 		{
 
-			if(strcmp(msg.mtext+10, "on") == 0)
+			if(strcmp(msg.mtext+10, "on") == 0) //打开
 			{
 
 				cout << dev.d.mac << endl;
@@ -918,7 +919,7 @@ void* thread_msg_input(void* arg)
 				memcpy(p1.device_id, dev.d.mac, 8);
 
 
-				p1.torken_len = 20;
+				p1.torken_len = 20; 			//添加设备torken
 				p1.torken = new unsigned char[p1.torken_len];
 				memcpy(p1.torken, dev.torken, 20);
 
@@ -956,7 +957,7 @@ void* thread_msg_input(void* arg)
 				}
 
 			}
-			if(strcmp(msg.mtext+10, "off") == 0)
+			if(strcmp(msg.mtext+10, "off") == 0)  //关闭
 			{
 
 				cout << dev.d.mac << endl;
@@ -969,7 +970,7 @@ void* thread_msg_input(void* arg)
 				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 				memcpy(p1.device_id, dev.d.mac, 8);
 
-				p1.torken_len = 20;                       //无torken
+				p1.torken_len = 20;                       //写入设备会话torken信息
 				p1.torken = new unsigned char[p1.torken_len];
 				memcpy(p1.torken, dev.torken, 20);
 
@@ -1006,7 +1007,7 @@ void* thread_msg_input(void* arg)
 					cout << "set lamp error!" << endl;
 				}
 			}
-			if(strcmp(msg.mtext+10, "auto") == 0)
+			if(strcmp(msg.mtext+10, "auto") == 0) //自动模式
 			{
 
 				cout << dev.d.mac << endl;
@@ -1019,7 +1020,7 @@ void* thread_msg_input(void* arg)
 				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 				memcpy(p1.device_id, dev.d.mac, 8);
 
-				p1.torken_len = 20;                       //无torken
+				p1.torken_len = 20;                       //写入设备会话torken信息
 				p1.torken = new unsigned char[p1.torken_len];
 				memcpy(p1.torken, dev.torken, 20);
 
@@ -1056,7 +1057,7 @@ void* thread_msg_input(void* arg)
 					cout << "set auto error!" << endl;
 				}
 			}
-			if(strcmp(msg.mtext+10, "manual") == 0)
+			if(strcmp(msg.mtext+10, "manual") == 0) //手动模式
 			{
 
 				cout << dev.d.mac << endl;
@@ -1069,7 +1070,7 @@ void* thread_msg_input(void* arg)
 				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 				memcpy(p1.device_id, dev.d.mac, 8);
 
-				p1.torken_len = 20;                       //无torken
+				p1.torken_len = 20;                       //写入设备会话torken信息
 				p1.torken = new unsigned char[p1.torken_len];
 				memcpy(p1.torken, dev.torken, 20);
 
@@ -1107,7 +1108,7 @@ void* thread_msg_input(void* arg)
 				}
 			}
 		}
-		else if(strncmp(msg.mtext, "fan", 3) == 0 || strncmp(msg.mtext, "switch", 6) == 0)
+		else if(strncmp(msg.mtext, "fan", 3) == 0 || strncmp(msg.mtext, "switch", 6) == 0) //电扇、开关的控制信息
 		{
 			if(strcmp(msg.mtext+10, "on") == 0)
 			{
@@ -1217,15 +1218,16 @@ void* thread_msg_input(void* arg)
 }
 
 
-
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：捕获退出信号，释放资源
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void signal_fun(int signo) //信号捕获函数
 {
 	if(SIGINT == signo)
 	{
 		del_sem(semid_phone_dev_online, NSEMS, SEM_FILE); //删除信号量
 
-		rm_msg(msgid, MSG_FILE_PHONE);
+		rm_msg(msgid, MSG_FILE_PHONE); //删除消息队列
 		exit(0);
 	}
 	else if(SIGPIPE == signo)
@@ -1234,30 +1236,40 @@ void signal_fun(int signo) //信号捕获函数
 	}
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//主程序
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int main(void)
 {	
+	//捕获退出信号
 	signal(SIGINT, signal_fun);
 	signal(SIGPIPE, signal_fun);
 
-
+	//获取消息队列
 	mk_get_msg(&msgid, MSG_FILE_PHONE, 0644, 'a');
 	cout << "msgid" << msgid << endl;
 
+	//获取信号量
 	get_sem(&semid_phone_dev_online, SEM_FILE, NSEMS, 'a', 0664);
 	for(int i = 0;i<NSEMS; i++)
 		init_sem(semid_phone_dev_online, i, 1);
 
 	bzero(&phone1, sizeof(phone1));
 
+	//登录服务器
 	client.set_remoteaddr(SERPORT, SERADDR);
 	client._connect();
 
+	//注册手机
 	phone_read_info(phone1);
 
+	//把服务器信息写入文件，供设备读取
 	phone_write_server_info();
 
+	//手机登录
 	phone_login(phone1);
 
+	//注册设备u
 	regist_device();
 
 
@@ -1265,11 +1277,12 @@ int main(void)
 	pthread_t thread_id;
 	pthread_create(&thread_id, NULL, thread_input, NULL);
 
+	//开启接收消息队列线程
 	pthread_create(&thread_id, NULL, thread_msg_input, NULL);
 
-
-	while(1) //与界面通信，接收消息队列的信息
+	while(1) 
 	{	
+		//与服务器同步状态、传感信息
 		thread_sync_dev_online(NULL);
 	}
 

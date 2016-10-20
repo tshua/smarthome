@@ -58,41 +58,46 @@ int count_mtfile = 0;
 int count_devonline = 0;
 int count_phoneonline = 0;
 
-
-
+//初始化信号量
 static int init_sem()
 {
 	/*get_sem(&semid, SEM_FILE, NSEMS, 'a', 0664);*/
-	get_sem(&semid_devfile, SEM_FILE1, NSEMS, 'a', 0664); //2个双态信号量, 0代表count可操作  1代表可以写
+	get_sem(&semid_devfile, SEM_FILE1, NSEMS, 'a', 0664); //2个双态信号量, 0代表count可操作  1代表可以写  设备文件读写同步使用
 	for(int i=0; i<NSEMS; i++) init_sem(semid_devfile, i, 1);
 
-	get_sem(&semid_mtfile, SEM_FILE2, NSEMS, 'a', 0664);
+	get_sem(&semid_mtfile, SEM_FILE2, NSEMS, 'a', 0664); //APP文件读写同步使用
 	for(int i=0; i<NSEMS; i++) init_sem(semid_mtfile, i, 1);
 
-	get_sem(&semid_devonline, SEM_FILE3, NSEMS, 'a', 0664);
+	get_sem(&semid_devonline, SEM_FILE3, NSEMS, 'a', 0664); // 在线设备列表读写同步使用
 	for(int i=0; i<NSEMS; i++) init_sem(semid_devonline, i, 1);
 
-	get_sem(&semid_phoneonline, SEM_FILE4, NSEMS, 'a', 0664);
+	get_sem(&semid_phoneonline, SEM_FILE4, NSEMS, 'a', 0664); // 在线手机设备读写同步使用
 	for(int i=0; i<NSEMS; i++) init_sem(semid_phoneonline, i, 1);
 
 	return 1;
-
 }
 
 
-//读与读同步,读与写互斥
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//读操作加锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int write_sync_lock(int semid)
 {
 	sem_p(semid, 1, 1);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//读操作解锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int write_sync_unlock(int semid)
 {
 	sem_v(semid, 1, 1);
 }
 
 
-//读与读同步,读与写互斥
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//写操作加锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int read_sync_lock(int semid, int& count)
 {
 	sem_p(semid, 0, 1);//count 可操作
@@ -102,6 +107,10 @@ int read_sync_lock(int semid, int& count)
 	sem_v(semid, 0, 1);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//写操作解锁
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+int read_sync_unlock(int semid, int& count)
 int read_sync_unlock(int semid, int& count)
 {
 	sem_p(semid, 0, 1);
@@ -111,6 +120,9 @@ int read_sync_unlock(int semid, int& count)
 	sem_v(semid, 0, 1);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：捕获退出信号，释放资源
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void signal_fun(int signo) //信号捕获函数
 {
 	if(SIGINT == signo)
@@ -127,7 +139,7 @@ void signal_fun(int signo) //信号捕获函数
 		rm_msg(msgid, MSG_FILE_SERVER); //删除消息队列
 
 		
-		mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a'); //释放设备的消息队列
+		mk_get_msg(&msgid, MSG_FILE_DEV, 0644, 'a'); //释放设备的消息队列 ,因为有多个设备，所以在服务器这边释放设备的消息队列
 		rm_msg(msgid, MSG_FILE_DEV);
 
 		exit(0);
@@ -139,6 +151,10 @@ void signal_fun(int signo) //信号捕获函数
 	}
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：把缓冲区内容放到消息队列
+//参数：buf 缓冲区指针 size 缓冲区大小
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int add_msg(unsigned char* buf, int size)
 {
 	Msgbuf msgbuf;
@@ -156,14 +172,19 @@ int add_msg(unsigned char* buf, int size)
 	return 1;
 }
 
-void send_regist_msg()//向qt界面发送已经注册的设备和手机信息
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：向qt界面发送已经注册的设备和手机信息
+//      用于界面显示
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+void send_regist_msg()
 {
 	unsigned char msg_data[sizeof(phone_info) + 10] = {0};
 
 	read_sync_lock(semid_mtfile, count_mtfile);             //设置读mt文件
 	FILE *fp = fopen(MT_REGIST, "r");
 
-	phone_info phone;
+	phone_info phone; //读注册的手机信息文件
 	while(fscanf(fp, "%s %s %s %s\n", phone.phone_num, phone.phone_name,\
 				phone.password, phone.mail) != EOF) 
 	{
@@ -182,7 +203,7 @@ void send_regist_msg()//向qt界面发送已经注册的设备和手机信息
 	read_sync_lock(semid_devfile, count_devfile);
 	fp = fopen(DEV_REGIST, "r");
 
-	dev_info dev; 
+	dev_info dev; //读已经注册的设备信息文件
 	while(fscanf(fp, "%s %s %s\n", dev.mac, dev.type, dev.name) != EOF) 
 	{
 		bzero(msg_data, sizeof(phone_info) + 10);
@@ -196,6 +217,10 @@ void send_regist_msg()//向qt界面发送已经注册的设备和手机信息
 	read_sync_unlock(semid_devfile, count_devfile);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：把设备从在线设备列表中移除
+//参数：clnfd 对应设备的socket fd
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int rmdev_from_list(int clnfd)
 {
 	int rm_ok = 0;
@@ -217,6 +242,10 @@ int rmdev_from_list(int clnfd)
 	return rm_ok;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：把手机从在线设备列表中移除
+//参数：clnfd 对应设备的socket fd
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int rmphone_from_list(int clnfd)//从在线设备列表中移除该设备
 {
 	int rm_ok = 0; 
@@ -237,6 +266,11 @@ int rmphone_from_list(int clnfd)//从在线设备列表中移除该设备
 	return rm_ok;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：查找数据库（文件）
+//参数：phone_info 返回查找到手机的信息
+//返回值： 1 查找成功 0查找失败
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int search_phone(phone_info& p)
 {
 	read_sync_lock(semid_mtfile, count_mtfile); 		//设置读mt文件
@@ -262,6 +296,11 @@ int search_phone(phone_info& p)
 
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：查找数据库（文件）
+//参数：dev_info 返回查找到设备的信息
+//返回值： 1 查找成功 0查找失败
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int search_dev(dev_info& d) //from file
 {
 	read_sync_lock(semid_devfile, count_devfile);
@@ -285,6 +324,11 @@ int search_dev(dev_info& d) //from file
 	return find_ok;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：查找在线设备列表
+//参数：mac 设备的mac地址
+//返回值： 返回对应设备的描述符
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int search_dev_from_dev_online(unsigned char *mac) //返回对应的套接字描述符
 {
 
@@ -305,6 +349,11 @@ int search_dev_from_dev_online(unsigned char *mac) //返回对应的套接字描
 	return -1;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：查找在线手机列表
+//参数： phone_info_e phone_e 手机号码，返回torken
+//返回值： 1 查找成功 0查找失败
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int search_phone_from_phone_online(phone_info_e& phone_e) 
 {
 	read_sync_lock(semid_phoneonline, count_phoneonline);
@@ -325,7 +374,10 @@ int search_phone_from_phone_online(phone_info_e& phone_e)
 	return find_ok;
 }
 
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：生成torken
+//参数： 返回生成的torken
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void make_torken(unsigned char* torken)
 {
 	/* initialize random seed: */
@@ -338,9 +390,13 @@ void make_torken(unsigned char* torken)
 		iSecret = rand() % 74 + 48;  //0~z
 		torken[i] = iSecret;
 	}
-
-
 }
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：插入新的手机信息到在线手机列表
+//参数： phone_info_e 手机信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void insert_online_mt(phone_info_e phone_e)
 {
 	write_sync_lock(semid_phoneonline);
@@ -348,6 +404,10 @@ void insert_online_mt(phone_info_e phone_e)
 	write_sync_unlock(semid_phoneonline);
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：插入新的设备信息到在线设备列表
+//参数： dev_info_e 设备信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void insert_online_dev(dev_info_e dev_e)
 {
 	write_sync_lock(semid_devonline);
@@ -355,7 +415,10 @@ void insert_online_dev(dev_info_e dev_e)
 	write_sync_unlock(semid_devonline);
 }
 
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：写入新的手机信息到数据库（文件）
+//参数： phone_info 手机信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void write_regist_info_to_file(phone_info& phone)
 {
 	if(!search_phone(phone))
@@ -367,10 +430,12 @@ void write_regist_info_to_file(phone_info& phone)
 		fclose(fp);
 		write_sync_unlock(semid_mtfile);
 	}
-
-
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：写入新的设备信息到数据库（文件）
+//参数： dev_info 设备信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void write_dev_info_to_file(dev_info& dev)
 {
 	if(!search_dev(dev))
@@ -383,6 +448,10 @@ void write_dev_info_to_file(dev_info& dev)
 	}
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能：更改设备状态
+//参数： mac 设备地址  status 设备状态
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void set_lamp_status(unsigned char* mac, int status)
 {
 	write_sync_lock(semid_devonline);
@@ -400,6 +469,10 @@ void set_lamp_status(unsigned char* mac, int status)
 
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 心跳检测、接收手机、设备的注册、登录等信息
+// 	 转发手机端给设备的控制信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void* thread_recv(void *arg)
 {
 	int clnfd = *((int*)arg);
@@ -430,7 +503,7 @@ void* thread_recv(void *arg)
 				switch(p.cmd)
 				{
 
-					case LOGIN_CMD:
+					case LOGIN_CMD: //手机登录信息
 						phone_info_e phone_e;
 						memcpy(phone_e.p.phone_name, p.data, 10);
 						memcpy(phone_e.p.password, p.data + 10, 20);
@@ -500,7 +573,7 @@ void* thread_recv(void *arg)
 
 						break;
 
-					case REGIST_CMD:
+					case REGIST_CMD: // 手机注册信息
 						bzero(msg_data, 20);
 						memcpy(msg_data, "cleandata", 9);
 						add_msg(msg_data, 20);
@@ -536,7 +609,7 @@ void* thread_recv(void *arg)
 						send_regist_msg();
 
 						break;
-					case REGIST_DEV_CMD:
+					case REGIST_DEV_CMD: // 设备注册信息
 
 						bzero(msg_data, 20); //先把显示的内容清空
 						memcpy(msg_data, "cleandata", 9);
@@ -573,7 +646,7 @@ void* thread_recv(void *arg)
 						send_regist_msg();
 						break;
 
-					case DEV_LOGIN:
+					case DEV_LOGIN: //设备登录信息
 						dev_info_e dev_e;
 						memcpy(dev_e.d.mac, p.data, 8);
 						dev_e.sockfd = client.sockfd;
@@ -625,7 +698,7 @@ void* thread_recv(void *arg)
 							read_sync_lock(semid_devonline, count_devonline);
 
 							list<dev_info_e>::iterator it = dev_online.begin();
-							for(; it != dev_online.end(); it++)
+							for(; it != dev_online.end(); it++) //发送消息到QT界面
 							{
 								if(strncmp((char*)p.device_id, it->d.mac, 8) == 0)
 								{
@@ -665,7 +738,7 @@ void* thread_recv(void *arg)
 							set_lamp_status(p.device_id, 0);
 						}
 						break;
-					case LIGHT:
+					case LIGHT: //光照数据
 						{
 							read_sync_lock(semid_devonline, count_devonline);
 
@@ -954,6 +1027,11 @@ void output_select_fan_swutch()
 	cout << "on/for open." << endl;
 	cout << "off/for close." << endl;
 }
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 接收消息队列输入线程，
+//       发送控制命令到设备
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void *thread_input(void *arg){
 	unsigned char buf[MAX_PACKAGE_SIZE];
 	unsigned char msg_data[20] = {0};
