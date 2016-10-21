@@ -39,26 +39,28 @@
 //};
 
 
-list<phone_info_e> phone_online;
-list<dev_info_e> dev_online;
+list<phone_info_e> phone_online; //在线手机信息
+list<dev_info_e> dev_online; 	//在线设备信息
 
-int temprature = 0;
-int light1 = 0;
-int light2 = 0;
+int temprature = 0; //温度传感数据
+int light1 = 0;     //光照传感数据
+int light2 = 0;     //光照传感数据
 
-int semid_devfile;
-int semid_mtfile;
-int semid_devonline;
-int semid_phoneonline;
-int msgid;
+int semid_devfile;  //信号量，用于互斥访问设备文件
+int semid_mtfile;   //用于互斥访问手机文件
+int semid_devonline; //用于互斥访问在线设备列表
+int semid_phoneonline; //用于互斥访问在线手机列表
+int msgid;  	     //消息队列id
 
-
+//记录读者数量
 int count_devfile = 0;
 int count_mtfile = 0;
 int count_devonline = 0;
 int count_phoneonline = 0;
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //初始化信号量
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 static int init_sem()
 {
 	/*get_sem(&semid, SEM_FILE, NSEMS, 'a', 0664);*/
@@ -576,7 +578,7 @@ void* thread_recv(void *arg)
 					case REGIST_CMD: // 手机注册信息
 						bzero(msg_data, 20);
 						memcpy(msg_data, "cleandata", 9);
-						add_msg(msg_data, 20);
+						add_msg(msg_data, 20); //清除信息，重新显示  刷新
 
 						phone_info phone;
 						memcpy(&phone, p.data, sizeof(phone_info) - 1);
@@ -781,7 +783,7 @@ void* thread_recv(void *arg)
 							//cout << "new light data:"<< light << endl;
 						}
 						break;
-					case TEMPRATURE:
+					case TEMPRATURE: //温度传感数据
 						{
 							temprature = atoi((char*)p.data);
 							cout << "new temprature data:" << temprature << endl;
@@ -878,7 +880,7 @@ void* thread_recv(void *arg)
 							client._send(buf);
 						}
 						break;
-					case GET_DEV_SENCEINFO_CMD:
+					case GET_DEV_SENCEINFO_CMD: //手机端同步设备状态和传感数据信息
 						{
 
 							phone_info_e myphone;
@@ -889,7 +891,7 @@ void* thread_recv(void *arg)
 							p1.cmd_type = 0x0B;
 							p1.cmd = RES; 	                    //应答
 
-							p1.torken_len = 20; 
+							p1.torken_len = 20;  		    //手机端torken
 							p1.torken = new unsigned char[p1.torken_len];
 							memcpy(p1.torken, phone_e.torken, 20);
 
@@ -909,7 +911,7 @@ void* thread_recv(void *arg)
 								dev_it++;
 							}
 
-							sprintf((char*)pos, "%d", light1);
+							sprintf((char*)pos, "%d", light1); //后30个字节加入传感数据
 							sprintf((char*)pos+10, "%d", light2);
 							sprintf((char*)pos+20, "%d", temprature);
 
@@ -937,7 +939,7 @@ void* thread_recv(void *arg)
 		{
 			p1.package_header = 0x55;
 			p1.cmd_type = 0x0A;
-			p1.cmd = HEARTBEAT_CMD;                     //登录成功应答
+			p1.cmd = HEARTBEAT_CMD;                     //心跳检测包
 
 			p1.torken_len = 1;                           //无torken
 			p1.torken = new unsigned char[p1.torken_len];
@@ -979,7 +981,7 @@ void* thread_recv(void *arg)
 			}
 			read_sync_unlock(semid_devonline, count_devonline);
 
-			if(RecvPacket(client.sockfd, buf))
+			if(RecvPacket(client.sockfd, buf)) //接收到心跳包应答
 			{
 				p1.parse_buf(buf);
 				if(strcmp((char*)p1.data, "success") == 0)
@@ -987,7 +989,6 @@ void* thread_recv(void *arg)
 					cout << "recv xintiao  ack!" << endl;
 					memcpy(msg_data + 10, "login", 5);
 					add_msg(msg_data, 20); 
-
 				}
 
 
@@ -1010,11 +1011,17 @@ void* thread_recv(void *arg)
 	}
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 菜单输出
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void output_select()
 {
 	cout << "p/print the devs." << endl;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 菜单输出
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void output_select_lamp()
 {
 	cout << "on/for open." << endl;
@@ -1022,6 +1029,10 @@ void output_select_lamp()
 	cout << "auto/for auto control." <<endl;
 	cout << "manual/for manual control." <<endl;
 }
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 菜单输出
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void output_select_fan_swutch()
 {
 	cout << "on/for open." << endl;
@@ -1029,7 +1040,7 @@ void output_select_fan_swutch()
 }
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//功能： 接收消息队列输入线程，
+//功能： 接收控制台输入线程，
 //       发送控制命令到设备
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void *thread_input(void *arg){
@@ -1076,7 +1087,7 @@ void *thread_input(void *arg){
 				output_select_lamp();
 				cout << "input control info:" << endl;
 				cin >> option;
-				if(option == "on")
+				if(option == "on")  //开灯
 				{
 
 					dev_info_e dev = *it;
@@ -1089,7 +1100,7 @@ void *thread_input(void *arg){
 					p1.cmd_type = 0x0B;
 					p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 
-					p1.torken_len = 20;
+					p1.torken_len = 20; 			//设备torken信息
 					p1.torken = new unsigned char[p1.torken_len];
 					memcpy(p1.torken, dev.torken, 20);
 
@@ -1111,7 +1122,7 @@ void *thread_input(void *arg){
 
 					bzero(buf, MAX_PACKAGE_SIZE);
 					p1.clean_data();
-					if(RecvPacket(client.sockfd, buf))
+					if(RecvPacket(client.sockfd, buf)) //接收设置成功应答
 					{
 						p1.parse_buf(buf);
 						if(strcmp((char*)p1.data, "success") == 0)
@@ -1131,7 +1142,7 @@ void *thread_input(void *arg){
 					}
 
 				}
-				if(option == "off")
+				if(option == "off") //关灯
 				{
 
 					dev_info_e dev = *it;
@@ -1144,7 +1155,7 @@ void *thread_input(void *arg){
 					p1.cmd_type = 0x0B;
 					p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 
-					p1.torken_len = 20;                       //无torken
+					p1.torken_len = 20;                       //设备torken
 					p1.torken = new unsigned char[p1.torken_len];
 					memcpy(p1.torken, dev.torken, 20);
 
@@ -1166,14 +1177,14 @@ void *thread_input(void *arg){
 
 					p1.clean_data();
 					bzero(buf, MAX_PACKAGE_SIZE);
-					if(RecvPacket(client.sockfd, buf))
+					if(RecvPacket(client.sockfd, buf)) //接受设置成功应答
 					{
 						p1.parse_buf(buf);
 						if(strcmp((char*)p1.data, "success") == 0)
 						{
 							cout << "recv ack!" << endl;
 							it->status = 0;
-							bzero(msg_data, 20);
+							bzero(msg_data, 20); //发送消息队列，通知QT界面刷新
 							memcpy(msg_data, it->d.name, 10);
 							memcpy(msg_data + 10, "off", 3);
 							add_msg(msg_data, 20);
@@ -1185,7 +1196,7 @@ void *thread_input(void *arg){
 						cout << "set lamp error!" << endl;
 					}
 				}
-				if(option == "auto")
+				if(option == "auto") //自动模式
 				{
 
 					dev_info_e dev = *it;
@@ -1198,7 +1209,7 @@ void *thread_input(void *arg){
 					p1.cmd_type = 0x0B;
 					p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 
-					p1.torken_len = 20;                       //无torken
+					p1.torken_len = 20;                       //设备torken
 					p1.torken = new unsigned char[p1.torken_len];
 					memcpy(p1.torken, dev.torken, 20);
 
@@ -1220,7 +1231,7 @@ void *thread_input(void *arg){
 
 					p1.clean_data();
 					bzero(buf, MAX_PACKAGE_SIZE);
-					if(RecvPacket(client.sockfd, buf))
+					if(RecvPacket(client.sockfd, buf)) //接收设置成功应答
 					{
 						p1.parse_buf(buf);
 						if(strcmp((char*)p1.data, "success") == 0)
@@ -1239,7 +1250,7 @@ void *thread_input(void *arg){
 						cout << "set auto error!" << endl;
 					}
 				}
-				if(option == "manual")
+				if(option == "manual") //手动模式
 				{
 
 					dev_info_e dev = *it;
@@ -1252,7 +1263,7 @@ void *thread_input(void *arg){
 					p1.cmd_type = 0x0B;
 					p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 
-					p1.torken_len = 20;                       //无torken
+					p1.torken_len = 20;                       //设备torken
 					p1.torken = new unsigned char[p1.torken_len];
 					memcpy(p1.torken, dev.torken, 20);
 
@@ -1274,7 +1285,7 @@ void *thread_input(void *arg){
 
 					bzero(buf, MAX_PACKAGE_SIZE);
 					p1.clean_data();
-					if(RecvPacket(client.sockfd, buf))
+					if(RecvPacket(client.sockfd, buf)) //接收设置成功应答
 					{
 						p1.parse_buf(buf);
 						if(strcmp((char*)p1.data, "success") == 0)
@@ -1294,12 +1305,12 @@ void *thread_input(void *arg){
 					}
 				}
 			}
-			else if(strcmp(it->d.type, "fan") == 0 || strcmp(it->d.type, "switch") == 0)
+			else if(strcmp(it->d.type, "fan") == 0 || strcmp(it->d.type, "switch") == 0) //风扇和智能开关的控制信息
 			{
 				output_select_fan_swutch();
 				cout << "input control info:" << endl;
 				cin >> option;
-				if(option == "on")
+				if(option == "on") //打开
 				{
 
 					dev_info_e dev = *it;
@@ -1355,7 +1366,7 @@ void *thread_input(void *arg){
 					}
 
 				}
-				if(option == "off")
+				if(option == "off") //关闭
 				{
 
 					dev_info_e dev = *it;
@@ -1416,7 +1427,12 @@ void *thread_input(void *arg){
 }
 
 
-int search_dev_from_dev_online(dev_info_e& dev_e) //根据名称查询所有的设备信息
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 根据名称查询所有的设备信息
+//参数： dev_info_e dev_e 返回设备信息
+//返回值： 查找成功 1 查找失败 0
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+int search_dev_from_dev_online(dev_info_e& dev_e) 
 {
 
 	read_sync_lock(semid_devonline, count_devonline);
@@ -1438,6 +1454,10 @@ int search_dev_from_dev_online(dev_info_e& dev_e) //根据名称查询所有的�
 	return find_ok;
 }
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//功能： 接收控制台消息队列输入线程，
+//       发送控制命令到设备
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 {
 	unsigned char buf[MAX_PACKAGE_SIZE];
@@ -1463,7 +1483,7 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 		if(!search_dev_from_dev_online(dev))
 			continue;
 		client.sockfd = dev.sockfd;
-		if(strncmp(msg.mtext, "lamp", 4) == 0)
+		if(strncmp(msg.mtext, "lamp", 4) == 0) //控制灯
 		{
 
 			if(strcmp(msg.mtext+10, "on") == 0)
@@ -1547,7 +1567,7 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 				memcpy(p1.device_id, dev.d.mac, 8);
 
-				p1.torken_len = 20;                       //无torken
+				p1.torken_len = 20;
 				p1.torken = new unsigned char[p1.torken_len];
 				memcpy(p1.torken, dev.torken, 20);
 
@@ -1612,7 +1632,7 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 				memcpy(p1.device_id, dev.d.mac, 8);
 
-				p1.torken_len = 20;                       //无torken
+				p1.torken_len = 20;
 				p1.torken = new unsigned char[p1.torken_len];
 				memcpy(p1.torken, dev.torken, 20);
 
@@ -1682,7 +1702,7 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 				p1.cmd = CONTRL_DEV_CMD;                 //控制设备
 				memcpy(p1.device_id, dev.d.mac, 8);
 
-				p1.torken_len = 20;                       //无torken
+				p1.torken_len = 20; 
 				p1.torken = new unsigned char[p1.torken_len];
 				memcpy(p1.torken, dev.torken, 20);
 
@@ -1738,7 +1758,7 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 			}
 			cout << 2 << endl;
 		}
-		else if(strncmp(msg.mtext, "fan", 3) == 0 || strncmp(msg.mtext, "switch", 6) == 0)
+		else if(strncmp(msg.mtext, "fan", 3) == 0 || strncmp(msg.mtext, "switch", 6) == 0) //控制电扇和开关
 		{
 			if(strcmp(msg.mtext+10, "on") == 0)
 			{
@@ -1879,29 +1899,40 @@ void* thread_msg_input(void* arg)//中控界面发给中控程序的信息
 			}
 		}
 
-		cout << 3 << endl;
 	}
 }	
 
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//主程序
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 int main()
 {
+	//捕获退出信号
 	signal(SIGINT, signal_fun);
 	signal(SIGPIPE, signal_fun);
+
+	//获取消息队列
 	mk_get_msg(&msgid, MSG_FILE_SERVER, 0644, 'a');
 	cout << "msgid:" << msgid << endl;
+
+
 	SockServer s(SERPORT);
 	Protocol p;
 	unsigned char buf[MAX_PACKAGE_SIZE] = {0};
 
 	init_sem(); //获取并初始化信号量
 
+	//连接到服务器
 	s._bind();
 	s._listen();
 
 	output_select();
 
+	//打开输入控制数据
 	pthread_t thread_id;
-	pthread_create(&thread_id, NULL, thread_input, NULL);//输入控制数据线程
+	pthread_create(&thread_id, NULL, thread_input, NULL);
 	
 	send_regist_msg();//向qt界面发送已经注册的设备和手机信息
 
@@ -1913,7 +1944,7 @@ int main()
 	{
 		int clnfd = s._accept();
 
-		//打开处理线程
+		//打开设备、手机处理线程
 		pthread_create(&thread_id, NULL, thread_recv, &clnfd);
 	}
 }
